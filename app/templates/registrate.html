@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money-control home</title>
+    <link rel=stylesheet href="../static/registro.css">
+</head>
+<body>
+    <!---inicio del nav bar-->
+    <nav class="nav">
+
+        <div class="nav-bar">
+
+
+            <div class="logo">
+                <a class="link-h" href="#">
+                    <img class="img-logo" src="../static/png/Money-control.png">
+                </a>
+            </div>
+        <div class="l-links">
+
+            <ul class="ur-nav">
+                <li >
+                    <a class="link link-p" href="{{url_for('iniciar_sesion')}}">
+                        Iniciar Sesion
+                    </a>
+                </li>
+                <li class="sep">
+                    |
+                </li>
+                <li>
+                    <a class="link link-p" href="{{url_for('registrarse') }}">
+                        Registrarse
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div class ="scr-cel-bar">
+            <button id="hamburguesa" class="hamburguesa" onclick="open_close_burger()">
+                <div class="linea">
+                </div>
+    
+                <div class="linea">
+                </div>
+                <div class="linea">
+                </div>
+            </button>
+        </div>
+
+        
+        </div>
+        <!--fin del navbar principal-->
+
+        <!--aca inica el diseño del contenido del menu hamburguesa-->
+        <div class="me">
+            <ul class="menu-hamburguesa" id="menu-h">
+                <li>
+                    <a class="link link-d" name="link_animate" href="#">Link-1</a>
+                </li>
+                <li>
+                    <a  class="link link-d" name="link_animate" href="#">Link-2</a>
+                </li>
+                <li>
+                    <a class="link link-d" id="link_animate" href="#">Link-3</a>
+                </li>
+            </ul>
+        </div>
+    
+    </nav> 
+    <div class="sig-in">  
+        <div>
+            <img class="logo-form" src="../static/png/money.png" alt="logo Money-control">
+        </div>
+        <h2>Registrarse</h2>       
+        <form action="/procesar_registro" method="post" >
+            
+            <div class="camp">
+                <input type="text" class="campo input" name="nombre" required>
+                <label class="label" for="Nombre">Nombre:</label>
+                <span class="outline"></span>
+            </div>
+           
+            <div class="camp">
+                <input placeholder="  " type="text" class="campo input" name="apellido" required>
+                <label class="label" for="Apellido">Apellido:</label>
+                <span class="outline"></span>
+            </div>
+            
+            
+            <div class="camp">
+                <input placeholder="  " type="password" class="campo input" name="contrasena" required>
+                <label class="label" for="Contraseña">Contraseña:</label>
+                <span class="outline"></span>
+            </div>
+            
+            <div class="camp">
+                <input type="email" class="campo input" name="email" required>
+                <label class="label" for="Email">Email:</label>
+                <span class="outline"></span>
+            </div>
+            
+            <div class="camp">
+                <input placeholder="  " type="tel" class="campo input" name="telefono" required>
+                <label class="label" for="Telefono">Teléfono:</label>
+                <span class="outline"></span>
+            </div>
+
+
+            <div class="camp">
+                <select class="campo select" name="genero" required>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                </select>
+            </div>
+
+
+            <button class="sent" name="but" value="enviar"> Enviar</button>
+
+        </form>
+    
+        
+    </div>
+    <script>
+        function open_close_burger () {
+            let menu = document.getElementById("menu-h");
+            let hamburguesa = document.getElementById("hamburguesa");
+            menu.classList.toggle("active-menu-h");
+            hamburguesa.classList.toggle("active-h");
+        
+
+        }
+
+    </script>
+    
+</body>
+</html>

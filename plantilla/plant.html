@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iconify Comunidad</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-areas:
+        "header  header"
+        "sidebar main";
+      grid-template-columns: 240px 1fr;
+      grid-template-rows: auto 1fr;
+      min-height: 100vh;
+    }
+
+    header {
+      grid-area: header;
+      background: #24292e;
+      color: white;
+      padding: 1rem;
+    }
+
+    aside {
+      grid-area: sidebar;
+      background: #f4f4f4;
+      padding: 1rem;
+    }
+
+    main {
+      grid-area: main;
+      padding: 1rem;
+      background: #fff;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: #eaeaea;
+      padding: 1rem;
+      border-radius: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .grid-container {
+        grid-template-areas:
+          "header"
+          "main"
+          "sidebar";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto;
+      }
+
+      aside {
+        order: 3;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <header>Iconify Comunidad</header>
+    <aside>
+      <p>Anuncio / Navegación</p>
+    </aside>
+    <main>
+      <div class="card">Guía 1</div>
+      <div class="card">Guía 2</div>
+      <div class="card">Artículo 1</div>
+      <div class="card">Artículo 2</div>
+    </main>
+  </div>
+</body>
+</html>

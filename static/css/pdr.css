@@ -1,0 +1,127 @@
+
+:root{
+    --primary-color:#CEF4A9;
+    --secondary-color:#AFDD91;
+    --secondary-color-hover:#90C678;
+    --prymary-color-hover:#AFD68F;
+    --dark-primary-color:#8FB775;
+    /*colores posibles*/
+    --light-green: #8aea92ff;
+    --mantis: #6bb572ff;
+    --shamrock-green: #5b9a62ff;
+    --fern-green: #4b7f52ff;
+    --cal-poly-green: #265031ff;
+    --dark-green: #8FB775;
+    --dark-green-2: #01200fff;
+    --dark-green-3: #008b09ff;
+    --night: #011502ff;
+     /* variables numericas*/
+     --nav-size:clamp(50px,10vh,60px);
+}
+body{
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    
+}
+html,body{
+    height: 100%;
+}
+
+body::-webkit-scrollbar {
+    width: 10px; /* Ancho del scrollbar vertical */
+    height: 10px; /* Altura del scrollbar horizontal */
+  }
+  
+body::-webkit-scrollbar-track {
+    background: var(--secondary-color); /* Color del fondo del track */
+    border-radius: 0;
+  }
+  
+body::-webkit-scrollbar-thumb {
+    background: var(--secondary-color); /* Color del scroll */
+    border-radius: 10px;
+  }
+  
+body::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color-hover); /* Color al pasar el mouse */
+  }
+header {
+    width: 100vw;
+    height: var(--nav-size);
+    background-color: var(--secondary-color);
+    position: fixed;
+    z-index: 2;
+}
+main{
+    width: 100vw;
+    height: 100%;
+    background-color: var(--primary-color);
+    padding-top: var(--nav-size);
+    display: flow-root;
+
+ 
+}
+.cuadrado{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    margin: 10px;
+}
+aside{
+    width: clamp(52px, 5vw, 60px);
+    height: 50vh;
+    position: fixed;
+    top: 50%;
+    transform: translate(0,-50%);
+    background-color:var(--secondary-color) ;
+}
+.l-bar-1{
+    right: 0;
+}
+.l-bar-2{
+    left: 0;
+}
+
+
+/*------------------------------------------------------------------------*/
+
+
+.main-flex {
+    display: flex;
+    flex-direction: row; /* Por defecto en fila */
+    width: 100%; /* Ocupa todo el ancho del contenedor principal */
+    height: 100%; /* Ocupa toda la altura disponible en el contenedor-principal */
+
+}
+
+/* Estilos para los dos contenedores interiores */
+.contenedor-izquierdo,
+.contenedor-derecho {
+    flex-basis: 50%; /* Cada uno toma el 50% del ancho base */
+    flex-grow: 1; /* Permite que crezcan para llenar el espacio */
+    flex-shrink: 1; /* Permite que se encojan si es necesario */
+    padding: 20px; /* Padding interno para el contenido */
+    box-sizing: border-box; /* Crucial para que padding no aumente el tamaño */
+}
+
+.contenedor-izquierdo {
+    background-color: #b3e0b3; /* Verde claro de la imagen */
+}
+
+.contenedor-derecho {
+    background-color: #1a3a2f; /* Verde oscuro/negro de la imagen */
+}
+
+/* Estilos de los cuadrados */
+.cuadrado {
+    width: 80px; /* Tamaño del cuadrado más grande en la imagen */
+    height: 80px; /* Tamaño del cuadrado más grande en la imagen */
+
+}
+@media screen and (max-width: 600px){
+    aside{
+        display:none;
+    }
+
+}
