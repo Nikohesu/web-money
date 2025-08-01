@@ -25,9 +25,9 @@ CREATE TABLE IF NOT EXISTS usuarios (
     contrasena VARCHAR(40) NOT NULL,
     telefono VARCHAR(100) NOT NULL,
     correo VARCHAR(40) NOT NULL,
-    pais VARCHAR(100) NOT NULL,
+    pais VARCHAR(100),
     fecha_de_nacimiento DATE NOT NULL,
-    genero VARCHAR(100) NOT NULL,
+    genero VARCHAR(100) ,
     fecha_de_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     tipo_de_usuario INT NOT NULL,
     FOREIGN KEY (tipo_de_usuario) REFERENCES tipo_de_usuario(id)
