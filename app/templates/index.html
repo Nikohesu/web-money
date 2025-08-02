@@ -9,17 +9,25 @@
     </head>
     <body>
         {% include 'nav-bar-init.html' %}
+<div style="
+    position: absolute;
+    margin-top: 100px;">
+            <ul>
+                <li>
+                    <a href="#">Iniciar sesion</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('register')}}">Registrate</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('information')}}">Home</a>
+                </li>
+                <li>
+                    <a href="{{url_for('logout')}}">logout</a>
+                </li>
+            </ul>
+        </div>
 
-        <ul>
-            <li>
-                <a href="#">Iniciar sesion</a>
-            </li>
-            <li>
-                <a href="#">Registrate</a>
-            </li>
-            <li>
-                <a href="#">Home</a>
-            </li>
-        </ul>
+
 
     </body>

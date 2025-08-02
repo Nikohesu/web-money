@@ -1,7 +1,7 @@
         <header class="site-header">
             <nav class="nav-bar">
                 <div class="logo-home">
-                    <a href="#">
+                    <a href="{{ url_for('index')}}">
                         <img class="logo" src="{{ url_for('static', filename='img/Money-control(SIMPLE).SVG') }}" alt="logo-principal">
                     </a>
 
@@ -10,13 +10,13 @@
                 <div class="nav-options">
                     <ul class="nav-options-list nav-bar-init">
                         <li>
-                            <a class="link-bar" href="#">Iniciar sesion</a>
+                            <a class="link-bar" href="{{ url_for('login')}}">Iniciar sesion</a>
                         </li>
                         <li class="link-bar">
                             |
                         </li>
                         <li>
-                            <a class="link-bar" href="#">Registrate</a>
+                            <a class="link-bar" href="{{ url_for('register')}}">Registrate</a>
                         </li>
                     </ul>
 
@@ -57,5 +57,12 @@
 
             </div>
         </nav>
-        <script src="../../js/nav-bar-init.js"></script>
+        <script>
+            function open_close_burger () {
+    let burger_menu = document.getElementById("burger-menu");
+    let burger_button = document.getElementById("button-burger");
+    burger_menu.classList.toggle("burger-menu-active");
+    burger_button.classList.toggle("button-burger-active");
+    }
+        </script>
         </header>

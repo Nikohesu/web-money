@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS tipo_de_usuario (
     tipo_de_usuario VARCHAR(10) NOT NULL,
     duracion_meses INT NOT NULL
     -- agregar el campo id_pago más adelante como clave foránea
-);
+    );
 
 CREATE TABLE IF NOT EXISTS tipo_de_sugerencia (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -21,19 +21,21 @@ CREATE TABLE IF NOT EXISTS tipo_de_sugerencia (
 
 CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    primer_nombre VARCHAR(40) NOT NULL,
-    segundo_nombre VARCHAR(40) NOT NULL,
-    primer_apellido VARCHAR(40) NOT NULL,
-    segundo_apellido VARCHAR(40) NOT NULL,
-    nombre_de_usuario VARCHAR(40) NOT NULL,
-    contrasena VARCHAR(40) NOT NULL,
-    telefono VARCHAR(100) NOT NULL,
-    correo VARCHAR(40) NOT NULL,
-    pais VARCHAR(100),
-    fecha_de_nacimiento DATE NOT NULL,
-    genero VARCHAR(100) ,
+    firstname VARCHAR(40) NOT NULL,
+    lastname VARCHAR(40) NOT NULL,
+    --primer_nombre VARCHAR(40) NOT NULL,
+    --segundo_nombre VARCHAR(40) NOT NULL,
+    --primer_apellido VARCHAR(40) NOT NULL,
+    --segundo_apellido VARCHAR(40) NOT NULL,
+    --nombre_de_usuario VARCHAR(40) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    telefono VARCHAR(10) NOT NULL,
+    email VARCHAR(40) NOT NULL,
+    pais VARCHAR(40),
+    nacimiento DATE NOT NULL,
+    --genero VARCHAR(100) ,
     fecha_de_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    tipo_de_usuario INT NOT NULL,
+    tipo_de_usuario INT,
     FOREIGN KEY (tipo_de_usuario) REFERENCES tipo_de_usuario(id)
 );
 

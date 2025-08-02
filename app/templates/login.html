@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+    <html lang="esp">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Plantilla de prueba</title>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='img/Money-control(SIMPLE).SVG') }}" type="image/SVG">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}">
+    </head>
+    <body>
+
+        {% include 'nav-bar-init.html' %}
+
+        <main>
+            <div class="sign-in">
+                <form class="sign-in-form" method="post" action="/login">
+                    <div class="content-logo">
+                        <img class="logo-log-in" src="{{ url_for('static', filename='img/Money-control(SIMPLE).SVG') }}">
+                        <h2 class="subtitulo"> Money control</h2>
+                    </div>
+
+                    <p> Inicia sesion para acceder a todos nuestros servicios</p>
+                    <div class="div-campo">
+                        <label  for="email">Email</label>
+                        <input class="campo" type="text" id="email" name="email" required>
+                    </div>
+                    <div class="div-campo">
+                        <label  for="password">Contraseña</label> 
+                        <input class="campo" type="password" id="name" name="password" required>
+                    </div>
+                    <button class="sign-in-button"> Iniciar sesion</button>
+                    <p> ¿Eres nuevo? <a href="{{ url_for('register')}}">Registrate</a></p>
+                    <p>¿Olvidaste la contraseña? <a href="#">Recuperar cuenta</a> </p>
+                </form>
+            </div>
+        </main>
+
+
+    </body>
