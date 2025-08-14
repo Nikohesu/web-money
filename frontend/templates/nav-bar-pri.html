@@ -26,12 +26,12 @@
                             |
                         </li>
                         <li class="content-nav-buttons">
-                            <button class="nav-buttons">
+                            <button class="nav-buttons" id="button-notification">
                                 <img class="icon" src="../../static/images/Notification.svg" alt="Notifications">
                             </button>
-                            <button class="nav-buttons">
+                            <button class="nav-buttons" id="button-accout">
                                 <img class="icon" src="../../static/images/Accout.svg" alt="Accout">
-                            </button>
+                            </button> 
                             
                             
 
@@ -39,8 +39,37 @@
                     </ul>
 
                 </div>
-                <script src="../../main/nav-bar-init.js"></script>
             </nav>
-
+            <div class="content-notification" id="notification"></div>
+            <div class="content-accout" id="accout"></div>
         </header>
+        <script>
+    class toggle_notifications {
+  constructor(id_obj, id_button, active_class) {
+    this.active_class = active_class;
+    this.button = document.getElementById(id_button);
+    this.obj = document.getElementById(id_obj);
+
+    this.button.addEventListener("click", () => {
+      this.obj.classList.toggle(this.active_class);
+      console.log(`Toggle ejecutado: ${id_obj}`);
+    });
+  }
+}
+
+// 👇 Crear instancias fuera de la clase
+const notification = new toggle_notifications(
+  "notification",
+  "button-notification",
+  "active-content-notification"
+);
+
+const account = new toggle_notifications(
+  "accout",
+  "button-accout",
+  "active-content-accout"
+);
+
+        </script>
+        
     </body>
