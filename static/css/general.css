@@ -24,7 +24,7 @@
 
 :root{
     --primary-color:#DCF3C2;
-    --secondary-color:#87DF5B;
+    --secondary-color:#77C954;
     --tetraty-color:#77c94e;
     --secondary-color-hover:#57BB25;
     --prymary-color-hover:#AFD68F;
@@ -73,6 +73,17 @@ body{
 .logo{
     height: 100%;
     width: auto;
+}
+.a-principal{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    top: 10px;
+
+
 }
 
 .logo-text{
