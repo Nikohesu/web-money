@@ -1,4 +1,4 @@
-CREATE USER 'Jhoan'@'%' IDENTIFIED BY '1217';
+CREATE USER IF NOT EXISTS 'Jhoan'@'%' IDENTIFIED BY '1217';
 GRANT ALL PRIVILEGES ON *.* TO 'Jhoan'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 
@@ -7,37 +7,20 @@ CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 USE money_control;
 
-CREATE TABLE IF NOT EXISTS tipo_de_usuario (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    tipo_de_usuario VARCHAR(10) NOT NULL,
-    duracion_meses INT NOT NULL
-    -- agregar el campo id_pago más adelante como clave foránea
-    );
-
-CREATE TABLE IF NOT EXISTS tipo_de_sugerencia (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    tipo_de_sugerencia VARCHAR(100) NOT NULL
-);
-
 CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     firstname VARCHAR(40) NOT NULL,
     lastname VARCHAR(40) NOT NULL,
-    --primer_nombre VARCHAR(40) NOT NULL,
-    --segundo_nombre VARCHAR(40) NOT NULL,
-    --primer_apellido VARCHAR(40) NOT NULL,
-    --segundo_apellido VARCHAR(40) NOT NULL,
-    --nombre_de_usuario VARCHAR(40) NOT NULL,
     password VARCHAR(255) NOT NULL,
     telefono VARCHAR(10) NOT NULL,
     email VARCHAR(40) NOT NULL,
     pais VARCHAR(40),
     nacimiento DATE NOT NULL,
-    --genero VARCHAR(100) ,
+    genero ENUM('masculino', 'femenino', 'no_binario', 'prefiero_no_decir') DEFAULT 'prefiero_no_decir',
     fecha_de_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    tipo_de_usuario INT,
-    FOREIGN KEY (tipo_de_usuario) REFERENCES tipo_de_usuario(id)
-);
+    tipo_de_usuario INT DEFAULT 1,
+    duracion_tipo_de_usuario INT DEFAULT NULL, --DURACION DE UN USUARIO PREMIUM
+)
 
 CREATE TABLE IF NOT EXISTS sugerencias (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -87,3 +70,8 @@ CREATE TABLE IF NOT EXISTS categoria_ingresos
 id INT AUTO_INCREMENT PRIMARY KEY
 nombre VARCHAR(100) NOT NULL
 id_usuario INT AUTO_INCREMENT PRIMARY KEY --CLAVE FORANEA
+
+CREATE TABLE IF NOT EXISTS tipo_de_sugerencia (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tipo_de_sugerencia VARCHAR(100) NOT NULL
+);
