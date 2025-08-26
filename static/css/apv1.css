@@ -1,0 +1,213 @@
+ /* css de contactenos*/
+/* esto ya es aparte del contactenos */
+
+.content-contactenos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    margin-top:var(--nav-size);
+}
+
+.content-contactenos-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary-color) ;
+    width: 100%;
+    color:black;
+    font-family: Baloo2-SemiBold;
+    padding: 20px 0;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+}
+
+
+
+/*formulario*/
+
+.cuadro{
+    aspect-ratio: 1/1;
+    margin-top: var(--nav-size);
+    width: clamp(200px, 70vw, 500px);
+    background-color:var(--secondary-color);
+    box-shadow: 0px 1px 2px #00000080;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.cuadro > h2 {
+    font-family: SourGummy-Light;
+}
+.cuadro > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.camp{
+    
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 10px;
+    position: relative;
+}
+.logo-form{
+    height: clamp(5px,13vh,100px);
+    width: auto;
+}
+
+
+.label{
+    transform: translateY(-30%) scale(0.8);
+    font-size: 100%;
+    font-family: SourGummy-Light;
+    position: absolute;
+    left: 0;
+    padding: 0.7em;
+    margin-left: -0.5em;
+    pointer-events: none;
+    color: rgb(100, 100, 100);
+}
+
+textarea {
+  display: block;
+  min-width: 300px;
+  max-width: 500px;
+  width: 50vw;
+  height: 20px;
+  border-radius: 6px;
+}
+
+.boton {
+    background-color: #0b8335;
+    color: white;
+    width: 110px;
+    height: 40px;
+    font-size: auto;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+/*Matriz CRUD*/
+
+
+
+.header-crud{
+    /*el objeto mantiene el espaciado para dejar el del nav*/
+    margin-top: var(--nav-size);
+    width: 100%;
+    height: var(--nav-size);
+    background-color: var(--secondary-color);
+    /*estilos para el texto*/
+    font-family: Baloo2-SemiBold;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-crud{
+    /*tamaño del contenedor principal de curd*/
+    width: 80vw;
+    height: 70vh;
+    background-color: red;
+    margin-top: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-search-bar{
+    margin: 5px 0;
+    width: clamp(300px,50%,600px);
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #0b8335;
+}
+
+.search-bar{
+    width: 85%;
+    height: 30px;
+    border-radius: 15px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    padding:0 10px;
+    box-sizing: border-box;
+
+}
+.search-bar:focus-within{
+    border: 2px solid #000000;
+}
+
+
+.input-search{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    border-radius: 15px;
+}
+.input-search:focus{
+    outline: none;
+}
+
+.button-search{
+    width: auto;
+    height: 60%;
+    background-color: transparent;
+    border: none;
+}
+
+.svg-search{
+    width: auto;
+    height: 100%;
+}
+.content-order-filter{
+    height: 100%;
+    width: 15%;
+    background-color: transparent;
+    border: none;
+    margin: 2px;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    grid:5px;
+
+}
+.filter-order-buttons{
+    height: 50%;
+
+}
+
+@media (width < 600px) {
+ .main-crud{
+    width: 100%;
+    position: static;
+    transform: translate(0,0);
+
+    
+
+ }
+}

@@ -23,9 +23,10 @@
 
 
 :root{
-    --primary-color:#DCF3C2;
+    --primary-color:#DEFFB8;
     --secondary-color:#77C954;
-    --tetraty-color:#77c94e;
+    --tetraty-color:#ABE486;
+    --hept-color:#0B8335;
     --secondary-color-hover:#57BB25;
     --prymary-color-hover:#AFD68F;
     --dark-primary-color:#8FB775;
@@ -42,20 +43,21 @@
     --night: #011502ff;
      /* variables numericas*/
      --nav-size:clamp(40px,7vh,60px);
-     --aside-size: clamp(50px,5vw,60px);
+     --aside-size: clamp(50px,7vw,60px);
 }
 body{
     background-color: var(--primary-color);
     margin: 0;
     padding: 0;
+
+    
 }
 /*Inicio del navbar*/
-.site-header{
-    width: 100%;
-    position: fixed;
-    z-index: 2;
-}
 .nav-bar {
+    grid-area: nav_content;
+    width: 100%;
+    position: sticky;
+    z-index: 2;
     background-color: var(--secondary-color);
     height: var(--nav-size);
     display: flex;
@@ -81,7 +83,9 @@ body{
     align-items: center;
     text-decoration: none;
     color: black;
-    top: 10px;
+    gap:8px;
+    font-family: Baloo2-SemiBold;
+    font-size: 110%;
 
 
 }
@@ -116,11 +120,17 @@ body{
     text-decoration: none;
     color: #000000;
     font-size: 150%;
-    height: 80%;
+    height: 60%;
     display: flex;
     flex-direction: row;
     align-items: center;
 
+}
+.link-bar-s{
+    background-color: var(--hept-color) ;
+    color:white;
+    padding : 3px 20px;
+    border-radius: 10px;
 }
 .icon {
     height: 70%;
@@ -295,6 +305,11 @@ body{
     background-color: var(--primary-color);
 }
 
+
+.form-contactenos{
+    aspect-ratio: 1/1;
+    width: clamp(200px, 70vw, 500px);
+}
 .cuadrado{
     width: 80px;
     height: 80px;
@@ -333,6 +348,7 @@ body{
     height: 35px;
     border-radius: 8px;
     border: #00000056 1px solid ;
+    box-sizing: border-box;
 }
 
 .sign-up-button{
@@ -379,33 +395,6 @@ form > p > a{
 /* fin registrate*/
 
 /*home y opciones principales*/
-.content-aside-nav{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: var(--aside-size);
-    position: fixed;
-    z-index: 500;
-    top: 50%;
-    left: 0;
-    transform: translate(0, -50%);
-    margin-left: 10px;
-}
-
-.nav-aside-button{
-    box-sizing: border-box;
-    aspect-ratio: 1/1;
-    width: 100%;
-    margin: 5px;
-    border: none;
-    border-radius: 15px;
-    background-color: var(--secondary-color);
-    transition: all 0.5s ease;
-}
-.nav-aside-button:hover{
-    transform: scale(1.1);
-    background-color: var(--secondary-color-hover);
-}
 
 @media (width < 600px) {
     .content-aside-nav{
@@ -472,6 +461,7 @@ form > p > a{
     text-align: center;
     margin: 10px 0;
 }
+
 .sign-in-button{
     width: clamp(65px, 38%, 135px);
     height:fit-content;
@@ -482,19 +472,6 @@ form > p > a{
     font-family: Baloo2-SemiBold;
     font-size: 120%;
     border-radius: 10px;
-}
-
-@media (width < 600px) {
-    .sign-in{
-        width:100%;
-        height: 100%;
-        border-radius: 0;
-    }
-    .content-logo{
-
-        font-size: 100%;
-    }
-    
 }
 
 /*Fin sign-in*/
@@ -563,99 +540,161 @@ form > p > a{
 
         margin: 0 0;
     }
-
-
-
 }
 
-/* esto ya es aparte del contactenos */
+/*search bar*/
 
-.contenedor {
+.content-search-bar{
+    grid-area: search-bar;
+    width: clamp(300px,50%,600px);
+    height: 40px;
     display: flex;
-    place-items: center;
-    width: 100%;
-    height: 25vh;
-    text-align: center;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box ;
+    place-self: center;
+
 }
-
-.ollie {
-    background-color: #87DF5B ;
-    width: 100%;
-    padding-top: 20px;
-    border-radius:  8px;
-    text-align: center;
-}
-
-/*formulario*/
-
-.cuadro{
-    aspect-ratio: 9/11;
-    position: absolute;
-    top: 57%;
-    left: 50%;
-    transform: translate(-50%, -70%);
-    height: 50vh;
-    width: auto;
-    background-color:var(--primary-color);
-    box-shadow: 0px 1px 2px #00000080;
-    border-radius: 10px;
+.search-bar{
+    width: 85%;
+    height: 30px;
+    border-radius: 15px;
+    background-color: white;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin: 0 10px;
+    padding:0 10px;
+
 }
-.cuadro > h2 {
-    font-family: SourGummy-Light;
-}
-.cuadro > form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.camp{
-    
-    width: fit-content;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 5px 10px;
-    position: relative;
-}
-.logo-form{
-    height: clamp(5px,13vh,100px);
-    width: auto;
+.search-bar:focus-within{
+    border: 2px solid #000000;
 }
 
-.campo {
-    width: clamp(300px, 30vw, 500px);
-    height: clamp(20px, 6vh, 45px);
-    border-radius: 10px;
-    transition: all 1s ease;
+.input-search{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
     border: none;
-    background-color: whitesmoke;
+    border-radius: 15px;
+}
+.input-search:focus{
+    outline: none;
+}
+
+.button-search{
+    width: auto;
+    height: 60%;
+    background-color: transparent;
+    border: none;
+}
+
+.svg-search{
+    width: auto;
+    height: 100%;
+}
+.content-order-filter{
+    height: 100%;
+    width: 15%;
+    background-color: transparent;
+    border: none;
+    margin: 2px;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    grid:5px;
+}
+.filter-order-buttons{
+    height: 50%;
+}
+
+
+/*pendiente: cambiar el contenido del general por widgets que se pueden reutilizar, como campos de texto, nav bar o la search bar*/
+/*aside bar(version nueva)*/
+.aside-user{
+    grid-area: aside_user;
+    width: var(--aside-size);
+    height: 100%;
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 5px;
     box-sizing: border-box;
-    top: 30vh;
+    overflow-y: auto;
+
+}
+.aside-admin{
+    grid-area: aside_admin;
+    width: var(--aside-size);
+    height: 100%;
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+    overflow-y: auto;
+
 }
 
-.label{
-    transform: translateY(-30%) scale(0.8);
-    font-size: 100%;
-    font-family: SourGummy-Light;
-    position: absolute;
-    left: 0;
-    padding: 0.7em;
-    margin-left: -0.5em;
-    pointer-events: none;
-    color: rgb(100, 100, 100);
+.aside-movil{
+    grid-area: aside_movil;
+    height: var(--aside-size);
+    width: 100%;
+    position: sticky;
+    display: none;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    box-sizing: border-box;
+    margin-bottom: 2px;
+
 }
 
-textarea {
-  display: block;
-  min-width: 300px;
-  max-width: 500px;
-  width: 50vw;
-  height: 20px;
-  border-radius: 6px;
+/*acutualizar en el futuro
+::-webkit-scrollbar {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb{
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-track{
+    background-color: transparent;
+  }
+*/
+
+.nav-aside-button{
+    box-sizing: border-box;
+    aspect-ratio: 1/1;
+    width: 100%;
+    border: none;
+    border-radius: 15px;
+    background-color: var(--secondary-color);
+    transition: all 0.5s ease;
+}
+.nav-aside-button:hover{
+    transform: scale(1.1);
+    background-color: var(--secondary-color-hover);
+}
+@media (width < 600px) {
+    .aside-user{
+        display: none;
+    }
+    .aside-admin{
+        display: none;
+    }
+    .aside-movil{
+        display: flex;
+    }
 }

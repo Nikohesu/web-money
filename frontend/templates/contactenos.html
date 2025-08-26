@@ -4,97 +4,48 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Plantilla de prueba</title>
-        <link rel="stylesheet" href="../assets/css/general.css">
+        <link rel="stylesheet" href="/static/css/general.css">
     </head>
     <body>
-        <header class="site-header">
-            <nav class="nav-bar">
-                <div class="logo-home">
-                    <a href="#">
-                        <img class="logo" src="../assets/img/Money-control(SIMPLE).SVG" alt="logo-principal">
-                    </a>
-
-                </div>
-
-                <div class="nav-options">
-                    <ul class="nav-options-list nav-bar-init">
-                        <li>
-                            <a class="link-bar" href="#">Iniciar sesion</a>
-                        </li>
-                        <li class="link-bar">
-                            |
-                        </li>
-                        <li>
-                            <a class="link-bar" href="#">Registrate</a>
-                        </li>
-                    </ul>
-
-                </div>
-
-                <div class ="content-menu-burger">
-                    <button id="button-burger" class="button-burger" onclick="open_close_burger()">
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                    </button>
-                </div>
-
-            </nav>
-            <div id="burger-menu" class="burger-menu">
-                <ul class="burger-options">
-                    <li>
-                        <a class="burger-link" href="#">
-                            Iniciar sesion
-                        </a>
-                    </li>
-                    <li>
-                        <a class="burger-link" href="#">
-                            Registrate
-                        </a>
-                    </li>
-                    <li>
-                        <a class="burger-link" href="#">
-                            Conócenos
-                        </a>
-                    </li>
-                    <li>
-                        <a class="burger-link" href="#">
-                            Contactanos
-                        </a>
-                    </li>
-                </ul>
-
-            </div>
-        </nav>
-        <script src="../../js/nav-bar-init.js"></script>
-        </header>
 
 <!--AQUI VA EL TEXTO DEL CONTACTENOS-->
-<div class="contenedor">
-    <div class="ollie">
-        <h1>comunicate con nosotros</h1>
-        <h3>estamos disponibles para resolver dudas y brindarte informacion relevante</h3>
-    </div>
-</div>     
-
-    <!--CUADRADO DONDE VA LOS DATOS QUE SE VAN A PEDIR PARA EL CONTACTENOS-->
-    <div class="cuadro">  
-        <div class="camp">
-                     <input class="campo input" type="text" id="nombre" name="nombre" value="" required>
-                    <label for="nombre" class="label">Nombre:</label>
-                </div>
-        <div class="camp">
-                     <input class="campo input" type="email" id="correo" name="correo" value="" required>
-                    <label for="correo" class="label">Correo:</label>
-                </div>
-
+    <main class="content-contactenos">
+        <div class="content-contactenos-header">
+            <h2>Comunicate con nosotros</h2>
+            <p>Estamos disponibles para resolver tus dudas y brindarte informacion</p>
+        </div> 
         
-        <div class="camp">
-            <label for="esmensaje" class="label"></label>
-            <textarea name="mensaje" placeholder="Escriba su mensaje:" style="height: 100px;"></textarea>
-        </div>
+        <form class="cuadro">
+            <div class="div-campo">
+                <label for="nombre">Nombre:</label>
+                <input class="campo" type="text" id="nombre" name="nombre" value="" required>
+                
+            </div>
 
-        <div class="div">
-    <button id ="boton" class="boton" onclick="transform_loader()">
-        <p id = "boton-text" class="boton-text">Enviar</p>
-    </button>
+            <div class="div-campo">                
+                <label for="correo">Correo:</label>
+                <input class="campo" type="email" id="email" name="emil"  required>
+
+            </div>
+            <div class="div-campo">
+                <label for="tipo_sugerencia">Tipo de mensaje:</label>
+                <select class="campo" name="tipo_sugerencia" required>
+                    <option value="none">...</option>
+                    <option value="queja">Queja</option>
+                    <option value="reclamo">Reclamo</option>
+                    <option value="sugerencia">Sugerencia</option>
+                    <option value="dudas">Dudas</option>
+                </select>
+            </div>
+            <div class="div-campo">
+                <label for="mensaje"></label>
+                <textarea name="mensaje" placeholder="Escriba su mensaje:"></textarea>
+            </div>
+            <button id ="boton" class="boton" onclick="transform_loader()">
+                Enviar
+            </button>
+
+        </form>
+
+        <!--CUADRADO DONDE VA LOS DATOS QUE SE VAN A PEDIR PARA EL CONTACTENOS-->
+</main>
