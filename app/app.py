@@ -51,7 +51,12 @@ def login ():
 
         if user and check_password_hash(str(user[3]), password):
             session['email'] = email
-            return redirect(url_for('information'))
+            session["tipo_usuario"] = user[10]
+
+            if session["tipo_usuario"] == 0:
+                return redirect(url_for("crud"))
+            else:
+                return redirect(url_for("information"))
         else:
             return "Credenciales incorrectas. Inténtalo de nuevo."
 
@@ -63,6 +68,16 @@ def information():
         return render_template ("information.html")
     else:
         return redirect(url_for('login'))
+    
+@app.route("/crud")
+def crud():
+    if "email" in session:
+        if session["tipo_usuario"] == 0:
+            return render_template ("crud.html")
+        else :
+            return redirect (url_for("information"))
+    else:
+        return redirect (url_for("login"))
 
 @app.route('/logout')
 def logout():
