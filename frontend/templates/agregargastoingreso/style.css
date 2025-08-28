@@ -91,12 +91,13 @@ body {
   }
   
   .cuadro {
-    background-color: #ffffff;
+    background-color: #ABE486;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
+    margin-bottom: 25px;
   }
   
   .div-campo {
@@ -114,14 +115,14 @@ body {
   }
   
   .boton {
-    background-color: #2d572c;
+    background-color: #0B8335;
     color: white;
     border: none;
     padding: 12px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-    width: 100%;
+    width: 25%;
   }
   
   .boton:hover {

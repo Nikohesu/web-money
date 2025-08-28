@@ -4,28 +4,101 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Plantilla de prueba</title>
+        <link rel="stylesheet" href="../../static/css/contac-sign-up.css">
         <link rel="stylesheet" href="../../static/css/general.css">
     </head>
+
     <body>
-        <main class="content-sign-up">
-            <div class=" sign-up description">
-                <div class="content-logo">
-                    <img class="logo" src="../../static/images/Money-control(SIMPLE).SVG"> 
-                    <h2 class="logo-text">Money-control</h2>
+        <div class="principal-content">
+
+
+            <!--toda la seccion se puede remplazar a futuro por una simplificacio, todo el css en general-->
+            <nav class="nav-bar">
+                <div class="logo-home">
+                    <a href="#">
+                        <img class="logo" src="../../static/images/Money-control(SIMPLE).SVG" alt="logo-principal">
+                    </a>
+    
                 </div>
+                <div class="nav-options">
+                    <ul class="nav-options-list">
+                        <li>
+                            <a class="link-bar" href="#">                                   
+                                <img class="icon" src="../../static/images/premium.svg">
+                                    premium
+                            </a>
+                        </li>
+                        <li class="link-bar">
+                            |
+                        </li>
+                        <li class="content-nav-buttons">
+                            <button class="nav-buttons" id="button-notification">
+                                <img class="icon" src="../../static/images/Notification.svg" alt="Notifications">
+                            </button>
+                            <button class="nav-buttons" id="button-accout">
+                                <img class="icon" src="../../static/images/Accout.svg" alt="Accout">
+                            </button>    
+    
+                        </li>
+                    </ul>
+    
+                </div>
+                <div class="content-notification" id="notification"></div>
+                <div class="content-accout" id="accout"></div>
+            <script>
+        class toggle_notifications {
+      constructor(id_obj, id_button, active_class) {
+        this.active_class = active_class;
+        this.button = document.getElementById(id_button);
+        this.obj = document.getElementById(id_obj);
+    
+        this.button.addEventListener("click", () => {
+          this.obj.classList.toggle(this.active_class);
+          console.log(`Toggle ejecutado: ${id_obj}`);
+        });
+      }
+    }
+    
+    // 👇 Crear instancias fuera de la clase
+    const notification = new toggle_notifications(
+      "notification",
+      "button-notification",
+      "active-content-notification"
+    );
+    
+    const account = new toggle_notifications(
+      "accout",
+      "button-accout",
+      "active-content-accout"
+    );
+    
+        </script>
+            </nav>
 
-                
 
-            
-
-
-
+            <!-- fin de la seccion -->
+            <div class="section">
+                <div class="logo-content">
+                    <img class="logo" src="../../static/images/Money-control(SIMPLE).SVG">
+                    <h2 class="title">Money Control</h2>
+                  
+                </div>
+                <div class="description-content">
+                    <p class="text">Aqui puedes:</p>
+                        <ul>
+                            <li>Hacer peticiones, quejas o reclamos</li>
+                            <li>Mandarnos sugerencias, opiniones y dudas</li>
+                            <li>Notificarnos de errores y bug en Money Control</li>
+                            <li>calificarnos y darnos ideas para futuras implementaciones</li>
+                        </ul>
+                    <p class="text">En cuanto recibamos tu mensaje lo evaluaremos y mandaremos una respuesta al correo registrado</p>
+                </div>
+ 
             </div>
-            <div class="sign-up content-form">
-                
-                <button class="sign-up-button"> Registrate</button>
-                    <h2 class="subtitulo"> Registrate</h2>
-
+            <!--cambiar la clase section a futuro cuando halla un nombre optimo-->
+            <div class="form-content">
+                <form class="form">
+                    <h2 class="title">Registrate</h2>
                     <div class="div-campo">
                         <label  for="name">Nombre</label>
                         <input class="campo" type="text" id="name" name="name" required>
@@ -60,9 +133,13 @@
 
                     <button class="sign-up-button"> Registrate</button>
                     <p> ¿Ya tienes cuenta? <a href="#">Iniciar sesión</a></p>
+
                 </form>
-
             </div>
+            <footer class="footer">
+                <a href="#" class="text"> Términos y privacidad</a>
+                <p class="text">© 2025 Money Control </p>
+            </footer>
 
-        </main>
+        </div>
     </body>

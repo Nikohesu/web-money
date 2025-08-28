@@ -4,42 +4,161 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Plantilla de prueba</title>
+        <link rel="stylesheet" href="../../static/css/home.css">
         <link rel="stylesheet" href="../../static/css/general.css">
     </head>
+
     <body>
-        <main class="content-home">        
-                <div class="content-mov">
-                    <p>hola yasuri yamile</p>
-                    <p>$ 20640 COP</p>
-                    <ul>
+        <div class="principal-content">
+            <nav class="nav-bar">
+                <div class="logo-home">
+                    <a href="#">
+                        <img class="logo" src="../../static/images/Money-control(SIMPLE).SVG" alt="logo-principal">
+                    </a>
+    
+                </div>
+                <div class="nav-options">
+                    <ul class="nav-options-list">
                         <li>
-                            <button>
-                                
-                            </button>
+                            <a class="link-bar" href="#">                                   
+                                <img class="icon" src="../../static/images/premium.svg">
+                                    premium
+                            </a>
                         </li>
-                        <li>
-                            <button>
-                                
-                            </button>
+                        <li class="link-bar">
+                            |
                         </li>
-                        <li>
-                            <button>
-                                
+                        <li class="content-nav-buttons">
+                            <button class="nav-buttons" id="button-notification">
+                                <img class="icon" src="../../static/images/Notification.svg" alt="Notifications">
                             </button>
+                            <button class="nav-buttons" id="button-accout">
+                                <img class="icon" src="../../static/images/Accout.svg" alt="Accout">
+                            </button>    
+    
                         </li>
-
-
                     </ul>
+    
                 </div>
+                <div class="content-notification" id="notification"></div>
+                <div class="content-accout" id="accout"></div>
+            <script>
+        class toggle_notifications {
+      constructor(id_obj, id_button, active_class) {
+        this.active_class = active_class;
+        this.button = document.getElementById(id_button);
+        this.obj = document.getElementById(id_obj);
+    
+        this.button.addEventListener("click", () => {
+          this.obj.classList.toggle(this.active_class);
+          console.log(`Toggle ejecutado: ${id_obj}`);
+        });
+      }
+    }
+    
+    // 👇 Crear instancias fuera de la clase
+    const notification = new toggle_notifications(
+      "notification",
+      "button-notification",
+      "active-content-notification"
+    );
+    
+    const account = new toggle_notifications(
+      "accout",
+      "button-accout",
+      "active-content-accout"
+    );
+    
+        </script>
+            </nav>
+    
+            <aside class="aside-user">
+                <button class="nav-aside-button">
 
-            <div>
-                <p>transacciones</p>
-                <div>
-                    <div></div>
-                    <div></div>
+                </button>
+                <button class="nav-aside-button">
+
+                </button>
+                <button class="nav-aside-button">
+
+                </button>
+                <button class="nav-aside-button">
+
+                </button>
+                <button class="nav-aside-button">
+
+                </button>
+
+            </aside>
+
+            <main class="home-content">
+                <div class="service-content">
+                    <h2 class="s-title">Hola Jhoan Sanchez</h2>
+                    <div class="user-service-content">
+                        <h3 class="title-cash">$23 000COP</h3>
+                        <div class="services">
+                            <button class="service-button">
+                                <img src="../../static/images/remove-cash.svg">                                    
+                                    
+                                <h4>Agregar gasto</h4>
+                                    
+                                    
+
+                            </button>
+                            <button class="service-button">
+                                <img src="../../static/images/add-cash.svg">  
+                                    
+
+                                    <h4>Agregar ingreso</h4>
+                                    
+
+                            </button>
+                            <button class="service-button">
+                                <img src="../../static/images/more-row.svg">  
+
+                                    
+                                    <h4> mas</h4>
+                                    
+                                    
+
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-    </main>
+                <div class="movements-contetn">
+                    <h2 class="s-title">Transacciones recientes</h2>
+                    <div class="movenments">
 
-        
+                        <div class="div-movenment">
+                            <div></div>
+                            <div></div>
+                        </div>
+
+                    </div>
+
+                </div>
+                
+
+            </main>
+
+            <aside class="aside-movil">
+                <button class="nav-aside-button">
+
+                </button>
+                <button class="nav-aside-button">
+
+                </button>
+                <button class="nav-aside-button">
+
+                </button>
+                <button class="nav-aside-button">
+
+                </button>
+                <button class="nav-aside-button">
+
+                </button>
+
+            </aside>
+            
+        </div>
     </body>

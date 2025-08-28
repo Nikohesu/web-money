@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+    <html lang="esp">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Agregar Ingreso</title>
+        <link rel="stylesheet" href="../agregargastoingreso/style.css">
+    </head>
+    <body>
+
+    <main class="content-agregar-gasto">
+        <div class="header-agregar-gasto">
+            <h2>Agregar Ingreso</h2>
+        </div> 
+
+        <form class="cuadro">
+            <div class="div-campo">
+              <label for="Categoria">Categoria</label>
+              <select class="campo" name="Categoria" required>
+                <option value="Arriendo">Arriendo</option>
+                <option value="Supermercado">Supermercado</option>
+              </select>
+            </div>
+
+            <div class="div-campo">                
+                <label for="Aporte">Aporte</label>
+                <input class="campo" type="text" id="Monto" required>
+            </div>
+            <button id ="boton" class="boton" onclick="transform_loader()">
+              Agregar +
+            </button>
+        </form>
+
+        <div class="header-Pago-de-Deuda">
+            <h2>Pago de Deuda</h2>
+        </div> 
+
+        <form class="cuadro">
+            <div class="div-campo">
+              <label for="Nombre">Nombre</label>
+              <select class="campo" name="Pago de Deuda" required>
+                <option value="Plan de datos">Plan de datos</option>
+                <option value="Cuota del banco">Cuota del banco</option>
+              </select>
+            </div>
+
+            <div class="div-campo">                
+                <label for="Aporte">Aporte</label>
+                <input class="campo" type="text" id="Aporte" required>
+            </div>
+            <button id ="boton" class="boton" onclick="transform_loader()">
+              Agregar +
+            </button>
+        </form>
+
+          <div class="header-Mas-Categorias">
+            <h2>Mas Categorias</h2>
+          </div> 
+
+          <button id ="boton" class="boton" onclick="transform_loader()">
+            Agregar +
+          </button>
+
+    </body>
