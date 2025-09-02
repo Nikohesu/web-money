@@ -1,0 +1,40 @@
+.information-link-contend{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: 150px;
+    column-gap: 1rem;
+    row-gap: 2rem;
+    margin: 20px 0;
+}
+
+.link-content{
+    width: 1fr;
+    background-color: var(--secondary-color);
+    height: 100%;
+    border-radius: 10px;
+    text-align: center;
+    
+}
+
+@media (width < 600px) {
+    .information{
+        margin-top: var(--nav-size);
+        margin: var(--nav-size) 0;
+        width: 80%;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+        overflow-y: auto;
+    
+    }
+    .information-link-contend{
+
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        grid-auto-rows: 90px;
+
+    }
+    .information-header{
+
+        margin: 0 0;
+    }
+}

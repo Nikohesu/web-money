@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
     <html lang="esp">
     <head>
@@ -6,73 +7,76 @@
         <title>Plantilla de prueba</title>
         <link rel="stylesheet" href="../../static/css/general.css">
     </head>
-    <body>
-        <header class="site-header">
-            <nav class="nav-bar">
-                <div class="logo-home">
-                    <a href="#" class="a-principal">
-                        <img class="logo" src="../../static/images/Money-control(SIMPLE).SVG" alt="logo-principal">
-                        <h2>Money Control</h2>
-                    </a>
 
-                </div>
 
-                <div class="nav-options">
-                    <ul class="nav-options-list nav-bar-init">
-                        <li>
-                            <a class="link-bar" href="#">Contactanos</a>
-                        </li>
-                        <li class="link-bar">
-                            |
-                        </li>
+<header class="site-header">
+    <nav class="nav-bar">
+        <div class="logo-home">
+            <a href="#">
+                <img class="logo" src="../../static/images/Money-control(SIMPLE).SVG" alt="logo-principal">
+            </a>
 
-                        <li>
-                            
-                            <a class="link-bar" href="#">Iniciar sesion</a>
-                        </li>
-                        <li>
-                            <a class="link-bar link-bar-s " href="#">Empieza gratis</a>
-                        </li>
-                    </ul>
+        </div>
 
-                </div>
+        <div class="nav-options">
+            <ul class="nav-options-list nav-bar-init">
+                <li>
+                    <a class="link-bar" href="#">Contactenos</a>
+                </li>
+                <li class="link-bar">
+                    |
+                </li>
+                <li>
+                    <a class="link-bar" href="#">Iniciar sesion</a>
+                </li>
+                <li>
+                    <a class="link-bar link-bar-s" href="{{ url_for('register')}}">Registrate gratis</a>
+                </li>
+            </ul>
 
-                <div class ="content-menu-burger">
-                    <button id="button-burger" class="button-burger" onclick="open_close_burger()">
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                    </button>
-                </div>
+        </div>
 
-            </nav>
-            <div id="burger-menu" class="burger-menu">
-                <ul class="burger-options">
-                    <li>
-                        <a class="burger-link" href="#">
-                            Iniciar sesion
-                        </a>
-                    </li>
-                    <li>
-                        <a class="burger-link" href="#">
-                            Registrate
-                        </a>
-                    </li>
-                    <li>
-                        <a class="burger-link" href="#">
-                            Conócenos
-                        </a>
-                    </li>
-                    <li>
-                        <a class="burger-link" href="#">
-                            Contactanos
-                        </a>
-                    </li>
-                </ul>
+        <div class ="content-menu-burger">
+            <button id="button-burger" class="button-burger" onclick="open_close_burger()">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </button>
+        </div>
 
-            </div>
-        </nav>
-        <script src="../../js/nav-0b0000ar-init.js"></script>
-        </header>
+    </nav>
+    <div id="burger-menu" class="burger-menu">
+        <ul class="burger-options">
+            <li>
+                <a class="burger-link" href="#">
+                    Iniciar sesion
+                </a>
+            </li>
+            <li>
+                <a class="burger-link" href="#">
+                    Registrate
+                </a>
+            </li>
+            <li>
+                <a class="burger-link" href="#">
+                    Conócenos
+                </a>
+            </li>
+            <li>
+                <a class="burger-link" href="#">
+                    Contactanos
+                </a>
+            </li>
+        </ul>
 
-    </body>
+    </div>
+</nav>
+<script>
+    function open_close_burger () {
+let burger_menu = document.getElementById("burger-menu");
+let burger_button = document.getElementById("button-burger");
+burger_menu.classList.toggle("burger-menu-active");
+burger_button.classList.toggle("button-burger-active");
+}
+</script>
+</header>
