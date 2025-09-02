@@ -233,6 +233,7 @@ body{
     overflow: hidden;
     transition: all 1s ease;
     height: 0;
+ 
 }
 .burger-menu-active{
     height: 162px;
@@ -273,7 +274,9 @@ body{
         display: block
     }
     .burger-menu{
-        display: block;   
+        display:block;
+        position: sticky;
+        z-index: 1000;
     }
     
 }
