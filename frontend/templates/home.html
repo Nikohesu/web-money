@@ -125,19 +125,131 @@
                         </div>
                     </div>
                 </div>
-                <div class="movements-contetn">
+                <div class="movements-content">
                     <h2 class="s-title">Transacciones recientes</h2>
-                    <div class="movenments">
 
-                        <div class="div-movenment">
-                            <div></div>
-                            <div></div>
-                        </div>
+                    <div id="movements" class="movements-scroll">
+                        <div class="transaction-content">
+                            <div class="information-content">
+                                <span>Supermercado</span>
+                                <time datetime="2025-06-28">28 Jun., 2025</time>
+                            </div>
+                            <div>
+                                -$75&nbsp;460&nbsp;COP
+                            </div>
+                        </div> 
+                        <div class="transaction-content">
+                            <div class="information-content">
+                                <span>Supermercado</span>
+                                <time datetime="2025-06-28">28 Jun., 2025</time>
+                            </div>
+                            <div>
+                                -$75&nbsp;460&nbsp;COP
+                            </div>
+                        </div> 
+                        <div class="transaction-content">
+                            <div class="information-content">
+                                <span>Supermercado</span>
+                                <time datetime="2025-06-28">28 Jun., 2025</time>
+                            </div>
+                            <div>
+                                -$75&nbsp;460&nbsp;COP
+                            </div>
+                        </div> 
+                        <div class="transaction-content">
+                            <div class="information-content">
+                                <span>Supermercado</span>
+                                <time datetime="2025-06-28">28 Jun., 2025</time>
+                            </div>
+                            <div>
+                                -$75&nbsp;460&nbsp;COP
+                            </div>
+                        </div> 
+                        <div class="transaction-content">
+                            <div class="information-content">
+                                <span>Supermercado</span>
+                                <time datetime="2025-06-28">28 Jun., 2025</time>
+                            </div>
+                            <div>
+                                -$75&nbsp;460&nbsp;COP
+                            </div>
+                        </div> 
+                        <div class="transaction-content">
+                            <div class="information-content">
+                                <span>Supermercado</span>
+                                <time datetime="2025-06-28">28 Jun., 2025</time>
+                            </div>
+                            <div>
+                                -$75&nbsp;460&nbsp;COP
+                            </div>
+                        </div> 
 
-                    </div>
+                        <div class="transaction-content">
+                            <div class="information-content">
+                                <span>Supermercado</span>
+                                <time datetime="2025-06-28">28 Jun., 2025</time>
+                            </div>
+                            <div>
+                                -$75&nbsp;460&nbsp;COP
+                            </div>
+                        </div> 
+                        <div class="transaction-content">
+                            <div class="information-content">
+                                <span>Supermercado</span>
+                                <time datetime="2025-06-28">28 Jun., 2025</time>
+                            </div>
+                            <div>
+                                -$75&nbsp;460&nbsp;COP
+                            </div>
+                        </div> 
+                        <div class="transaction-content">
+                            <div class="information-content">
+                                <span>Supermercado</span>
+                                <time datetime="2025-06-28">28 Jun., 2025</time>
+                            </div>
+                            <div>
+                                -$75&nbsp;460&nbsp;COP
+                            </div>
+                        </div> 
+                        <div class="transaction-content">
+                            <div class="information-content">
+                                <span>Supermercado</span>
+                                <time datetime="2025-06-28">28 Jun., 2025</time>
+                            </div>
+                            <div>
+                                -$75&nbsp;460&nbsp;COP
+                            </div>
+                        </div> 
+                        <div class="transaction-content">
+                            <div class="information-content">
+                                <span>Supermercado</span>
+                                <time datetime="2025-06-28">28 Jun., 2025</time>
+                            </div>
+                            <div>
+                                -$75&nbsp;460&nbsp;COP
+                            </div>
+                        </div> 
+                        <div class="transaction-content">
+                            <div class="information-content">
+                                <span>Supermercado</span>
+                                <time datetime="2025-06-28">28 Jun., 2025</time>
+                            </div>
+                            <div>
+                                -$75&nbsp;460&nbsp;COP
+                            </div>
+                        </div> 
+                        <div class="transaction-content">
+                            <div class="information-content">
+                                <span>Supermercado</span>
+                                <time datetime="2025-06-28">28 Jun., 2025</time>
+                            </div>
+                            <div>
+                                -$75&nbsp;460&nbsp;COP
+                            </div>
+                        </div> 
 
-                </div>
-                
+                    </div> 
+                </div>             
 
             </main>
 
@@ -161,4 +273,20 @@
             </aside>
             
         </div>
+        <div class="modal-pb modal-pb-off" id="modal">
+            <div class="ventana">
+                <button onclick= "modaltogle()" ></button>
+            </div>
+        </div>
+        <script>
+            const movemnt = document.getElementById("movements");
+            const modal = document.getElementById("modal");
+            movemnt.addEventListener("click", () => modaltogle())
+
+
+            function modaltogle() {
+                modal.classList.toggle("modal-pb-on");
+            }
+
+        </script>
     </body>

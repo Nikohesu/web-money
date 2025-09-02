@@ -6,34 +6,38 @@
     grid-template-columns: var(--aside-size) auto var(--aside-size);
     grid-template-rows: var(--nav-size) auto ;
     grid-template-areas: "nav_content nav_content nav_content" "aside_user main aside_admin";
+    z-index: 1;
 }
 
 .home-content{
     grid-area: main;
     width: 100%;
+    max-height: calc(100vh - var(--nav-size));
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 50% 50%;
+    place-content: center;
 }
 
 .service-content{
     width: 90%;
-    height: 50%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 auto;
 }
 
-.movements-contetn{
+.movements-content{
     width: 90%;
-    height: 50%;
-    background-color: red;
+    height: 100%;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap:10px;
 
 }
 .s-title{
@@ -59,7 +63,7 @@
     margin: 0;
 }
 .services{
-    width: 60%;
+    width: 80%;
     height: 90%;
     border: solid 1px #000; 
     border-radius: 30px;
@@ -85,30 +89,86 @@
 }
 .service-button > h4 {
     margin: 0;
+    font-size: 100%;
 
 }
 
-.div-movenment{
-    width: 90%;
-    height: 15%;
-    background-color: whitesmoke;
-    border-radius:20px ;
-    border-left: solid var(--tetraty-color) 10px;
+
+.movements-contetn{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
 }
 
-.movenments {
-    width: 100%;
-    height: 98%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.movements-scroll{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+  height: 90%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  align-self: center;
+  gap: 10px;
 }
+
+/* targeta de transaccion*/
+.transaction-content {
+  box-sizing: border-box;
+  width: 95%;
+  background-color: #ffffff;
+  border-left: 8px solid var(--secondary-color);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: Baloo2-SemiBold;
+  transition: transform 0.2s ease-in-out,
+              box-shadow 0.2s ease-in-out;
+}
+
+.transaction-content:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.transaction-content:active {
+  transform: scale(0.98);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.information-content{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 !important; 
+}
+.information-content > span {
+  font-size: 1.2rem;
+}
+
+
+
 @media (width < 900px){
     .services {
         width: 90%;
         height: 60%;
+    
     }
+    .service-button > h4 {
+      margin: 0;
+      font-size:65%;
+
+  
+  }
 
 }
 
@@ -121,11 +181,11 @@
 
     .service-content{
         width: 100%;
-        height: 50%;
+        height: 100%;
     }
     .movements-contetn{
         width: 100%;
-        height: 50%;
+        height: 100%;
         background-color: red;
         
     }
@@ -146,3 +206,42 @@
     }
     
 }
+
+
+/*ventanas modal*/
+
+.modal-pb{
+  background-color: #00000070;
+  z-index: 1000;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: all;
+  display: none;
+}
+.ventana {
+  aspect-ratio: 1/1;
+  width: 50%;
+  background-color: var(--secondary-color);
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal-pb-off{
+  width: 0;
+  height: 0;
+}
+
+.modal-pb-on{
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+  
+
+  
