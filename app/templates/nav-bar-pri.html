@@ -1,6 +1,6 @@
 <nav class="nav-bar">
                 <div class="logo-home">
-                    <a href="#">
+                    <a href="{{ url_for('informate')}}">
                         <img class="logo" src="{{ url_for('static', filename='img/Money-control(SIMPLE).SVG') }}" alt="logo-principal">
                     </a>
     
@@ -16,12 +16,20 @@
                         <li class="link-bar">
                             |
                         </li>
+
+                        {% if user_rol == 0 %}
+                        <button class="nav-buttons" id="button-dev">
+                            <img class="icon" src="{{ url_for('static', filename='img/admin.svg') }}" alt="admin">
+                        </button> 
+                        {% endif %}
+
+
                         <li class="content-nav-buttons">
                             <button class="nav-buttons" id="button-notification">
                                 <img class="icon" src="{{ url_for('static', filename='img/notification.svg') }}" alt="Notifications">
                             </button>
                             <button class="nav-buttons" id="button-accout">
-                                <img class="icon" src="../../static/ {{ url_for('static', filename='img/accout.svg') }}" alt="Accout">
+                                <img class="icon" src="{{ url_for('static', filename='img/accout.svg') }}" alt="Accout">
                             </button>    
     
                         </li>

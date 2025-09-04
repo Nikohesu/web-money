@@ -46,7 +46,7 @@ def login ():
         email = request.form["email"]
         password = request.form["password"]
 
-        cursor.execute("SELECT * FROM `usuarios` WHERE email = %s", (email,)) 
+        cursor.execute("SELECT * FROM `usuarios` WHERE email = %s", (email, )) 
         user = cursor.fetchone()
 
         if user and check_password_hash(str(user[3]), password):
@@ -56,16 +56,16 @@ def login ():
             if session["tipo_usuario"] == 0:
                 return redirect(url_for("crud"))
             else:
-                return redirect(url_for("information"))
+                return redirect(url_for("informate"))
         else:
             return "Credenciales incorrectas. Inténtalo de nuevo."
 
     return render_template("login.html")
 
-@app.route("/information")
-def information():
+@app.route("/informate")
+def informate():
     if "email" in session:
-        return render_template ("information.html")
+        return render_template ("informate.html")
     else:
         return redirect(url_for('login'))
     
@@ -73,11 +73,16 @@ def information():
 def crud():
     if "email" in session:
         if session["tipo_usuario"] == 0:
-            return render_template ("crud.html")
+            cursor.execute("SELECT * FROM `usuarios`")
+            users = cursor.fetchall()
+            print(users)
+            return render_template ("crud.html", user_rol = 0, users=users)
         else :
-            return redirect (url_for("information"))
+            return redirect (url_for("informate"))
     else:
         return redirect (url_for("login"))
+    
+
 
 @app.route('/logout')
 def logout():

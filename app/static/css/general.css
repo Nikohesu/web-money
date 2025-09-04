@@ -546,7 +546,7 @@ form > p > a{
     overflow-x: auto;
     overflow-y: hidden;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 5px;
     box-sizing: border-box;
     margin-bottom: 2px;

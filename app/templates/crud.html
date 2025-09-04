@@ -41,417 +41,49 @@
                     <div class="search-bar">
                         <input class="input-search" type="text" placeholder="Buscar">
                         <button class="button-search">
-                            <img class="svg-search" src="../../static/images/search.svg" alt="search">
+                            <img class="svg-search" src="{{ url_for('static', filename='img/search.svg') }}" alt="search">
                         </button>
                     </div>
     
                     <div class="content-order-filter">
                         <button class="button-search">
-                            <img class="svg-search" src="../../static/images/order.svg">
+                            <img class="svg-search" src="{{ url_for('static', filename='img/order.svg') }}">
                         </button>
                         <button class="button-search">
-                            <img class="svg-search" src="../../static/images/filter.svg">
+                            <img class="svg-search" src="{{ url_for('static', filename='img/filter.SVG') }}">
                         </button>
                     </div>
                 </div>
 
                 <div class="users-content">
+                    
+                {%for users in users%}
                     <div class="div-user">
                         <ul>
                             <li>
-                                id
+                                {{users[0]}}
                             </li>
                             <li>
-                                firstname
+                                {{users[1]}}
                             </li>
                             <li>
-                                lastname
+                                {{users[2]}}
                             </li>
                             <li>
-                                email
+                                {{users[4]}}
                             </li>
                             <li>
-                                phone
+                                {{users[5]}}
                             </li>
 
                             <li class="more-button-content">
                                 <button class="more-button" name="more">
-                                    <img class="svg-search" src="../../static/images/more.svg" alt="...">
+                                    <img class="svg-search" src="{{ url_for('static', filename='img/more.SVG') }}" alt="...">
                                 </button>
                             </li>
                         </ul>
                     </div>
-                    <div class="div-user">
-                        <ul>
-                            <li>
-                                id
-                            </li>
-                            <li>
-                                firstname
-                            </li>
-                            <li>
-                                lastname
-                            </li>
-                            <li>
-                                email
-                            </li>
-                            <li>
-                                phone
-                            </li>
-
-                            <li class="more-button-content">
-                                <button class="more-button" name="more">
-                                    <img class="svg-search" src="../../static/images/more.svg" alt="...">
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="div-user">
-                        <ul>
-                            <li>
-                                id
-                            </li>
-                            <li>
-                                firstname
-                            </li>
-                            <li>
-                                lastname
-                            </li>
-                            <li>
-                                email
-                            </li>
-                            <li>
-                                phone
-                            </li>
-
-                            <li class="more-button-content">
-                                <button class="more-button" name="more">
-                                    <img class="svg-search" src="../../static/images/more.svg" alt="...">
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="div-user">
-                        <ul>
-                            <li>
-                                id
-                            </li>
-                            <li>
-                                firstname
-                            </li>
-                            <li>
-                                lastname
-                            </li>
-                            <li>
-                                email
-                            </li>
-                            <li>
-                                phone
-                            </li>
-
-                            <li class="more-button-content">
-                                <button class="more-button" name="more">
-                                    <img class="svg-search" src="../../static/images/more.svg" alt="...">
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="div-user">
-                        <ul>
-                            <li>
-                                id
-                            </li>
-                            <li>
-                                firstname
-                            </li>
-                            <li>
-                                lastname
-                            </li>
-                            <li>
-                                email
-                            </li>
-                            <li>
-                                phone
-                            </li>
-
-                            <li class="more-button-content">
-                                <button class="more-button" name="more">
-                                    <img class="svg-search" src="../../static/images/more.svg" alt="...">
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="div-user">
-                        <ul>
-                            <li>
-                                id
-                            </li>
-                            <li>
-                                firstname
-                            </li>
-                            <li>
-                                lastname
-                            </li>
-                            <li>
-                                email
-                            </li>
-                            <li>
-                                phone
-                            </li>
-
-                            <li class="more-button-content">
-                                <button class="more-button" name="more">
-                                    <img class="svg-search" src="../../static/images/more.svg" alt="...">
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="div-user">
-                        <ul>
-                            <li>
-                                id
-                            </li>
-                            <li>
-                                firstname
-                            </li>
-                            <li>
-                                lastname
-                            </li>
-                            <li>
-                                email
-                            </li>
-                            <li>
-                                phone
-                            </li>
-
-                            <li class="more-button-content">
-                                <button class="more-button" name="more">
-                                    <img class="svg-search" src="../../static/images/more.svg" alt="...">
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="div-user">
-                        <ul>
-                            <li>
-                                id
-                            </li>
-                            <li>
-                                firstname
-                            </li>
-                            <li>
-                                lastname
-                            </li>
-                            <li>
-                                email
-                            </li>
-                            <li>
-                                phone
-                            </li>
-
-                            <li class="more-button-content">
-                                <button class="more-button" name="more">
-                                    <img class="svg-search" src="../../static/images/more.svg" alt="...">
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="div-user">
-                        <ul>
-                            <li>
-                                id
-                            </li>
-                            <li>
-                                firstname
-                            </li>
-                            <li>
-                                lastname
-                            </li>
-                            <li>
-                                email
-                            </li>
-                            <li>
-                                phone
-                            </li>
-
-                            <li class="more-button-content">
-                                <button class="more-button" name="more">
-                                    <img class="svg-search" src="../../static/images/more.svg" alt="...">
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="div-user">
-                        <ul>
-                            <li>
-                                id
-                            </li>
-                            <li>
-                                firstname
-                            </li>
-                            <li>
-                                lastname
-                            </li>
-                            <li>
-                                email
-                            </li>
-                            <li>
-                                phone
-                            </li>
-
-                            <li class="more-button-content">
-                                <button class="more-button" name="more">
-                                    <img class="svg-search" src="../../static/images/more.svg" alt="...">
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="div-user">
-                        <ul>
-                            <li>
-                                id
-                            </li>
-                            <li>
-                                firstname
-                            </li>
-                            <li>
-                                lastname
-                            </li>
-                            <li>
-                                email
-                            </li>
-                            <li>
-                                phone
-                            </li>
-
-                            <li class="more-button-content">
-                                <button class="more-button" name="more">
-                                    <img class="svg-search" src="../../static/images/more.svg" alt="...">
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="div-user">
-                        <ul>
-                            <li>
-                                id
-                            </li>
-                            <li>
-                                firstname
-                            </li>
-                            <li>
-                                lastname
-                            </li>
-                            <li>
-                                email
-                            </li>
-                            <li>
-                                phone
-                            </li>
-
-                            <li class="more-button-content">
-                                <button class="more-button" name="more">
-                                    <img class="svg-search" src="../../static/images/more.svg" alt="...">
-                                </button>
-                            </li>
-                        </ul>
-                    </div>                    <div class="div-user">
-                        <ul>
-                            <li>
-                                id
-                            </li>
-                            <li>
-                                firstname
-                            </li>
-                            <li>
-                                lastname
-                            </li>
-                            <li>
-                                email
-                            </li>
-                            <li>
-                                phone
-                            </li>
-
-                            <li class="more-button-content">
-                                <button class="more-button" name="more">
-                                    <img class="svg-search" src="../../static/images/more.svg" alt="...">
-                                </button>
-                            </li>
-                        </ul>
-                    </div>                    <div class="div-user">
-                        <ul>
-                            <li>
-                                id
-                            </li>
-                            <li>
-                                firstname
-                            </li>
-                            <li>
-                                lastname
-                            </li>
-                            <li>
-                                email
-                            </li>
-                            <li>
-                                phone
-                            </li>
-
-                            <li class="more-button-content">
-                                <button class="more-button" name="more">
-                                    <img class="svg-search" src="../../static/images/more.svg" alt="...">
-                                </button>
-                            </li>
-                        </ul>
-                    </div>                    <div class="div-user">
-                        <ul>
-                            <li>
-                                id
-                            </li>
-                            <li>
-                                firstname
-                            </li>
-                            <li>
-                                lastname
-                            </li>
-                            <li>
-                                email
-                            </li>
-                            <li>
-                                phone
-                            </li>
-
-                            <li class="more-button-content">
-                                <button class="more-button" name="more">
-                                    <img class="svg-search" src="../../static/images/more.svg" alt="...">
-                                </button>
-                            </li>
-                        </ul>
-                    </div>                    <div class="div-user">
-                        <ul>
-                            <li>
-                                id
-                            </li>
-                            <li>
-                                firstname
-                            </li>
-                            <li>
-                                lastname
-                            </li>
-                            <li>
-                                email
-                            </li>
-                            <li>
-                                phone
-                            </li>
-
-                            <li class="more-button-content">
-                                <button class="more-button" name="more">
-                                    <img class="svg-search" src="../../static/images/more.svg" alt="...">
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
+                {%endfor%}
 
                 </div>
 
@@ -463,42 +95,7 @@
 
             </main>
 
-            <aside class="aside-admin">
-                <button class="nav-aside-button">
-
-                </button>
-                <button class="nav-aside-button">
-
-                </button>
-                <button class="nav-aside-button">
-
-                </button>
-
-                <button class="nav-aside-button">
-
-                </button>
-                <button class="nav-aside-button">
-
-                </button>
-            </aside>
-
             <aside class="aside-movil">
-                <button class="nav-aside-button">
-
-                </button>
-                <button class="nav-aside-button">
-
-                </button>
-                <button class="nav-aside-button">
-
-                </button>
-                <button class="nav-aside-button">
-
-                </button>
-                <button class="nav-aside-button">
-
-                </button>
-
                 <button class="nav-aside-button">
 
                 </button>
