@@ -19,8 +19,8 @@ CREATE TABLE IF NOT EXISTS usuarios (
     genero ENUM('masculino', 'femenino', 'no_binario', 'prefiero_no_decir') DEFAULT 'prefiero_no_decir',
     fecha_de_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     tipo_de_usuario INT DEFAULT 1,
-    duracion_tipo_de_usuario INT DEFAULT NULL, --DURACION DE UN USUARIO PREMIUM
-)
+    duracion_tipo_de_usuario INT DEFAULT NULL --DURACION DE UN USUARIO PREMIUM
+);
 
 CREATE TABLE IF NOT EXISTS sugerencias (
     id INT AUTO_INCREMENT PRIMARY KEY,

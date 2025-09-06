@@ -20,13 +20,15 @@ try:
     cursor = db.cursor()
 except mysql.connector.errors.InterfaceError as err :
     print (f"error en la base de datos {err}")
+      
+
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route("/register", methods=["GET","POST"])
-def register():
+@app.route("/signup", methods=["GET","POST"])
+def signup():
     if request.method == "POST":
         firstname = request.form["firstname"]
         lastname = request.form["lastname"]
@@ -38,7 +40,7 @@ def register():
         cursor.execute("INSERT INTO usuarios (firstname, lastname, email, telefono, password, nacimiento) VALUES (%s,%s,%s,%s,%s,%s)", (firstname,lastname,email,telefono,hashed_password,nacimiento))
         db.commit()
         return redirect ("/")
-    return render_template("registrate.html")
+    return render_template("signup.html")
 
 @app.route("/login", methods=["GET","POST"])
 def login ():
@@ -56,31 +58,23 @@ def login ():
             if session["tipo_usuario"] == 0:
                 return redirect(url_for("crud"))
             else:
-                return redirect(url_for("informate"))
+                return redirect(url_for("academy"))
         else:
             return "Credenciales incorrectas. Inténtalo de nuevo."
 
     return render_template("login.html")
 
-@app.route("/informate")
-def informate():
-    if "email" in session:
-        return render_template ("informate.html")
-    else:
-        return redirect(url_for('login'))
+@app.route("/academy")
+def academy():
+    return render_template("academy.html")
     
-@app.route("/crud")
+    
+@app.route("/admin/crud")
 def crud():
-    if "email" in session:
-        if session["tipo_usuario"] == 0:
-            cursor.execute("SELECT * FROM `usuarios`")
-            users = cursor.fetchall()
-            print(users)
-            return render_template ("crud.html", user_rol = 0, users=users)
-        else :
-            return redirect (url_for("informate"))
-    else:
-        return redirect (url_for("login"))
+    cursor.execute("SELECT * FROM `usuarios`")
+    users = cursor.fetchall()
+    return render_template ("admin-crud.html", users=users)
+
     
 
 
@@ -90,8 +84,25 @@ def logout():
     session.pop('email', None)
     return redirect(url_for('index'))
 
+@app.context_processor
+def user_context():
+    return dict(user_rol = session["tipo_usuario"], profile_image=None)
 
 
+@app.before_request
+def access ():
+    public_routes = ['index','login','signup']
+    #evita el bloqueo de los css, las imagenes y el js
+    if request.endpoint == 'static' or request.endpoint is None:
+        return
+    
+    if 'email' in session and request.endpoint in public_routes:
+        return redirect(url_for("academy"))
+    if not "email" in session and not request.endpoint in public_routes:
+        return redirect(url_for("login"))
+    if request.path.startswith("/admin") and not session["tipo_usuario"] == 0:
+        return redirect(url_for("academy"))
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
