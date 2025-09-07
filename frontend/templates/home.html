@@ -271,4 +271,77 @@
             }
 
         </script>
+
+<!--AQUI EMPIEZA EL SCRIPT PARA QUE SALGAN LAS VENTAJAS DE INGRESOS GASTOS Y MAS (los gatos son placeholders)-->
+<div id="ollie" class="imagen">
+    <div class="contenido">
+        <span class="cerrar">&times;</span>
+    </div>
+</div>
+<script>
+    var imagen = document.getElementById("ollie");
+    var raul = document.getElementById("botonsito");
+    var x = document.getElementsByClassName("cerrar")[0]
+
+    raul.onclick = function() {
+        imagen.style.display = "block";
+    }
+    x.onclick = function() {
+        imagen.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == imagen) {
+            imagen.style.display = "none";
+        }
+    }
+</script>
+
+
+<div id="ollie2" class="imagen2">
+    <div class="contenido2">
+        <span class="cerrar2">&times;</span>
+    </div>
+</div>
+<script>
+    var imagen2 = document.getElementById("ollie2");
+    var raul2 = document.getElementById("ingresos");
+    var x2 = document.getElementsByClassName("cerrar2")[0]
+
+    raul2.onclick = function() {
+        imagen2.style.display = "block";
+    }
+    x2.onclick = function() {
+        imagen2.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == imagen2) {
+            imagen2.style.display = "none";
+        }
+    }
+</script>
+
+
+
+<div id="ollie3" class="imagen3">
+    <div class="contenido3">
+        <span class="cerrar3">&times;</span>
+    </div>
+</div>
+<script>
+    var imagen3 = document.getElementById("ollie3");
+    var raul3 = document.getElementById("mas");
+    var x3 = document.getElementsByClassName("cerrar3")[0]
+
+    raul3.onclick = function() {
+        imagen3.style.display = "block";
+    }
+    x3.onclick = function() {
+        imagen3.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == imagen3) {
+            imagen3.style.display = "none";
+        }
+    }
+</script>
     </body>
