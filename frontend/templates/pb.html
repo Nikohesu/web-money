@@ -1,62 +1,189 @@
 <!DOCTYPE html>
-    <html lang="esp">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Plantilla de prueba</title>
-        <link rel="stylesheet" href="../../static/css/home.css">
-        <link rel="stylesheet" href="../../static/css/general.css">
-    </head>
-    <article class="transaction-card" aria-label="Gasto en Supermercado">
-        <div class="transaction-info">
-          <span class="merchant">Supermercado</span>
-          <time datetime="2025-06-28" class="date">28 Jun., 2025</time>
-        </div>
-        <div class="amount">-$75&nbsp;460&nbsp;COP</div>
-        <button id="open-modal" class="modal-trigger" aria-haspopup="dialog">
-          Ver detalles
-        </button>
-      </article>
-      
-      <!-- Ventana modal sencilla -->
-      <div class="modal-overlay" id="modal-overlay" aria-hidden="true">
-        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-          <header class="modal-header">
-            <h2 id="modal-title">Detalles de la transacción</h2>
-            <button class="modal-close" id="modal-close" aria-label="Cerrar modal">&times;</button>
-          </header>
-          <div class="modal-body">
-            <p>Categoría: Supermercado</p>
-            <p>Fecha: 28 Jun., 2025</p>
-            <p>Monto: -$75&nbsp;460&nbsp;COP</p>
-          </div>
-          <footer class="modal-footer">
-            <button id="modal-close-footer">Cerrar</button>
-          </footer>
-        </div>
-      </div>
-    <script>
-        const openBtn    = document.getElementById('open-modal');
-const overlay    = document.getElementById('modal-overlay');
-const closeBtns  = document.querySelectorAll('#modal-close, #modal-close-footer');
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nav-Bar con Paneles Diferenciados</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
 
-function toggleModal(show) {
-  overlay.setAttribute('aria-hidden', show ? 'false' : 'true');
-  overlay.classList.toggle('active', show);
-}
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #222;
+      color: white;
+      padding: 0.5rem 1rem;
+      position: relative;
+    }
 
-openBtn.addEventListener('click', () => toggleModal(true));
+    .navbar__logo {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
 
-closeBtns.forEach(btn =>
-  btn.addEventListener('click', () => toggleModal(false))
-);
+    .navbar__menu {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
 
-/* Cerrar con Escape */
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && overlay.classList.contains('active')) {
-    toggleModal(false);
-  }
-});
+    .navbar__menu a {
+      color: white;
+      text-decoration: none;
+    }
 
-    </script>
-      
+    .navbar__icons {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      color: white;
+      position: relative;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+
+    .badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: red;
+      color: white;
+      font-size: 0.7rem;
+      border-radius: 50%;
+      padding: 2px 6px;
+    }
+
+    .dropdown {
+      position: absolute;
+      right: 10px;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease;
+      z-index: 100;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .dropdown.open {
+      max-height: 500px;
+    }
+
+    /* Notificaciones: más alto, fondo cálido */
+    #notif-panel {
+      top: 60px;
+      background-color: #fff8e1;
+      color: #6d4c41;
+      min-width: 260px;
+      padding: 1rem;
+    }
+
+    #notif-panel.open {
+      max-height: 300px;
+    }
+
+    /* Cuenta: más compacto, fondo frío */
+    #account-menu {
+      top: 120px;
+      background-color: #e0f7fa;
+      color: #004d40;
+      min-width: 180px;
+      padding: 0.8rem;
+    }
+
+    #account-menu.open {
+      max-height: 180px;
+    }
+
+    #account-menu a {
+      display: block;
+      margin: 0.5rem 0;
+      color: #004d40;
+      text-decoration: none;
+    }
+
+    #account-menu a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="navbar__logo">MiApp</div>
+    <ul class="navbar__menu">
+      <li><a href="/inicio">Inicio</a></li>
+      <li><a href="/servicios">Servicios</a></li>
+      <li><a href="/contacto">Contacto</a></li>
+    </ul>
+    <div class="navbar__icons">
+      <button class="icon-btn" aria-label="Notificaciones" data-toggle="notif-panel">
+        <span class="material-icons">notifications</span>
+        <span class="badge" id="notif-count">3</span>
+      </button>
+      <button class="icon-btn" aria-label="Cuenta" data-toggle="account-menu">
+        <span class="material-icons">account_circle</span>
+      </button>
+    </div>
+  </nav>
+
+  <div id="notif-panel" class="dropdown">
+    <p>Tienes 3 nuevas notificaciones</p>
+    <ul>
+      <li>Pedido confirmado</li>
+      <li>Nuevo mensaje</li>
+      <li>Actualización de cuenta</li>
+    </ul>
+  </div>
+
+  <div id="account-menu" class="dropdown">
+    <a href="/perfil">Perfil</a>
+    <a href="/ajustes">Ajustes</a>
+    <a href="/logout">Cerrar sesión</a>
+  </div>
+
+  <script>
+    class PanelToggle {
+      constructor(panelIds) {
+        this.panels = panelIds.map(id => document.getElementById(id));
+        document.querySelectorAll('[data-toggle]').forEach(btn => {
+          btn.addEventListener('click', () => this.toggle(btn.dataset.toggle));
+        });
+        document.addEventListener('click', e => {
+          if (!e.target.closest('.icon-btn') && !e.target.closest('.dropdown')) {
+            this.closeAll();
+          }
+        });
+      }
+
+      toggle(id) {
+        this.panels.forEach(panel => {
+          if (panel.id === id) {
+            panel.classList.toggle('open');
+          } else {
+            panel.classList.remove('open');
+          }
+        });
+      }
+
+      closeAll() {
+        this.panels.forEach(panel => panel.classList.remove('open'));
+      }
+    }
+
+    new PanelToggle(['notif-panel', 'account-menu']);
+  </script>
+
+</body>
+</html>
+ 

@@ -1,80 +1,100 @@
-<!DOCTYPE html>
-    <html lang="esp">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Plantilla de prueba</title>
-        <link rel="stylesheet" href="../../static/css/general.css">
-    </head>
-    <body>
-        <nav class="nav-bar">
-            <div class="logo-home">
-                <a href="#">
-                    <img class="logo" src="../../static/images/Money-control(SIMPLE).SVG" alt="logo-principal">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla de prueba</title>
+    <link rel="stylesheet" href="../../static/css/general.css">
+</head>
+
+
+<nav class="nav-bar">
+    <div class="logo-home">
+        <a href="{{ url_for('academy')}}">
+            <img class="logo" src="../../static/images/Money-control(SIMPLE).SVG" alt="logo-principal">
+        </a>
+
+    </div>
+    <div class="nav-options">
+        <ul class="nav-options-list">
+            <li>
+                <a class="link-bar" href="#">                                   
+                    <img class="icon" src="../../static/images/premium.svg">
+                        premium
                 </a>
+            </li>
+            <li class="link-bar">
+                |
+            </li>
 
-            </div>
-            <div class="nav-options">
-                <ul class="nav-options-list">
-                    <li>
-                        <a class="link-bar" href="#">                                   
-                            <img class="icon" src="../../static/images/premium.svg">
-                                premium
-                        </a>
-                    </li>
-                    <li class="link-bar">
-                        |
-                    </li>
-                    <li class="content-nav-buttons">
-                        <!--
-                        <button class="nav-buttons" id="button-dev">
-                            <img class="icon" src="../../static/images/admin.svg" alt="admin">
-                        </button> 
-                        
-                        -->
+            <!--{% if user_rol == 0 %}!-->
+            <button class="nav-buttons" id="button-admin">
+                <img class="icon" src="../../static/images/admin.svg" alt="admin">
+            </button> 
+            <!--{% endif %}!-->
 
 
-                        <button class="nav-buttons" id="button-notification">
-                            <img class="icon" src="../../static/images/Notification.svg" alt="Notifications">
-                        </button>
-                        <button class="nav-buttons" id="button-accout">
-                            <img class="icon" src="../../static/images/Accout.svg" alt="Accout">
-                        </button>    
+            <li class="content-nav-buttons">
+                <button class="nav-buttons" id="button-notification">
+                    <img class="icon" src="../../static/images/Notification.svg" alt="Notifications">
+                </button>
+                <button class="nav-buttons" id="button-accout">
+                    <img class="icon" src="../../static/images/Accout.svg" alt="Accout">
+                </button>    
 
-                    </li>
-                </ul>
+            </li>
+        </ul>
 
-            </div>
-            <div class="content-notification" id="notification"></div>
-            <div class="content-accout" id="accout"></div>
-        <script>
-    class toggle_notifications {
-  constructor(id_obj, id_button, active_class) {
-    this.active_class = active_class;
-    this.button = document.getElementById(id_button);
-    this.obj = document.getElementById(id_obj);
+    </div>
 
-    this.button.addEventListener("click", () => {
-      this.obj.classList.toggle(this.active_class);
-      console.log(`Toggle ejecutado: ${id_obj}`);
-    });
-  }
-}
+    <div class="accout-menu" id="accout-menu"></div>
+    <div class="notification-menu" id="notification-menu"></div>
+    <div class="admin-menu" id="admin-menu"></div>
 
-// 👇 Crear instancias fuera de la clase
-const notification = new toggle_notifications(
-  "notification",
-  "button-notification",
-  "active-content-notification"
-);
 
-const account = new toggle_notifications(
-  "accout",
-  "button-accout",
-  "active-content-accout"
-);
 
-        </script>
-        </nav>
-        
-    </body>
+<script>
+    class menus_toggle {
+        static menus = [];
+        constructor (button_id,menu_id) {
+            this.button = document.getElementById(button_id);
+            this.menu = document.getElementById(menu_id);
+            menus_toggle.menus.push(menu_id);
+            this.button.addEventListener("click", () => {
+                event.stopPropagation();
+                this.menu.classList.toggle('active');
+                console.log(`Toggle ejecutado: ${menu_id}`);
+                menus_toggle.menus.forEach (menu => {
+                    if (menu != menu_id) {
+                        document.getElementById(menu).classList.remove('active');
+                    }
+                    console.log(menu)
+        });
+        });
+
+        this.menu.addEventListener("click", () => {
+            event.stopPropagation();
+            console.log('click en menu');
+        });
+
+        document.addEventListener('click', () => {
+            this.menu.classList.remove('active');
+            console.log('click');
+
+        });
+        }
+
+        verlista () {
+            return menus_toggle.menus;
+        }
+
+    }
+
+
+    const ele1 = new menus_toggle('button-accout','accout-menu');
+    const ele2 = new menus_toggle('button-notification','notification-menu');
+    const ele3 = new menus_toggle('button-admin','admin-menu');
+
+    console.log(ele1.verlista());
+    console.log(ele2.verlista());
+
+</script>
+</nav>

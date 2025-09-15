@@ -152,35 +152,48 @@ body{
     border: none;
     padding: 0;
 }
-.content-notification{
-    aspect-ratio: 7/9;
-    width: 0;
-    height: auto;
-    background-color: #4784f5;
-    position: fixed;
+
+.accout-menu{
+    position: absolute;
     right: 0;
-    margin-top: var(--nav-size);
-    top: 0;
-
-
-}
-.active-content-notification{
-    width: 20vw;
-}
-
-.content-accout {
-    aspect-ratio: 2/1;
+    top: var(--nav-size);
     width: 0;
-    height: auto;
-    background-color: #64f547;
-    position: fixed;
-    right: 4%;
-    margin-top: var(--nav-size);
-    top: 0;
+    height: 200px;
+    background-color: blue;
+
+
 }
-.active-content-accout{
-    width: 20vw;
+.notification-menu{
+    position: absolute;
+    right: 0;
+    top: var(--nav-size);
+    width: 0;
+    height: 100px;
+    background-color: red;
+
 }
+.admin-menu{
+    position: absolute;
+    right: 0;
+    top: var(--nav-size);
+    width: 0;
+    height: 400px;
+    background-color: blueviolet;
+}
+
+.accout-menu.active{
+    width: 200px;
+
+}
+
+.notification-menu.active{
+    width: 900px;
+}
+.admin-menu.active{
+    width: 400px;
+
+}
+
 @media (width < 800px) {
     .logo-text{
         font-family: Baloo2-Bold;
@@ -233,6 +246,7 @@ body{
     overflow: hidden;
     transition: all 1s ease;
     height: 0;
+ 
 }
 .burger-menu-active{
     height: 162px;
@@ -273,7 +287,9 @@ body{
         display: block
     }
     .burger-menu{
-        display: block;   
+        display:block;
+        position: sticky;
+        z-index: 1000;
     }
     
 }
@@ -543,7 +559,7 @@ form > p > a{
     overflow-x: auto;
     overflow-y: hidden;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 5px;
     box-sizing: border-box;
     margin-bottom: 2px;
@@ -694,4 +710,3 @@ form > p > a{
 
 
     }
-
