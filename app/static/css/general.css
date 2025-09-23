@@ -152,35 +152,48 @@ body{
     border: none;
     padding: 0;
 }
-.content-notification{
-    aspect-ratio: 7/9;
-    width: 0;
-    height: auto;
-    background-color: #4784f5;
-    position: fixed;
+
+.accout-menu{
+    position: absolute;
     right: 0;
-    margin-top: var(--nav-size);
-    top: 0;
-
-
-}
-.active-content-notification{
-    width: 20vw;
-}
-
-.content-accout {
-    aspect-ratio: 2/1;
+    top: var(--nav-size);
     width: 0;
-    height: auto;
-    background-color: #64f547;
-    position: fixed;
-    right: 4%;
-    margin-top: var(--nav-size);
-    top: 0;
+    height: 200px;
+    background-color: blue;
+
+
 }
-.active-content-accout{
-    width: 20vw;
+.notification-menu{
+    position: absolute;
+    right: 0;
+    top: var(--nav-size);
+    width: 0;
+    height: 100px;
+    background-color: red;
+
 }
+.admin-menu{
+    position: absolute;
+    right: 0;
+    top: var(--nav-size);
+    width: 0;
+    height: 400px;
+    background-color: blueviolet;
+}
+
+.accout-menu.active{
+    width: 200px;
+
+}
+
+.notification-menu.active{
+    width: 900px;
+}
+.admin-menu.active{
+    width: 400px;
+
+}
+
 @media (width < 800px) {
     .logo-text{
         font-family: Baloo2-Bold;
@@ -698,3 +711,11 @@ form > p > a{
 
     }
 
+
+.radio-container input{ 
+    appearance: none;
+}
+
+.radio-container input:checked + label {
+    background-color: red;
+}
