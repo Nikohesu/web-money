@@ -1,0 +1,118 @@
+/* Contenedor principal del formulario */
+.formulario {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #e8f5e9; /* verde claro */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 64, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  color: #1b5e20;
+}
+
+/* Etiquetas */
+.formulario label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+/* Campos de entrada */
+.formulario input,
+.formulario select,
+.formulario textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #a5d6a7;
+  border-radius: 8px;
+  background-color: #ffffff;
+  font-size: 1rem;
+  color: #2e7d32;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formulario input:focus,
+.formulario select:focus,
+.formulario textarea:focus {
+  border-color: #66bb6a;
+  box-shadow: 0 0 0 3px rgba(102, 187, 106, 0.3);
+  outline: none;
+}
+
+/* Botón de envío */
+.formulario button {
+  padding: 0.75rem 1.5rem;
+  background-color: #43a047;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.formulario button:hover {
+  background-color: #2e7d32;
+}
+
+/* Mensajes de error */
+.formulario .error {
+  background-color: #ffcdd2;
+  color: #c62828;
+  padding: 0.5rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+    body {
+      background-color: #f1f8e9;
+      font-family: 'Segoe UI', sans-serif;
+      color: #2e7d32;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #1b5e20;
+    }
+
+    table {
+      width: 80%;
+      margin: 0 auto;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 64, 0, 0.1);
+    }
+
+    thead {
+      background-color: #43a047;
+      color: white;
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #c8e6c9;
+    }
+
+    tr:nth-child(even) {
+      background-color: #e8f5e9;
+    }
+
+    tr:hover {
+      background-color: #c5e1a5;
+    }
+
+    th:first-child, td:first-child {
+      border-top-left-radius: 12px;
+    }
+
+    th:last-child, td:last-child {
+      border-top-right-radius: 12px;
+    }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+    <html lang="esp">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Plantilla de prueba</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>     
+            
+<form class="formulario" action="{{ url_for('registrar') }}" method="POST">
+  <label for="nombre">Nombre</label>
+  <input type="text" id="nombre" name="nombre" required>
+
+  <label for="apellido">Apellido</label>
+  <input type="text" id="apellido" name="apellido" required>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" required>
+
+  <button type="submit">Enviar</button>
+</form>
+<p style="text-align:center;">
+  <a href="{{ url_for('users') }}">Ver usuarios registrados</a>
+</p>
+
+            
+            
