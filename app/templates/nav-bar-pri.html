@@ -2,16 +2,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plantilla de prueba</title>
-    <link rel="stylesheet" href="../../static/css/general.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}">
 </head>
-
 
 <nav class="nav-bar">
     <div class="logo-home">
         <a href="{{ url_for('academy')}}">
             <img class="logo" src="{{ url_for('static', filename='img/Money-control(SIMPLE).SVG') }}" alt="logo-principal">
         </a>
-
     </div>
     <div class="nav-options">
         <ul class="nav-options-list">
@@ -24,32 +22,59 @@
             <li class="link-bar">
                 |
             </li>
-
             <!--{% if user_rol == 0 %}!-->
             <button class="nav-buttons" id="button-admin">
                 <img class="icon" src="{{ url_for('static', filename='img/admin.svg') }}" alt="admin">
             </button> 
             <!--{% endif %}!-->
-
-
             <li class="content-nav-buttons">
                 <button class="nav-buttons" id="button-notification">
-                    <img class="icon" src="{{ url_for('static', filename='img/notification.svg') }}" alt="Notifications">
+                    <img class="icon" src="{{ url_for('static', filename='img/Notification.svg') }}" alt="Notifications">
                 </button>
                 <button class="nav-buttons" id="button-accout">
-                    <img class="icon" src="{{ url_for('static', filename='img/accout.svg') }}" alt="Accout">
+                    <img class="icon" src="{{ url_for('static', filename='img/Accout.svg') }}" alt="Accout">
                 </button>    
-
             </li>
         </ul>
-
     </div>
 
-    <div class="accout-menu" id="accout-menu"></div>
-    <div class="notification-menu" id="notification-menu"></div>
-    <div class="admin-menu" id="admin-menu"></div>
+    <div class="accout-menu" id="accout-menu">
+        <button class="close-menu" data-menu="accout-menu">&times;</button>
+        <img class="profile-img" src="https://th.bing.com/th/id/R.aa68f7e9a23926baace2846aa8787e6e?rik=vAlPYVPqlAlC7Q&pid=ImgRaw&r=0">
+        <div class="accout-options">
+            <div class="option left"> Perfil <img src="{{ url_for('static', filename='img/profile.svg') }}" alt="Perfil"></div> 
+            <div class="option right"> Apariencia <img src="{{ url_for('static', filename='img/appearance.svg') }}" alt="Apariencia"></div>
+            <div class="option left"> Configuración <img src="{{ url_for('static', filename='img/settings.svg') }}" alt="settings"> </div> 
+            <div class="option right"> Ayuda <img src="{{ url_for('static', filename='img/help.svg') }}" alt="Ayuda"></div>
+            <div class="option logout">Cerrar sesión <img src="{{ url_for('static', filename='img/logout.svg') }}" alt="Cerrar sesión"></div>
+        </div>
+    </div>
 
-
+    <div class="notification-menu" id="notification-menu">
+        <div class="notification-list">
+            <div class="notification-item">
+                <span class="notification-title">Actualización</span>
+                <a class="notification-desc" href="#">Nueva función disponible</a>
+            </div>
+            <div class="notification-item">
+                <span class="notification-title">Recordatorio</span>
+                <a class="notification-desc" href="#">No olvides verificar tu email</a>
+            </div>
+            <div class="notification-item">
+                <span class="notification-title">Alerta</span>
+                <a class="notification-desc" href="#">Actividad inusual detectada</a>
+            </div>
+        </div>
+    </div>
+    <div class="admin-menu" id="admin-menu">
+        <button class="close-menu" data-menu="admin-menu">&times;</button>
+        <div class="admin-content">
+            <button class="admin-btn">Gestión de Usuarios</button>
+            <button class="admin-btn">Panel de Reportes</button>
+            <button class="admin-btn">Control de Finanzas</button>
+            <button class="admin-btn">Herramientas de Desarrollador</button>
+        </div>
+    </div>
 
 <script>
     class menus_toggle {
@@ -96,5 +121,12 @@
     console.log(ele1.verlista());
     console.log(ele2.verlista());
 
+    // Botón de cerrar menú
+    document.querySelectorAll('.close-menu').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById(this.dataset.menu).classList.remove('active');
+        });
+    });
 </script>
 </nav>

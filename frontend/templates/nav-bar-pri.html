@@ -46,18 +46,42 @@
     </div>
 
     <div class="accout-menu" id="accout-menu">
-        <img src="https://th.bing.com/th/id/R.aa68f7e9a23926baace2846aa8787e6e?rik=vAlPYVPqlAlC7Q&pid=ImgRaw&r=0">
+        <button class="close-menu" data-menu="accout-menu">&times;</button>
+        <img class="profile-img" src="https://th.bing.com/th/id/R.aa68f7e9a23926baace2846aa8787e6e?rik=vAlPYVPqlAlC7Q&pid=ImgRaw&r=0">
         <div class="accout-options">
             <!-- sign out, settings, profile, premium, help-->
-            <div class="option-1"></div> <div class="option-2"></div>
-            <div class="option-1"></div> <div class="option-2"></div>
-            <div class="option-3"></div>
+            <div class="option left"> Perfil <img src="../../static/images/profile.svg" alt="Perfil"></div> <div class="option right"> Apariencia <img src="../../static/images/appearance.svg" alt="Apariencia"></div>
+            <div class="option left"> Configuración <img src="../../static/images/settings.svg" alt="settings"> </div> <div class="option right"> Ayuda <img src="../../static/images/help.svg" alt="Ayuda"></div>
+            <div class="option logout">Cerrar sesión <img src="../../static/images/logout.svg" alt="Cerrar sesión"></div>
         </div>
 
     </div>
 
-    <div class="notification-menu" id="notification-menu"></div>
-    <div class="admin-menu" id="admin-menu"></div>
+    <div class="notification-menu" id="notification-menu">
+        <div class="notification-list">
+            <div class="notification-item">
+                <span class="notification-title">Actualización</span>
+                <a class="notification-desc" href="#">Nueva función disponible</a>
+            </div>
+            <div class="notification-item">
+                <span class="notification-title">Recordatorio</span>
+                <a class="notification-desc" href="#">No olvides verificar tu email</a>
+            </div>
+            <div class="notification-item">
+                <span class="notification-title">Alerta</span>
+                <a class="notification-desc" href="#">Actividad inusual detectada</a>
+            </div>
+        </div>
+    </div>
+    <div class="admin-menu" id="admin-menu">
+        <button class="close-menu" data-menu="admin-menu">&times;</button>
+        <div class="admin-content">
+            <button class="admin-btn">Gestión de Usuarios</button>
+            <button class="admin-btn">Panel de Reportes</button>
+            <button class="admin-btn">Control de Finanzas</button>
+            <button class="admin-btn">Herramientas de Desarrollador</button>
+        </div>
+    </div>
 
 
 
@@ -106,5 +130,12 @@
     console.log(ele1.verlista());
     console.log(ele2.verlista());
 
+    // Botón de cerrar menú
+    document.querySelectorAll('.close-menu').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById(this.dataset.menu).classList.remove('active');
+        });
+    });
 </script>
 </nav>

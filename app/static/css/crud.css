@@ -4,9 +4,9 @@
     overflow: hidden;
     height: 100vh;
     width: 100vw;
-    grid-template-columns: var(--aside-size) auto ;
+    grid-template-columns: var(--aside-size) auto var(--aside-size);
     grid-template-rows: var(--nav-size) var(--nav-size) auto ;
-    grid-template-areas: "nav_content nav_content" "header_content header_content" "aside_user main";
+    grid-template-areas: "nav_content nav_content nav_content" "header_content header_content header_content" "aside_user main aside_admin";
 }
 .header-crud{
     grid-area: header_content;
@@ -91,27 +91,21 @@
 .crud-buttons-content{
     grid-area: crud-buttons;
     place-self: center;
-    width: 90%;
+    width: 100%;
     height: 100%;
-    max-height: fit-content;
     display: flex;
     flex-direction: column;
-    overflow: auto;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     gap: 20px;
 }
 .crud-button{
     aspect-ratio: 1/1;
-    width: clamp(0px,60%,150px);
-    max-height: clamp(0px,60%,150px);
+    width: clamp(0px,80%,150px);
     border-radius: 15px;
     background-color: var(--secondary-color);
     border: none;
-    padding: 0;
 }
-
-
 
 
 @media (width < 600px) {
@@ -139,7 +133,6 @@
     .crud-button{
         width: auto;
         height: 100%;
-        max-height:100% ;
     }
     .crud-buttons-content{
         width: 100%;

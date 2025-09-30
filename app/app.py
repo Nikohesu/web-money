@@ -58,7 +58,7 @@ def login ():
             if session["tipo_usuario"] == 0:
                 return redirect(url_for("crud"))
             else:
-                return redirect(url_for("academy"))
+                return redirect(url_for("home"))
         else:
             return "Credenciales incorrectas. Inténtalo de nuevo."
 
@@ -67,7 +67,9 @@ def login ():
 @app.route("/academy")
 def academy():
     return render_template("academy.html")
-    
+@app.route("/home")
+def home():
+    return render_template("home.html")
     
 @app.route("/admin/crud")
 def crud():
