@@ -1,0 +1,132 @@
+@font-face {
+    font-family:Baloo2-SemiBold ;
+    src: url(../fonts/Baloo_2/static/Baloo2-SemiBold.ttf);
+    font-weight: 600;
+}
+@font-face {
+    font-family:Baloo2-Regular ;
+    src: url(../fonts/Baloo_2/static/Baloo2-Regular.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family:Baloo2-Bold ;
+    src: url(../fonts/Baloo_2/static/Baloo2-Bold.ttf);
+    font-weight: 800;
+}
+@font-face {
+    font-family:Inder-Medium ;
+    src: url(../fonts/Inter/static/Inter_24pt-Medium.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Inder-Regular ;
+    src: url(../fonts/Inter/static/Inter_24pt-Regular.ttf);
+}
+
+
+
+:root{
+    --primary-color:#DEFFB8;
+    --secondary-color:#77C954;
+    --tetraty-color:#ABE486;
+    --tetraty-color-hover:#9bce79;
+    --hept-color:#0B8335;
+    --secondary-color-hover:#57BB25;
+    --prymary-color-hover:#AFD68F;
+    --dark-primary-color:#8FB775;
+
+    /*colores posibles*/
+    --light-green: #8aea92ff;
+    --mantis: #6bb572ff;
+    --shamrock-green: #5b9a62ff;
+    --fern-green: #4b7f52ff;
+    --cal-poly-green: #265031ff;
+    --dark-green: #8FB775;
+    --dark-green-2: #01200fff;
+    --dark-green-3: #008b09ff;
+    --night: #011502ff;
+     /* variables numericas*/
+     --nav-size:clamp(40px,7vh,60px);
+     --aside-size: clamp(50px,7vw,60px);
+     --footer-size: clamp(20px,4vh,50px)
+}
+
+html {
+    font-size: 20px;
+}
+
+.principal-content{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: var(--nav-size) auto var(--nav-size);
+    row-gap: 10px;
+    grid-template-areas: "nav-bar" "main" "footer";
+}
+
+.main {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.main > h2, .main >h3{
+    font-family: Baloo2-Bold;
+    margin: 0;
+    
+  
+}
+.main > h2 {
+    font-size: 2rem;  
+    line-height: 100%;
+
+}
+.main > h4 {
+    line-height: 100%;
+    font-family: Baloo2-Regular;
+    margin: 0;
+    font-size: 2rem;
+}
+.main > h3 {
+    margin: 0;
+    font-size: 1.8rem;
+    text-align: center;
+    line-height: 100%;
+    width: 80%;
+}
+
+.intro {
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 45px 10px;
+}
+
+.intro > img {
+    width: clamp(300px,40vw,500px);
+    height: auto;
+}
+
+.intro-list{
+    font-family: Inder-Medium;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.intro-list > a {
+    background-color: var(--hept-color);
+    text-decoration: none;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 15px;
+}
+

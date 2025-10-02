@@ -3,187 +3,168 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nav-Bar con Paneles Diferenciados</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Inicio</title>
   <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-    }
-
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #222;
-      color: white;
-      padding: 0.5rem 1rem;
-      position: relative;
-    }
-
-    .navbar__logo {
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-
-    .navbar__menu {
-      display: flex;
-      gap: 1rem;
-      list-style: none;
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
-    .navbar__menu a {
-      color: white;
-      text-decoration: none;
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
     }
 
-    .navbar__icons {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .icon-btn {
-      background: none;
-      border: none;
-      color: white;
-      position: relative;
-      cursor: pointer;
-      font-size: 1.5rem;
-    }
-
-    .badge {
-      position: absolute;
-      top: -4px;
-      right: -4px;
-      background: red;
-      color: white;
-      font-size: 0.7rem;
-      border-radius: 50%;
-      padding: 2px 6px;
-    }
-
-    .dropdown {
-      position: absolute;
-      right: 10px;
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.3s ease;
-      z-index: 100;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-
-    .dropdown.open {
-      max-height: 500px;
-    }
-
-    /* Notificaciones: más alto, fondo cálido */
-    #notif-panel {
-      top: 60px;
-      background-color: #fff8e1;
-      color: #6d4c41;
-      min-width: 260px;
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      background-color: #f5f5f5;
+      color: #333;
       padding: 1rem;
     }
 
-    #notif-panel.open {
-      max-height: 300px;
+    header {
+      background-color: #004d40;
+      color: white;
+      padding: 1rem;
     }
 
-    /* Cuenta: más compacto, fondo frío */
-    #account-menu {
-      top: 120px;
-      background-color: #e0f7fa;
-      color: #004d40;
-      min-width: 180px;
-      padding: 0.8rem;
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
     }
 
-    #account-menu.open {
-      max-height: 180px;
-    }
-
-    #account-menu a {
-      display: block;
-      margin: 0.5rem 0;
-      color: #004d40;
+    nav a {
+      color: white;
       text-decoration: none;
+      font-weight: bold;
     }
 
-    #account-menu a:hover {
+    nav a:hover {
       text-decoration: underline;
+    }
+
+    main section {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin: 2rem auto;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background-color: #1b5e20;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      color: #004d40;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.75rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: #e0f2f1;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.875rem;
+      color: #666;
     }
   </style>
 </head>
 <body>
+  <header>
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="#caracteristicas">Características</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="/contact">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <nav class="navbar" aria-label="Main navigation">
-    <div class="navbar__logo">MiApp</div>
-    <ul class="navbar__menu">
-      <li><a href="/inicio">Inicio</a></li>
-      <li><a href="/servicios">Servicios</a></li>
-      <li><a href="/contacto">Contacto</a></li>
-    </ul>
-    <div class="navbar__icons">
-      <button class="icon-btn" aria-label="Notificaciones" data-toggle="notif-panel">
-        <span class="material-icons">notifications</span>
-        <span class="badge" id="notif-count">3</span>
-      </button>
-      <button class="icon-btn" aria-label="Cuenta" data-toggle="account-menu">
-        <span class="material-icons">account_circle</span>
-      </button>
-    </div>
-  </nav>
+  <main>
+    <section>
+      <h1>Bienvenido a Web-Money</h1>
+      <p>Tu plataforma para gestionar finanzas con Firebase. Controla tus ingresos, gastos y metas desde una interfaz intuitiva y segura.</p>
+      <a href="/login" class="btn">Iniciar sesión</a>
+    </section>
 
-  <div id="notif-panel" class="dropdown">
-    <p>Tienes 3 nuevas notificaciones</p>
-    <ul>
-      <li>Pedido confirmado</li>
-      <li>Nuevo mensaje</li>
-      <li>Actualización de cuenta</li>
-    </ul>
-  </div>
+    <section id="caracteristicas">
+      <h2>Características principales</h2>
+      <table>
+        <tr>
+          <th>Función</th>
+          <th>Descripción</th>
+        </tr>
+        <tr>
+          <td>Panel de control</td>
+          <td>Resumen visual de tus finanzas con gráficos interactivos.</td>
+        </tr>
+        <tr>
+          <td>Gestión de gastos</td>
+          <td>Categoriza y analiza tus gastos mensuales.</td>
+        </tr>
+        <tr>
+          <td>Metas financieras</td>
+          <td>Define objetivos y sigue tu progreso.</td>
+        </tr>
+        <tr>
+          <td>Seguridad</td>
+          <td>Autenticación con Firebase y cifrado de datos.</td>
+        </tr>
+      </table>
+    </section>
 
-  <div id="account-menu" class="dropdown">
-    <a href="/perfil">Perfil</a>
-    <a href="/ajustes">Ajustes</a>
-    <a href="/logout">Cerrar sesión</a>
-  </div>
+    <section id="testimonios">
+      <h2>Lo que dicen nuestros usuarios</h2>
+      <p>“Web-Money me ayudó a ahorrar para mi viaje a Grecia. ¡La interfaz es genial!” — Laura M.</p>
+      <p>“Como desarrollador, aprecio la arquitectura modular y la integración con Firebase.” — Andrés G.</p>
+      <p>“La tabla de gastos me mostró en qué estaba desperdiciando dinero. ¡Gracias!” — Camilo R.</p>
+    </section>
 
-  <script>
-    class PanelToggle {
-      constructor(panelIds) {
-        this.panels = panelIds.map(id => document.getElementById(id));
-        document.querySelectorAll('[data-toggle]').forEach(btn => {
-          btn.addEventListener('click', () => this.toggle(btn.dataset.toggle));
-        });
-        document.addEventListener('click', e => {
-          if (!e.target.closest('.icon-btn') && !e.target.closest('.dropdown')) {
-            this.closeAll();
-          }
-        });
-      }
+    <section id="faq">
+      <h2>Preguntas frecuentes</h2>
+      <p><strong>¿Necesito cuenta de Google para usar Web-Money?</strong><br>Sí, usamos Firebase para autenticación segura.</p>
+      <p><strong>¿Puedo exportar mis datos?</strong><br>Pronto habilitaremos exportación en CSV y PDF.</p>
+      <p><strong>¿Funciona en móviles?</strong><br>La interfaz es responsive y se adapta a cualquier dispositivo.</p>
+    </section>
+  </main>
 
-      toggle(id) {
-        this.panels.forEach(panel => {
-          if (panel.id === id) {
-            panel.classList.toggle('open');
-          } else {
-            panel.classList.remove('open');
-          }
-        });
-      }
+  <footer>
+    <p>&copy; 2025 Web-Money. Todos los derechos reservados.</p>
+  </footer>
 
-      closeAll() {
-        this.panels.forEach(panel => panel.classList.remove('open'));
-      }
-    }
-
-    new PanelToggle(['notif-panel', 'account-menu']);
-  </script>
-
+  <script src="/static/js/main.js"></script>
 </body>
 </html>
- 
