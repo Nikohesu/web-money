@@ -130,3 +130,86 @@ html {
     border-radius: 15px;
 }
 
+.service-cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 70%;
+}
+
+
+.card{
+    aspect-ratio: 1/0.5;
+    flex: 1;
+    height: auto;
+    min-width: 20vw;
+    width: 33.33%;
+    max-width: 20vw;
+    background: #fff;
+    border: 1.5px solid var(--tetraty-color);
+    border-radius: 15px;
+    box-shadow: 0 2px 8px #0001;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.card:hover {
+    box-shadow: 0 6px 24px #0002;
+    border: 1.5px solid var(--secondary-color);
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}
+
+.card > .emoji {
+    font-size: 2rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.card strong {
+    font-family: Baloo2-Bold, sans-serif;
+    font-size: 1.08rem;
+    color: var(--hept-color);
+    display: block;
+    margin-bottom: 2px;
+    text-align: center;
+}
+
+.card > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.card > div > p {
+    font-family:Inder-Medium;
+    font-size: 0.8rem;
+    color: #222;
+    margin: 0;
+    line-height: 1.3;
+    text-align: center;
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 600px) {
+    .features-cards {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 0 4px;
+    }
+    .feature-card {
+        padding: 14px 10px 12px 12px;
+        font-size: 0.98rem;
+    }
+}
+

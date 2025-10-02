@@ -3,168 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inicio</title>
+  <title>Wrap funcional</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      font-size: 16px;
-      scroll-behavior: smooth;
-    }
-
     body {
-      font-family: 'Segoe UI', sans-serif;
-      line-height: 1.6;
-      background-color: #f5f5f5;
-      color: #333;
-      padding: 1rem;
+      margin: 0;
+      font-family: sans-serif;
+      background: #f9f9f9;
     }
 
-    header {
-      background-color: #004d40;
-      color: white;
-      padding: 1rem;
-    }
-
-    nav ul {
-      list-style: none;
+    .wrap-container {
       display: flex;
+      flex-wrap: wrap;
       gap: 1rem;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    main section {
-      background-color: white;
       padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      max-width: 800px;
-      margin: 2rem auto;
+      justify-content: center; /* Centra los elementos horizontalmente */
     }
 
-    .btn {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.75rem 1.5rem;
-      background-color: #2e7d32;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .btn:hover {
-      background-color: #1b5e20;
-    }
-
-    h2 {
-      margin-top: 2rem;
-      color: #004d40;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-    }
-
-    th, td {
+    .item {
+      flex: 1 1 200px; /* Crece, encoge, base mínima */
+      background: #fff;
       border: 1px solid #ccc;
-      padding: 0.75rem;
-      text-align: left;
-    }
-
-    th {
-      background-color: #e0f2f1;
-    }
-
-    footer {
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       text-align: center;
-      margin-top: 2rem;
-      font-size: 0.875rem;
-      color: #666;
+    }
+
+    @media (max-width: 600px) {
+      .item {
+        flex: 1 1 100%;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <nav aria-label="Navegación principal">
-      <ul>
-        <li><a href="/">Inicio</a></li>
-        <li><a href="#caracteristicas">Características</a></li>
-        <li><a href="#testimonios">Testimonios</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="/contact">Contacto</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main>
-    <section>
-      <h1>Bienvenido a Web-Money</h1>
-      <p>Tu plataforma para gestionar finanzas con Firebase. Controla tus ingresos, gastos y metas desde una interfaz intuitiva y segura.</p>
-      <a href="/login" class="btn">Iniciar sesión</a>
-    </section>
+  <div class="wrap-container">
+    <div class="item">Elemento 1</div>
+    <div class="item">Elemento 2</div>
+    <div class="item">Elemento 3</div>
+    <div class="item">Elemento 4</div>
+  </div>
 
-    <section id="caracteristicas">
-      <h2>Características principales</h2>
-      <table>
-        <tr>
-          <th>Función</th>
-          <th>Descripción</th>
-        </tr>
-        <tr>
-          <td>Panel de control</td>
-          <td>Resumen visual de tus finanzas con gráficos interactivos.</td>
-        </tr>
-        <tr>
-          <td>Gestión de gastos</td>
-          <td>Categoriza y analiza tus gastos mensuales.</td>
-        </tr>
-        <tr>
-          <td>Metas financieras</td>
-          <td>Define objetivos y sigue tu progreso.</td>
-        </tr>
-        <tr>
-          <td>Seguridad</td>
-          <td>Autenticación con Firebase y cifrado de datos.</td>
-        </tr>
-      </table>
-    </section>
-
-    <section id="testimonios">
-      <h2>Lo que dicen nuestros usuarios</h2>
-      <p>“Web-Money me ayudó a ahorrar para mi viaje a Grecia. ¡La interfaz es genial!” — Laura M.</p>
-      <p>“Como desarrollador, aprecio la arquitectura modular y la integración con Firebase.” — Andrés G.</p>
-      <p>“La tabla de gastos me mostró en qué estaba desperdiciando dinero. ¡Gracias!” — Camilo R.</p>
-    </section>
-
-    <section id="faq">
-      <h2>Preguntas frecuentes</h2>
-      <p><strong>¿Necesito cuenta de Google para usar Web-Money?</strong><br>Sí, usamos Firebase para autenticación segura.</p>
-      <p><strong>¿Puedo exportar mis datos?</strong><br>Pronto habilitaremos exportación en CSV y PDF.</p>
-      <p><strong>¿Funciona en móviles?</strong><br>La interfaz es responsive y se adapta a cualquier dispositivo.</p>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Web-Money. Todos los derechos reservados.</p>
-  </footer>
-
-  <script src="/static/js/main.js"></script>
 </body>
 </html>
