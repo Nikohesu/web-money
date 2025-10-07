@@ -53,22 +53,23 @@
      --footer-size: clamp(20px,4vh,50px)
 }
 
-html {
+.main {
     font-size: 20px;
 }
 
 .principal-content{
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: var(--nav-size) auto var(--nav-size);
+    grid-template-rows: var(--nav-size) auto var(--footer-size);
     row-gap: 10px;
-    grid-template-areas: "nav-bar" "main" "footer";
+    grid-template-areas: "nav-bar" "main" "footer-content";
 }
 
 .main {
     grid-area: main;
     display: flex;
     flex-direction: column;
+    row-gap: 20px;
     align-items: center;
 
 }
@@ -80,31 +81,30 @@ html {
   
 }
 .main > h2 {
-    font-size: 2rem;  
+    font-size: 2em;  
     line-height: 100%;
+    text-align: center;
 
 }
-.main > h4 {
-    line-height: 100%;
+.title-span {
     font-family: Baloo2-Regular;
-    margin: 0;
-    font-size: 2rem;
 }
 .main > h3 {
     margin: 0;
-    font-size: 1.8rem;
+    font-size: 1.8em;
     text-align: center;
     line-height: 100%;
-    width: 80%;
+    width: 100%; 
 }
 
 .intro {
     
     display: flex;
+    row-gap: 20px;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin: 45px 10px;
+    margin: 0 10px;
 }
 
 .intro > img {
@@ -114,7 +114,8 @@ html {
 
 .intro-list{
     font-family: Inder-Medium;
-    font-size: 1.5rem;
+    row-gap: 15px;
+    font-size: 1.5em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -137,25 +138,26 @@ html {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    width: 70%;
+    width: 80%;
+    max-width: 1200px;
 }
 
 
 .card{
-    aspect-ratio: 1/0.5;
-    flex: 1;
-    height: auto;
-    min-width: 20vw;
-    width: 33.33%;
-    max-width: 20vw;
+    aspect-ratio: 1/0.8;
+    flex: 0 1 25%;
+    min-width: 250px;
+    max-width: 390px;
+    background-color: black;
     background: #fff;
     border: 1.5px solid var(--tetraty-color);
     border-radius: 15px;
     box-shadow: 0 2px 8px #0001;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 10px;
     box-sizing: border-box;
 }
 
@@ -167,14 +169,13 @@ html {
 }
 
 .card > .emoji {
-    font-size: 2rem;
-    flex-shrink: 0;
+    font-size: 2em;
     margin-top: 2px;
 }
 
 .card strong {
     font-family: Baloo2-Bold, sans-serif;
-    font-size: 1.08rem;
+    font-size: 0.8em;
     color: var(--hept-color);
     display: block;
     margin-bottom: 2px;
@@ -183,33 +184,110 @@ html {
 
 .card > div {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 70%;
-    height: 100%;
+    width: 100%;
     box-sizing: border-box;
 }
 
 .card > div > p {
+    width: 70%;
     font-family:Inder-Medium;
-    font-size: 0.8rem;
+    font-size: 0.8em;
     color: #222;
     margin: 0;
     line-height: 1.3;
     text-align: center;
 }
 
-/* Responsivo para pantallas pequeñas */
-@media (max-width: 600px) {
-    .features-cards {
-        grid-template-columns: 1fr;
-        gap: 14px;
-        padding: 0 4px;
-    }
-    .feature-card {
-        padding: 14px 10px 12px 12px;
-        font-size: 0.98rem;
-    }
+.steps {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    column-gap: 10px;
+    max-width: 1200px;
 }
 
+.steps-icons {
+    width: 50%;
+    height: auto;
+
+}
+.steps-card{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 10px;
+    text-align: center;
+    font-family: Baloo2-SemiBold;
+    font-size: 0.8em;
+}
+
+.steps-row{
+    width: 80px;
+}
+.steps-card > p {
+    margin: 0;
+}
+
+@media (width < 600px) {
+    .main {
+        width: 90%;
+        margin: auto;
+    }
+    .intro {
+        flex-direction: column;
+        width: 90%;
+        height: fit-content;
+        
+}
+    .steps {
+        flex-direction: column;
+        column-gap: 0;
+        row-gap: 20px;
+    }
+    .steps-card{
+        height: 30%;
+        width: 100%;
+        font-size: 1.2em;
+    }
+    .steps-row {
+        transform: rotate(90deg);
+        width: 120px;
+        height: 100px;
+    }
+
+
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 960px) {
+    .main{
+        font-size: 16px;
+    }
+
+    .intro-list {
+        width: 100%;
+    }
+
+    .intro-list > ul{
+        margin: 0;
+    }
+
+    .service-cards {
+        width: 90%;
+        font-size:22px;
+    }
+
+    .card{
+        aspect-ratio: auto ;
+        flex: 1 0 40%;
+    }
+
+}

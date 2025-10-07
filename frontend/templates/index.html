@@ -10,10 +10,79 @@
 
     <body>
         <div class="principal-content">
-            <nav></nav>
+            <header class="site-header">
+                <nav class="nav-bar">
+                    <div class="logo-home">
+                        <a href="#">
+                            <img class="logo" src="../../static/images/Money-control(SIMPLE).SVG" alt="logo-principal">
+                        </a>
+            
+                    </div>
+            
+                    <div class="nav-options">
+                        <ul class="nav-options-list nav-bar-init">
+                            <li>
+                                <a class="link-bar" href="#">Contactenos</a>
+                            </li>
+                            <li class="link-bar">
+                                |
+                            </li>
+                            <li>
+                                <a class="link-bar" href="#">Iniciar sesion</a>
+                            </li>
+                            <li>
+                                <a class="link-bar link-bar-s" href="{{ url_for('register')}}">Registrate gratis</a>
+                            </li>
+                        </ul>
+            
+                    </div>
+            
+                    <div class ="content-menu-burger">
+                        <button id="button-burger" class="button-burger" onclick="open_close_burger()">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </button>
+                    </div>
+            
+                </nav>
+                <div id="burger-menu" class="burger-menu">
+                    <ul class="burger-options">
+                        <li>
+                            <a class="burger-link" href="#">
+                                Iniciar sesion
+                            </a>
+                        </li>
+                        <li>
+                            <a class="burger-link" href="#">
+                                Registrate
+                            </a>
+                        </li>
+                        <li>
+                            <a class="burger-link" href="#">
+                                Conócenos
+                            </a>
+                        </li>
+                        <li>
+                            <a class="burger-link" href="#">
+                                Contactanos
+                            </a>
+                        </li>
+                    </ul>
+            
+                </div>
+            </nav>
+            <script>
+                function open_close_burger () {
+            let burger_menu = document.getElementById("burger-menu");
+            let burger_button = document.getElementById("button-burger");
+            burger_menu.classList.toggle("burger-menu-active");
+            burger_button.classList.toggle("button-burger-active");
+            }
+            </script>
+            </header>
             <main class="main">
-                <h2>¿El dinero se te escapa antes de fin de mes?</h2>
-                <h4>Es hora de tomar el control</h4>
+                <h2>¿El dinero se te escapa antes de fin de mes?<br><span class="title-span"> Es hora de tomar el control</span></h2>
 
                 <div class="intro">
                     <div class="intro-list">
@@ -35,24 +104,70 @@
                 <section class="service-cards">
                     <div class="card">
                         <span class="emoji">📊</span>
+                        <strong>Control de gastos</strong>
                         <div>
-                            <strong>Control de gastos</strong>
+                            
                             <p>Registra tus compras y visualiza en qué se va tu dinero.</p>
                         </div>
                     </div>
-
+                    <div class="card">
+                        <span class="emoji">📅</span>
+                        <strong>Planificador mensual</strong>
+                        <div>
+                            <p>Organiza tus ingresos y egresos por fechas en un solo lugar.</p>                        
+                        </div>
+                    </div>
                     
-                    <div class="card">content 2</div>
-                    <div class="card">content 3</div>
-                    <div class="card">content 4</div>
-                    <div class="card">content 5</div>
+                    <div class="card">
+                        <span class="emoji">📈</span>
+                        <strong>Reportes inteligentes</strong>
+                        <div>
+                            <p>Gráficas y análisis para entender tu comportamiento financiero.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <span class="emoji">🎯</span>
+                        <strong>Metas financieras</strong>
+                        <div>
+                            <p>Crea objetivos como ahorrar para un viaje o pagar deudas.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <span class="emoji">🔔</span>
+                        <strong>Alertas y recordatorios</strong>
+                        <div>
+                            <p>Recibe notificaciones para no olvidar pagos importantes.</p>
+                        </div>
+
+                
                 </section>
 
                 <h3>Facil y sencillo como</h3>
+                <div class="steps">
+                    <div class="steps-card">
+                        <img class="steps-icons" src="../../static/images/click.svg">
+                        <p>📝 Regístrate crea tu cuenta en menos de un minuto.</p>
+                    </div>
+                    <img class="steps-row" src="../../static/images/row.svg">
+                    <div class="steps-card">
+                        <img class="steps-icons" src="../../static/images/book.svg">
+                        <p>💼 Agregar tus ingresos y gastos personaliza tu perfil financiero.</p>
+                    </div>
+                    <img class="steps-row" src="../../static/images/row.svg">
+                    <div class="steps-card">
+                        <img class="steps-icons" src="../../static/images/trophy.svg">
+                        <p>📈 Empezar a planear tus metas usa las herramientas para ahorrar, pagar y crecer.</p>
+                    </div>
 
+                </div>
             
             </main>
-            <footer></footer>
+            <footer class="footer">
+                <a href="#" class="text"> Términos y privacidad</a>
+                <p class="text">© 2025 Money Control </p>
+            </footer>
 
         </div>
     </body>
