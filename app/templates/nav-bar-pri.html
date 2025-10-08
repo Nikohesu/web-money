@@ -46,7 +46,7 @@
             <div class="option right"> Apariencia <img src="{{ url_for('static', filename='img/appearance.svg') }}" alt="Apariencia"></div>
             <div class="option left"> Configuración <img src="{{ url_for('static', filename='img/settings.svg') }}" alt="settings"> </div> 
             <div class="option right"> Ayuda <img src="{{ url_for('static', filename='img/help.svg') }}" alt="Ayuda"></div>
-            <div class="option logout">Cerrar sesión <img src="{{ url_for('static', filename='img/logout.svg') }}" alt="Cerrar sesión"></div>
+            <a href="{{ url_for('logout') }}" class="option logout">Cerrar sesión <img src="{{ url_for('static', filename='img/logout.svg') }}" alt="Cerrar sesión"></a>
         </div>
     </div>
 

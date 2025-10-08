@@ -86,6 +86,10 @@ def logout():
     session.pop('email', None)
     return redirect(url_for('index'))
 
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
 @app.context_processor
 def user_context():
     return dict(user_rol = session["tipo_usuario"], profile_image=None)
@@ -93,7 +97,7 @@ def user_context():
 
 @app.before_request
 def access ():
-    public_routes = ['index','login','signup']
+    public_routes = ['index','login','signup','contact']
     #evita el bloqueo de los css, las imagenes y el js
     if request.endpoint == 'static' or request.endpoint is None:
         return

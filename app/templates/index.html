@@ -6,28 +6,100 @@
         <title>Index</title>
         <link rel="shortcut icon" href="{{ url_for('static', filename='img/Money-control(SIMPLE).SVG') }}" type="image/SVG">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
     </head>
     <body>
         {% include 'nav-bar-init.html' %}
-<div style="
-    position: absolute;
-    margin-top: 100px;">
-            <ul>
-                <li>
-                    <a href="#">Iniciar sesion</a>
-                </li>
-                <li>
-                    <a href="{{ url_for('signup')}}">Registrate</a>
-                </li>
-                <li>
-                    <a href="{{ url_for('academy')}}">Home</a>
-                </li>
-                <li>
-                    <a href="{{url_for('logout')}}">logout</a>
-                </li>
-            </ul>
-        </div>
+                <div class="principal-content">
 
+            <main class="main">
+                <h2>¿El dinero se te escapa antes de fin de mes?<br><span class="title-span"> Es hora de tomar el control</span></h2>
+
+                <div class="intro">
+                    <div class="intro-list">
+                        <ul>
+                            <li>Organiza tus gastos fácilmente</li>
+                            <li>Planea metas financieras</li>
+                            <li>Aprende a gestionar deudas</li>
+                          </ul>
+                          <a href="{{ url_for('index') }}" class="btn">Regístrate</a>
+                    </div>
+
+                    <img src="{{ url_for('static', filename='img/index.svg') }}"> 
+
+                </div>
+
+                <h3>Todo lo que nececitas para dominar tus  finanzas en un solo lugar</h3>
+
+                <!-- Tarjetas de funcionalidades -->
+                <section class="service-cards">
+                    <div class="card">
+                        <span class="emoji">📊</span>
+                        <strong>Control de gastos</strong>
+                        <div>
+                            
+                            <p>Registra tus compras y visualiza en qué se va tu dinero.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <span class="emoji">📅</span>
+                        <strong>Planificador mensual</strong>
+                        <div>
+                            <p>Organiza tus ingresos y egresos por fechas en un solo lugar.</p>                        
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <span class="emoji">📈</span>
+                        <strong>Reportes inteligentes</strong>
+                        <div>
+                            <p>Gráficas y análisis para entender tu comportamiento financiero.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <span class="emoji">🎯</span>
+                        <strong>Metas financieras</strong>
+                        <div>
+                            <p>Crea objetivos como ahorrar para un viaje o pagar deudas.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <span class="emoji">🔔</span>
+                        <strong>Alertas y recordatorios</strong>
+                        <div>
+                            <p>Recibe notificaciones para no olvidar pagos importantes.</p>
+                        </div>
+
+                
+                </section>
+
+                <h3>Facil y sencillo como</h3>
+                <div class="steps">
+                    <div class="steps-card">
+                        <img class="steps-icons" src="{{ url_for('static', filename='img/click.svg') }}">
+                        <p>📝 Regístrate crea tu cuenta en menos de un minuto.</p>
+                    </div>
+                    <img class="steps-row" src="{{ url_for('static', filename='img/row.svg') }}">
+                    <div class="steps-card">
+                        <img class="steps-icons" src="{{ url_for('static', filename='img/book.svg') }}">
+                        <p>💼 Agregar tus ingresos y gastos personaliza tu perfil financiero.</p>
+                    </div>
+                    <img class="steps-row" src="{{ url_for('static', filename='img/row.svg') }}">
+                    <div class="steps-card">
+                        <img class="steps-icons" src="{{ url_for('static', filename='img/trophy.svg') }}">
+                        <p>📈 Empezar a planear tus metas usa las herramientas para ahorrar, pagar y crecer.</p>
+                    </div>
+
+                </div>
+                <a class="btn" href="{{ url_for('login') }}">Empieza ahora</a>
+            
+            </main>
+            {% include 'footer.html' %}
+
+
+        </div>
 
 
     </body>

@@ -9,6 +9,12 @@
     src: url(../fonts/Baloo_2/static/Baloo2-Bold.ttf);
     font-weight: 800;
 }
+
+@font-face {
+    font-family:Baloo2-Regular ;
+    src: url(../fonts/Baloo_2/Baloo2-VariableFont_wght.ttf);
+    font-weight: 400;
+}
 @font-face {
     font-family:Inder-Medium ;
     src: url(../fonts/Inter/static/Inter_24pt-Medium.ttf);
@@ -56,9 +62,10 @@ body{
 }
 /*Inicio del navbar*/
 .nav-bar {
-    grid-area: nav_content;
+    grid-area: nav;
     width: 100%;
     position: sticky;
+    top: 0px;
     z-index: 2;
     background-color: var(--secondary-color);
     height: var(--nav-size);
@@ -140,6 +147,7 @@ body{
     padding : 3px 20px;
     border-radius: 10px;
     margin:  0 10px;
+    box-sizing: border-box;
 }
 .icon {
     height: 25px;
@@ -218,6 +226,8 @@ body{
     border-radius: 50px;
     margin: auto;
     display: flex;
+    text-decoration: none;
+    color: #000000;
 }
 
 .option:hover{
@@ -496,6 +506,8 @@ body{
     display: none;
     overflow: hidden;
     transition: all 1s ease;
+    position: sticky;
+    top: var(--nav-size);
     height: 0;
  
 }
@@ -540,6 +552,7 @@ body{
     .burger-menu{
         display:block;
         position: sticky;
+        top: var(--nav-size);
         z-index: 1000;
     }
     
@@ -863,7 +876,7 @@ form > p > a{
 
 /*espacio del footer*/
 .footer {
-    grid-area: footer-content;
+    grid-area: footer;
     width: 100%;
     height: var(--footer-size);
     background-color: var(--secondary-color);
