@@ -8,46 +8,52 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}">
     </head>
     <body>
-        {% include 'nav-bar-pri.html' %}
-        <main class="information">
-            <div class="information-content">
-                <h3 class="information-header">Videos</h3>
-                <div class="information-link-contend">
-                    <div class="link-content">contenedor</div>
-                    <div class="link-content">contenedor</div>
-                    <div class="link-content">contenedor</div>
-                    <div class="link-content">contenedor</div>
-                    <div class="link-content">contenedor</div>
-                    <div class="link-content">contenedor</div>
+           
+        <div class="principal-content"> 
+             {% include 'nav-bar-pri.html' %}
+             {% include 'aside.html' %}
+            <main class="information">
+                <div class="information-content">
+                    <h3 class="information-header">Videos</h3>
+                    <div class="information-link-contend">
+                        <div class="link-content">contenedor</div>
+                        <div class="link-content">contenedor</div>
+                        <div class="link-content">contenedor</div>
+                        <div class="link-content">contenedor</div>
+                        <div class="link-content">contenedor</div>
+                        <div class="link-content">contenedor</div>
+                    </div>
+        
+        
                 </div>
-    
-    
-            </div>
-            <div class="information-content">
-                <h3 class="information-header">Articulos</h3>
-                <div class="information-link-contend">
-                    <div class="link-content">contenedor</div>
-                    <div class="link-content">contenedor</div>
-                    <div class="link-content">contenedor</div>
-                    <div class="link-content">contenedor</div>
-                    <div class="link-content">contenedor</div>
-                    <div class="link-content">contenedor</div>
+                <div class="information-content">
+                    <h3 class="information-header">Articulos</h3>
+                    <div class="information-link-contend">
+                        <div class="link-content">contenedor</div>
+                        <div class="link-content">contenedor</div>
+                        <div class="link-content">contenedor</div>
+                        <div class="link-content">contenedor</div>
+                        <div class="link-content">contenedor</div>
+                        <div class="link-content">contenedor</div>
+                    </div>
+                    
                 </div>
-                
-            </div>
-            <div class="information-content">
-                <h3 class="information-header">Guias</h3>
-                <div class="information-link-contend">
-                    <div class="link-content">contenedor</div>
-                    <div class="link-content">contenedor</div>
-                    <div class="link-content">contenedor</div>
-                    <div class="link-content">contenedor</div>
-                    <div class="link-content">contenedor</div>
-                    <div class="link-content">contenedor</div>
+                <div class="information-content">
+                    <h3 class="information-header">Guias</h3>
+                    <div class="information-link-contend">
+                        <div class="link-content">contenedor</div>
+                        <div class="link-content">contenedor</div>
+                        <div class="link-content">contenedor</div>
+                        <div class="link-content">contenedor</div>
+                        <div class="link-content">contenedor</div>
+                        <div class="link-content">contenedor</div>
+                    </div>
                 </div>
-            </div>
-            <a href="{{url_for('logout')}}">logout</a>
-        </main>
+
+            </main>
+
+
+        </div>
         
         
     </body>

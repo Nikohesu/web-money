@@ -38,22 +38,22 @@
     <div id="burger-menu" class="burger-menu">
         <ul class="burger-options">
             <li>
-                <a class="burger-link" href="#">
+                <a class="burger-link" href="{{ url_for('login')}}">
                     Iniciar sesion
                 </a>
             </li>
             <li>
-                <a class="burger-link" href="#">
+                <a class="burger-link" href="/signup">
                     Registrate
                 </a>
             </li>
             <li>
-                <a class="burger-link" href="#">
+                <a class="burger-link" href="/public/comming-soon">
                     Conócenos
                 </a>
             </li>
             <li>
-                <a class="burger-link" href="#">
+                <a class="burger-link" href="{{ url_for('contact') }}">
                     Contactanos
                 </a>
             </li>

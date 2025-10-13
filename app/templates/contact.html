@@ -14,7 +14,7 @@
             <!-- fin de la seccion -->
             <div class="section">
                 <div class="logo-content">
-                    <img class="logo" src="../../static/images/Money-control(SIMPLE).SVG">
+                    <img class="logo" src="{{ url_for('static', filename='img/Money-control(SIMPLE).svg') }}" alt="logo">
                     <h2 class="title">Money Control</h2>
                   
                 </div>
@@ -54,6 +54,8 @@
                     <button class="sign-up-button" type="submit">Enviar</button>
                 </form>
 
-                {% include 'footer.html' %}
+        </div>
+
+        {% include 'footer.html' %}
         </div>
     </body>

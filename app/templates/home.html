@@ -7,38 +7,18 @@
         <link rel="stylesheet" href="../../static/css/home.css">
         <link rel="stylesheet" href="../../static/css/general.css">
     </head>
-
-    {% include 'nav-bar-pri.html' %}
-
     <body>
         <div class="principal-content">
-            <aside class="aside-user">
-                <button class="nav-aside-button">
+        {% include 'nav-bar-pri.html' %}
 
-                </button>
-                <button class="nav-aside-button">
-
-                </button>
-                <button class="nav-aside-button">
-
-                </button>
-                <button class="nav-aside-button">
-
-                </button>
-                <button class="nav-aside-button">
-
-                </button>
-
-            </aside>
-
-            <main class="home-content">
+        <main class="home-content">
                 <div class="service-content">
                     <h2 class="s-title">Hola Jhoan Sanchez</h2>
                     <div class="user-service-content">
                         <h3 class="title-cash">$23 000COP</h3>
                         <div class="services">
                             <button class="service-button">
-                                <img src="../../static/images/remove-cash.svg">                                    
+                                <img src="{{ url_for('static', filename='img/remove-cash.svg') }}" id="cash">                                    
                                     
                                 <h4>Agregar gasto</h4>
                                     
@@ -46,7 +26,7 @@
 
                             </button>
                             <button class="service-button">
-                                <img src="../../static/images/add-cash.svg">  
+                                <img src="{{ url_for('static', filename='img/add-cash.svg') }}" id="ingresos">  
                                     
 
                                     <h4>Agregar ingreso</h4>
@@ -54,7 +34,7 @@
 
                             </button>
                             <button class="service-button">
-                                <img src="../../static/images/more-row.svg">  
+                                <img src="{{ url_for('static', filename='img/more-row.svg') }}" id="mas">  
 
                                     
                                     <h4> mas</h4>
@@ -65,136 +45,61 @@
                         </div>
                     </div>
                 </div>
-                <div class="movements-content">
+
+                <!--informate ↑-->
+
+                <div class="movents-content">
                     <h2 class="s-title">Transacciones recientes</h2>
-
                     <div id="movements" class="movements-scroll">
-                        <div class="transaction-content">
-                            <div class="information-content">
-                                <span>Supermercado</span>
-                                <time datetime="2025-06-28">28 Jun., 2025</time>
-                            </div>
-                            <div>
-                                -$75&nbsp;460&nbsp;COP
-                            </div>
-                        </div> 
-                        <div class="transaction-content">
-                            <div class="information-content">
-                                <span>Supermercado</span>
-                                <time datetime="2025-06-28">28 Jun., 2025</time>
-                            </div>
-                            <div>
-                                -$75&nbsp;460&nbsp;COP
-                            </div>
-                        </div> 
-                        <div class="transaction-content">
-                            <div class="information-content">
-                                <span>Supermercado</span>
-                                <time datetime="2025-06-28">28 Jun., 2025</time>
-                            </div>
-                            <div>
-                                -$75&nbsp;460&nbsp;COP
-                            </div>
-                        </div> 
-                        <div class="transaction-content">
-                            <div class="information-content">
-                                <span>Supermercado</span>
-                                <time datetime="2025-06-28">28 Jun., 2025</time>
-                            </div>
-                            <div>
-                                -$75&nbsp;460&nbsp;COP
-                            </div>
-                        </div> 
-                        <div class="transaction-content">
-                            <div class="information-content">
-                                <span>Supermercado</span>
-                                <time datetime="2025-06-28">28 Jun., 2025</time>
-                            </div>
-                            <div>
-                                -$75&nbsp;460&nbsp;COP
-                            </div>
-                        </div> 
-                        <div class="transaction-content">
-                            <div class="information-content">
-                                <span>Supermercado</span>
-                                <time datetime="2025-06-28">28 Jun., 2025</time>
-                            </div>
-                            <div>
-                                -$75&nbsp;460&nbsp;COP
-                            </div>
-                        </div> 
 
-                        <div class="transaction-content">
-                            <div class="information-content">
-                                <span>Supermercado</span>
-                                <time datetime="2025-06-28">28 Jun., 2025</time>
-                            </div>
-                            <div>
-                                -$75&nbsp;460&nbsp;COP
-                            </div>
-                        </div> 
-                        <div class="transaction-content">
-                            <div class="information-content">
-                                <span>Supermercado</span>
-                                <time datetime="2025-06-28">28 Jun., 2025</time>
-                            </div>
-                            <div>
-                                -$75&nbsp;460&nbsp;COP
-                            </div>
-                        </div> 
-                        <div class="transaction-content">
-                            <div class="information-content">
-                                <span>Supermercado</span>
-                                <time datetime="2025-06-28">28 Jun., 2025</time>
-                            </div>
-                            <div>
-                                -$75&nbsp;460&nbsp;COP
-                            </div>
-                        </div> 
-                        <div class="transaction-content">
-                            <div class="information-content">
-                                <span>Supermercado</span>
-                                <time datetime="2025-06-28">28 Jun., 2025</time>
-                            </div>
-                            <div>
-                                -$75&nbsp;460&nbsp;COP
-                            </div>
-                        </div> 
-                        <div class="transaction-content">
-                            <div class="information-content">
-                                <span>Supermercado</span>
-                                <time datetime="2025-06-28">28 Jun., 2025</time>
-                            </div>
-                            <div>
-                                -$75&nbsp;460&nbsp;COP
-                            </div>
-                        </div> 
-                        <div class="transaction-content">
-                            <div class="information-content">
-                                <span>Supermercado</span>
-                                <time datetime="2025-06-28">28 Jun., 2025</time>
-                            </div>
-                            <div>
-                                -$75&nbsp;460&nbsp;COP
-                            </div>
-                        </div> 
-                        <div class="transaction-content">
-                            <div class="information-content">
-                                <span>Supermercado</span>
-                                <time datetime="2025-06-28">28 Jun., 2025</time>
-                            </div>
-                            <div>
-                                -$75&nbsp;460&nbsp;COP
-                            </div>
-                        </div> 
 
-                    </div> 
-                </div>             
+                    <div class="transaction-content">
+                        <div class="information-content">
+                            <span>Supermercado</span>
+                            <time datetime="2025-06-28">28 Jun., 2025</time>
+                        </div>
+                    </div>
 
-            </main>
+                    <div class="transaction-content">
+                        <div class="information-content">
+                            <span>Supermercado</span>
+                            <time datetime="2025-06-28">28 Jun., 2025</time>
+                        </div>
+                    </div>
+
+                    <div class="transaction-content">
+                        <div class="information-content">
+                            <span>Supermercado</span>
+                            <time datetime="2025-06-28">28 Jun., 2025</time>
+                        </div>
+                    </div>
+                    
+                    <div class="transaction-content">
+                        <div class="information-content">
+                            <span>Supermercado</span>
+                            <time datetime="2025-06-28">28 Jun., 2025</time>
+                        </div>
+                    </div>
+
+
+
+
+
+                    </div>
+
+                </div>
+
+                
+
+        </main>
+        
+
+
+        {% include 'aside.html' %}
 
           
         </div>
+        
         <div class="modal-pb modal-pb-off" id="modal">
             <div class="ventana">
                 <button onclick= "modaltogle()" ></button>

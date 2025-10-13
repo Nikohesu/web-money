@@ -90,6 +90,14 @@ def logout():
 def contact():
     return render_template('contact.html')
 
+@app.route('/public/comming-soon')
+def comming_soon_public():
+    return render_template('comming-soon.html')
+
+@app.route('/comming-soon')
+def comming_soon():
+    return render_template('comming-soon.html')
+
 @app.context_processor
 def user_context():
     return dict(user_rol = session["tipo_usuario"], profile_image=None)
@@ -97,17 +105,17 @@ def user_context():
 
 @app.before_request
 def access ():
-    public_routes = ['index','login','signup','contact']
+    public_routes = ['index','login','signup','contact', 'comming_soon_public']
     #evita el bloqueo de los css, las imagenes y el js
     if request.endpoint == 'static' or request.endpoint is None:
         return
     
     if 'email' in session and request.endpoint in public_routes:
-        return redirect(url_for("academy"))
+        return redirect(url_for("home"))
     if not "email" in session and not request.endpoint in public_routes:
         return redirect(url_for("login"))
     if request.path.startswith("/admin") and not session["tipo_usuario"] == 0:
-        return redirect(url_for("academy"))
+        return redirect(url_for("home"))
     
 
 if __name__ == "__main__":
