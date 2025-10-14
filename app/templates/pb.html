@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menú de selección</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f4f4f4;
+      padding: 2rem;
+    }
+
+    .radio-menu {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .radio-option {
+      position: relative;
+    }
+
+    .radio-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .radio-option label {
+      display: block;
+      padding: 1rem 2rem;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      background: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .radio-option input[type="radio"]:checked + label {
+      border-color: #007bff;
+      background-color: #0066ff;
+      box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.3);
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Selecciona una opción</h2>
+  <div class="radio-menu">
+    <div class="radio-option">
+      <input type="radio" id="opcion1" name="menu" />
+      <label for="opcion1">Opción 1</label>
+    </div>
+    <div class="radio-option">
+      <input type="radio" id="opcion2" name="menu" />
+      <label for="opcion2">Opción 2</label>
+    </div>
+    <div class="radio-option">
+      <input type="radio" id="opcion3" name="menu" />
+      <label for="opcion3">Opción 3</label>
+    </div>
+  </div>
+
+</body>
+</html>
+

@@ -39,11 +39,14 @@
                     </div>
                 </div>
 
-                <div class="users-content">
+                <form class="users-content">
                     
                 {%for users in users%}
                     <div class="div-user">
                         <ul>
+                            <li>
+                                <input type="radio" name="user" value="{{users[0]}}">
+                            </li>
                             <li>
                                 {{users[0]}}
                             </li>
@@ -69,10 +72,10 @@
                     </div>
                 {%endfor%}
 
-                </div>
+                </form>
 
                 <div class="crud-buttons-content">
-                    <button class="crud-button"></button>
+                    <button class="crud-button" id="open-modal-btn">Agregar usuario</button>
                     <button class="crud-button"></button>
                     <button class="crud-button"></button>
                 </div>
@@ -81,4 +84,71 @@
 
             
         </div>
+
+        <!-- Modal para agregar usuario -->
+        <div id="modal-user" class="modal-user">
+            <div class="add_user ">
+                <span class="close-modal-user" id="close-modal-btn">&times;</span>
+                <h2>Agregar usuario</h2>
+                <form method="post" action="{{ url_for('crud') }}">
+
+                    <div class="div-campo">
+                        <label for="firstname">Nombre:</label>
+                        <input class="campo" type="text" id="firstname" name="firstname" required>
+                    </div>
+                    <div class="div-campo">
+                        <label for="lastname">Apellido:</label>
+                        <input class="campo" type="text" id="lastname" name="lastname" required>
+                    </div>
+
+                    <div class="div-campo">
+                        <label for="email">Email:</label>
+                        <input class="campo" type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="div-campo">
+                        <label for="telefono">Teléfono:</label>
+                        <input class="campo" type="tel" id="telefono" name="telefono" required>
+                    </div>
+
+                    <div class="div-campo">
+                        <label for="password">Contraseña:</label>
+                        <input class="campo" type="password" id="password" name="password" required>
+                    </div>
+
+                    <div class="div-campo">
+                        <label for="nacimiento">Fecha de nacimiento:</label>
+                        <input class="campo" type="date" id="nacimiento" name="nacimiento" required>
+                    </div>
+
+                    <div class="div-campo">
+                        <label for="tipo_usuario">Tipo de usuario:</label>
+                        <select class="campo" id="tipo_usuario" name="tipo_usuario" required>
+                            <option value="admin">Admin</option>
+                            <option value="user">User</option>
+                    </select>
+
+                    <button class="add_button"  type="submit">Agregar</button>
+
+                </form>
+            </div>
+        </div>
+
+<script>
+document.getElementById('open-modal-btn').onclick = function() {
+    document.getElementById('modal-user').classList.add('active');
+};
+document.getElementById('close-modal-btn').onclick = function() {
+    document.getElementById('modal-user').classList.remove('active');
+};
+// Cierra el modal si se hace click fuera del contenido
+window.onclick = function(event) {
+    const modal = document.getElementById('modal-user');
+    if (event.target === modal) {
+        modal.classList.remove('active');
+    }
+};
+</script>
+
     </body>
+</html>
