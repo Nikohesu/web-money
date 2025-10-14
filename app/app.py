@@ -100,7 +100,10 @@ def comming_soon():
 
 @app.context_processor
 def user_context():
-    return dict(user_rol = session["tipo_usuario"], profile_image=None)
+    if 'email' in session:
+        return dict(user_rol=session["tipo_usuario"], profile_image=None)
+    else:
+        return {}
 
 
 @app.before_request
