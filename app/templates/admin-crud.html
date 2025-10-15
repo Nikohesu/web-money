@@ -75,22 +75,37 @@
                 </form>
 
                 <div class="crud-buttons-content">
-                    <button class="crud-button" id="open-modal-btn">Agregar usuario</button>
+                    <button class="crud-button" id="add-user-btn">Agregar usuario</button>
                     <button class="crud-button"></button>
                     <button class="crud-button"></button>
                 </div>
-
             </main>
-
             
         </div>
 
-        <!-- Modal para agregar usuario -->
-        <div id="modal-user" class="modal-user">
+        <div class="add-user-p">
+            <div class="add-user"></div>
+
+        </div>
+    </body>
+
+    <script>
+        btn = document.getElementById("add-user-btn");
+        btn.addEventListener("click", function() {
+            document.querySelector(".add-user-p").classList.toggle("active");
+        });
+    </script>
+
+</html>
+<!--
+        <div id="add-user" class="add-user">
             <div class="add_user ">
-                <span class="close-modal-user" id="close-modal-btn">&times;</span>
+                <span class="close-add-user" id="close-modal-btn">&times;</span>
                 <h2>Agregar usuario</h2>
-                <form method="post" action="{{ url_for('crud') }}">
+
+            </div>
+        </div>
+                        <form method="post" action="{{ url_for('crud') }}">
 
                     <div class="div-campo">
                         <label for="firstname">Nombre:</label>
@@ -130,25 +145,4 @@
 
                     <button class="add_button"  type="submit">Agregar</button>
 
-                </form>
-            </div>
-        </div>
-
-<script>
-document.getElementById('open-modal-btn').onclick = function() {
-    document.getElementById('modal-user').classList.add('active');
-};
-document.getElementById('close-modal-btn').onclick = function() {
-    document.getElementById('modal-user').classList.remove('active');
-};
-// Cierra el modal si se hace click fuera del contenido
-window.onclick = function(event) {
-    const modal = document.getElementById('modal-user');
-    if (event.target === modal) {
-        modal.classList.remove('active');
-    }
-};
-</script>
-
-    </body>
-</html>
+                </form>-->

@@ -150,19 +150,40 @@
     box-shadow: 0 0 0 2px #006300;
 }
 
-.add_user{
+.add-user-p{
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.35);
+    display: none;
+    z-index: 2000;
+}
+
+.add-user-p.active{
+    display: block;
+}
+
+/*Ventana modal*/
+
+.add-user{
     width: clamp(300px, 80%, 500px);
     background-color: var(--secondary-color);
     border-radius: 15px;
     padding: 20px;
     box-sizing: border-box;
     position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     font-family: Baloo2-SemiBold;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     
+}
+.add-user.active {
+    display: flex;
 }
 
 .add_user > form{
@@ -174,20 +195,8 @@
     gap: 0px;
 }
 
-.modal-user {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0; top: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.35);
-    justify-content: center;
-    align-items: center;
-}
-.modal-user.active {
-    display: flex;
-}
-.close-modal-user {
+
+.close-add-user {
     position: absolute;
     top: 12px;
     right: 18px;
@@ -196,7 +205,7 @@
     cursor: pointer;
     font-weight: bold;
 }
-.close-modal-user:hover {
+.close-add-user:hover {
     color: #e74c3c;
 }
 
