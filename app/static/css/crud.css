@@ -149,8 +149,9 @@
 .users-content input[type="radio"]:focus {
     box-shadow: 0 0 0 2px #006300;
 }
+/**/
 
-.add-user-p{
+.modal-add-user{
     position: absolute;
     top: 0; left: 0;
     width: 100vw; height: 100vh;
@@ -158,44 +159,6 @@
     display: none;
     z-index: 2000;
 }
-
-.add-user-p.active{
-    display: block;
-}
-
-.del-confirm{
-    position: absolute;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.35);
-    display: none;
-    z-index: 2000;
-}
-
-.del-confirm.active{
-    display: block;
-}   
-
-.window-del{
-    width: clamp(300px, 80%, 500px);
-    background-color: red;
-    border-radius: 15px;
-    padding: 20px;
-    box-sizing: border-box;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    font-family: Baloo2-SemiBold;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    
-}
-
-/*Ventana modal*/
-
 .add-user{
     width: clamp(300px, 80%, 500px);
     background-color: var(--secondary-color);
@@ -213,19 +176,93 @@
     justify-content: center;
     
 }
-.add-user.active {
-    display: flex;
-}
-
-.add_user > form{
+.add-user-form{
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0px;
+    background-color: var(--tetraty-color);
+    gap: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+.form_button{
+    width: clamp(65px, 38%, 135px);
+    height:fit-content;
+    background-color: var(--secondary-color);
+    padding: 4px;
+    margin: 4px 0;
+    border: none;
+    font-family: Baloo2-SemiBold;
+    font-size: 120%;
+    border-radius: 10px;
+    margin: 10px auto ;
+}
+.modal-add-user.active{
+    display: block;
 }
 
+/**/
+.del-confirm{
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.35);
+    display: none;
+    z-index: 2000;
+}
+
+.del-confirm.active{
+    display: block;
+}   
+
+.window-del{
+    width: clamp(300px, 80%, 500px);
+    background-color: rgb(229, 221, 221);
+    border-radius: 15px;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-family: Baloo2-SemiBold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+.del-actions{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.confirm-btn, .cancel_btn{
+    width: clamp(65px, 40%, 135px);
+    height:fit-content;
+    padding: 4px;
+    margin: 4px 10px;
+    border: none;
+    font-family: Baloo2-SemiBold;
+    font-size: 120%;
+    border-radius: 10px;
+}
+
+.confirm-btn{
+    background-color: #e74c3c;
+    color: white;
+}
+
+
+
+/*Ventana modal*/
 
 .close_btn {
     position: absolute;
@@ -240,31 +277,19 @@
     color: #e74c3c;
 }
 
-form {
-    width: clamp(65px, 38%, 135px);
-    height:fit-content;
-    background-color: var(--tetraty-color);
-    padding: 4px;
-    margin: 4px 0;
-    border: none;
-    font-family: Baloo2-SemiBold;
-    font-size: 120%;
-    border-radius: 10px;
-    padding: 10px;
+.modal-act-user{
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.35);
+    display: none;
+    z-index: 2000;
+}
+.modal-act-user.active{
+    display: block;
 }
 
-.add_button{
-    width: clamp(65px, 38%, 135px);
-    height:fit-content;
-    background-color: var(--secondary-color);
-    padding: 4px;
-    margin: 4px 0;
-    border: none;
-    font-family: Baloo2-SemiBold;
-    font-size: 120%;
-    border-radius: 10px;
-    margin: 10px auto ;
-}
+
 
 /*fin de botones personalizados*/
 
