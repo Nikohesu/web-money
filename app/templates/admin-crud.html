@@ -76,7 +76,7 @@
 
                 <div class="crud-buttons-content">
                     <button class="crud-button" id="add-user-btn">Agregar usuario</button>
-                    <button class="crud-button"></button>
+                    <button class="crud-button" id="del-btn"></button>
                     <button class="crud-button"></button>
                 </div>
             </main>
@@ -84,16 +84,49 @@
         </div>
 
         <div class="add-user-p">
-            <div class="add-user"></div>
+            <div class="add-user">
+                <span class="close_btn" id="close-modal-btn">&times;</span>
 
+            
+            </div>
         </div>
+
+        <div class="del-confirm">
+            <div class="window-del">
+                <span class="close_btn" id="close-modal-btn">&times;</span>
+
+
+            </div>
+        </div>
+
+
     </body>
 
     <script>
-        btn = document.getElementById("add-user-btn");
-        btn.addEventListener("click", function() {
-            document.querySelector(".add-user-p").classList.toggle("active");
-        });
+
+        class modal {
+            constructor(modal,btn) {
+                this.modal = document.querySelector(modal);
+                this.btn = document.getElementById(btn);
+                this.btn_close = document.querySelectorAll("close_btn");
+
+                this.btn.addEventListener("click", () => {
+                    this.modal.classList.toggle("active");
+                    console.log(modal,"toggle click");
+                });
+
+                this.btn_close.forEach(btn => {
+                    btn_close.addEventListener("click", () => {
+                        console.log(modal,"close click");
+                    });
+                });
+                
+        }
+
+    }
+
+    const add_user = new modal(".add-user-p","add-user-btn");
+    const del_user = new modal(".del-confirm","del-btn");
     </script>
 
 </html>
