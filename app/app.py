@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session, url_for
+from flask import Flask, render_template, request, redirect, session, url_for, jsonify
 import mysql.connector
 from flask_session import Session
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -77,8 +77,52 @@ def crud():
     users = cursor.fetchall()
     return render_template ("admin-crud.html", users=users)
 
-    
+@app.route("/admin/crud/add", methods=["GET","POST"])
+def add_user():
+        if request.method == "POST":
+            firstname = request.form["firstname"]
+            lastname = request.form["lastname"]
+            email = request.form["email"]
+            telefono = request.form["telefono"]
+            password = request.form["password"]
+            hashed_password = generate_password_hash(password)
+            nacimiento = request.form["nacimiento"]
+            user_type = request.form["tipo_usuario"]
+            cursor.execute("INSERT INTO usuarios (firstname, lastname, email, telefono, password, nacimiento,tipo_de_usuario) VALUES (%s,%s,%s,%s,%s,%s,%s)", (firstname,lastname,email,telefono,hashed_password,nacimiento,user_type))
+            db.commit()
+        return redirect(url_for("crud"))
 
+"""""
+@app.route("/admin/consult", methods=["POST"])
+async def admin_consult():
+    valor=request.get_json().get("user_id")
+    print("recibido valor: ",valor)
+
+    cursor.execute("SELECT * FROM usuarios WHERE id=%s",(valor,))
+    info_user = cursor.fetchall()
+    return jsonify({"mensaje": "Valor recibido correctamente", "info": info_user})
+    
+"""
+
+
+#app.route("admin/crud/delete/<int:user_id>")
+
+#app.route("admin/crud/update/<int:user_id>")
+"""def update_user(user_id):
+    cursor.execute("SELECT * FROM `usuarios` WHERE id = %s", (user_id,))
+    user = cursor.fetchone()
+    if request.method == "POST":
+        firstname = request.form["firstname"]
+        lastname = request.form["lastname"]
+        email = request.form["email"]
+        telefono = request.form["telefono"]
+        nacimiento = request.form["nacimiento"]
+        cursor.execute("UPDATE `usuarios` SET firstname=%s, lastname=%s, email=%s, telefono=%s, nacimiento=%s WHERE id=%s", (firstname, lastname, email, telefono, nacimiento, user_id))
+        db.commit()
+        return redirect(url_for("crud"))
+    return redirect(url_for("crud"))
+@app.route("admin/crud/more/<int:user_id>")
+"""
 
 @app.route('/logout')
 def logout():

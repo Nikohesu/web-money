@@ -44,7 +44,7 @@
                     <div class="div-user">
                         <ul>
                             <li>
-                                <input type="radio" name="user" value="{{users[0]}}">
+                                <input type="radio" name="user" value="{{users | tojson}}">
                             </li>
                             <li>
                                 {{users[0]}}
@@ -61,6 +61,10 @@
                             <li>
                                 {{users[5]}}
                             </li>
+                            <li>
+                                {{users[10]}}
+                            </li>
+
 
                             <li class="more-button-content">
                                 <button class="more-button" name="more">
@@ -75,7 +79,7 @@
 
                 <div class="crud-buttons-content">
                     <button class="crud-button" id="add-user-btn">Agregar usuario</button>
-                    <button class="crud-button" id="del-btn">Eliminar usuario</button>
+                    <button class="crud-button" id="del-btn" onclick="obt_sel()">Eliminar usuario</button>
                     <button class="crud-button" id="act-btn">Actualizar usuario</button>
                 </div>
             </main>
@@ -87,7 +91,7 @@
             <div class="add-user">
                 <span class="close_btn" id="close-modal-btn">&times;</span>
                 <h2>Agregar usuario</h2>
-                <form class="add-user-form" method="post" action="{{ url_for('crud') }}">
+                <form class="add-user-form" method="post" action="{{ url_for('add_user') }}">
 
                     <div class="div-campo">
                         <label for="firstname">Nombre:</label>
@@ -121,8 +125,8 @@
                     <div class="div-campo">
                         <label for="tipo_usuario">Tipo de usuario:</label>
                         <select class="campo" id="tipo_usuario" name="tipo_usuario" required>
-                            <option value="admin">Admin</option>
-                            <option value="user">User</option>
+                            <option value=0>Admin</option>
+                            <option value=1>User</option>
 
                         </select>
                     </div>
@@ -137,7 +141,7 @@
         <div class="del-confirm">
             <div class="window-del">
                 <span class="close_btn" id="close-modal-btn">&times;</span>
-                <h3 class="del-title">¿Está seguro de borrar al usuario Carlos?</h3>
+                <h3 class="del-title">¿Está seguro de borrar al usuario <span id="name"></span> </h3>
                 <div class="del-actions">
                     <button class="confirm-btn" id="confirm-delete-btn">Aceptar</button>
                     <button class="cancel_btn cancel">Cancelar</button>
@@ -228,7 +232,27 @@
         const del_user = new modal(".del-confirm", "del-btn");
         const act_user = new modal(".modal-act-user", "act-btn");
 
-        
+        async function obt_sel() {
+            const select = document.querySelector('input[name="user"]:checked').value;
+            const spanName = document.getElementById("name");
+            spanName.textContent = select[1];
+            if (select) {
+                console.log("Usuario seleccionado con ID:", select);
+            } else {
+                console.log("No se ha seleccionado ningún usuario.");
+            }
+
+          /*  const respuesta = await fetch('/admin/consult', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ user_id: select })
+            });
+            data = await respuesta.json();
+
+            console.log(data.info);*/
+        }
     </script>
 
 </html>
