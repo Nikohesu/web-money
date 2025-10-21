@@ -92,6 +92,12 @@ def add_user():
             db.commit()
         return redirect(url_for("crud"))
 
+@app.route("/admin/crud/delete/<int:user_id>", methods=["POST"])
+def delete_user(user_id):
+    cursor.execute("DELETE FROM usuarios WHERE id = %s", (user_id,))
+    db.commit()
+    return redirect(url_for("crud"))
+
 """""
 @app.route("/admin/consult", methods=["POST"])
 async def admin_consult():

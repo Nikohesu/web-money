@@ -81,8 +81,9 @@
 
                 <div class="crud-buttons-content">
                     <button class="crud-button" id="add-user-btn">Agregar usuario</button>
-                    <button class="crud-button" id="del-btn" onclick="obt_sel()">Eliminar usuario</button>
-                    <button class="crud-button" id="act-btn" onclick="obt_sel()" >Actualizar usuario</button>
+                    <!-- quitar onclick para evitar llamadas duplicadas -->
+                    <button class="crud-button" id="del-btn">Eliminar usuario</button>
+                    <button class="crud-button" id="act-btn">Actualizar usuario</button>
                 </div>
             </main>
             
@@ -97,36 +98,36 @@
 
                     <div class="div-campo">
                         <label for="firstname">Nombre:</label>
-                        <input class="campo" type="text" id="firstname" name="firstname" required>
+                        <input class="campo" type="text" name="firstname" required>
                     </div>
                     <div class="div-campo">
                         <label for="lastname">Apellido:</label>
-                        <input class="campo" type="text" id="lastname" name="lastname" required>
+                        <input class="campo" type="text" name="lastname" required>
                     </div>
 
                     <div class="div-campo">
                         <label for="email">Email:</label>
-                        <input class="campo" type="email" id="email" name="email" required>
+                        <input class="campo" type="email" name="email" required>
                     </div>
 
                     <div class="div-campo">
                         <label for="telefono">Teléfono:</label>
-                        <input class="campo" type="tel" id="telefono" name="telefono" required>
+                        <input class="campo" type="tel" name="telefono" required>
                     </div>
 
                     <div class="div-campo">
                         <label for="password">Contraseña:</label>
-                        <input class="campo" type="password" id="password" name="password" required>
+                        <input class="campo" type="password" name="password" required>
                     </div>
 
                     <div class="div-campo">
                         <label for="nacimiento">Fecha de nacimiento:</label>
-                        <input class="campo" type="date" id="nacimiento" name="nacimiento" required>
+                        <input class="campo" type="date" name="nacimiento" required>
                     </div>
 
                     <div class="div-campo">
                         <label for="tipo_usuario">Tipo de usuario:</label>
-                        <select class="campo" id="tipo_usuario" name="tipo_usuario" required>
+                        <select class="campo" name="tipo_usuario" required>
                             <option value=0>Admin</option>
                             <option value=1>User</option>
 
@@ -163,7 +164,7 @@
                     </div>
                     <div class="div-campo">
                         <label for="lastname">Apellido:</label>
-                        <input class="campo" type="text" id="lastname" value="hello" name="lastname" required>
+                        <input class="campo" type="text" id="lastname" name="lastname" required>
                     </div>
 
                     <div class="div-campo">
@@ -177,13 +178,8 @@
                     </div>
 
                     <div class="div-campo">
-                        <label for="password">Contraseña:</label>
-                        <input class="campo" type="password" id="password" name="password" required>
-                    </div>
-
-                    <div class="div-campo">
                         <label for="tipo_usuario">Tipo de usuario:</label>
-                        <select class="campo" id="tipo_usuario" name="tipo_usuario" required>
+                        <select class="campo" name="tipo_usuario" required>
                             <option value="admin">Admin</option>
                             <option value="user">User</option>
 
@@ -204,7 +200,75 @@
 
     <script>
         let run = true
-        class modal {
+
+        async function obt_sel() {
+            // Selecciona el radio checked
+            const form = {
+                first_name : document.getElementById('firstname'),
+                last_name : document.getElementById('lastname'),
+                email : document.getElementById('email'),
+                telefono : document.getElementById('telefono'),
+                tipo_usuario : document.getElementById('tipo_usuario')    
+            };
+            const checked = document.querySelector('input[name="user"]:checked');
+            if (!checked) {
+
+                alert("Por favor, seleccione un usuario antes de continuar.");
+
+                run = false
+                return false
+            }
+            const raw = checked.value;
+            let parsed = null;
+            try {
+                parsed = JSON.parse(raw);
+            } catch (err) {
+                console.error('Error parseando el value JSON del radio:', err, 'raw:', raw);
+                // Intentar evaluar como fallback (no recomendado en producción)
+                try { parsed = eval(raw); } catch (err2) { parsed = raw; }
+            }
+
+            // Asegurar que parsed sea una lista/array antes de usar índices
+            const spanName = document.getElementById('name');
+            if (Array.isArray(parsed) || (typeof parsed === 'object' && parsed !== null)) {
+                // Si es objeto, intentar extraer propiedades comunes (nombre, id)
+                if (Array.isArray(parsed)) {
+
+                    spanName.textContent = parsed[1] !== undefined ? parsed[1] : JSON.stringify(parsed);
+                    form.first_name.value = parsed[1];
+                    form.last_name.value = parsed[2];
+                    form.email.value = parsed[4];
+                    form.telefono.value = parsed[5];
+                 
+                    
+                    run = true
+                    return true;
+                } else {
+                    // objeto: buscar keys comunes
+                    spanName.textContent = parsed.name || parsed.first_name || parsed[1] || JSON.stringify(parsed);
+                }
+                console.log('Usuario seleccionado (parsed):', parsed);
+                return true;
+            } else {
+                // No es array u object; mostrar raw
+                spanName.textContent = String(parsed);
+                console.log('Usuario seleccionado (raw):', parsed);
+                return true;
+            }
+
+            /*  const respuesta = await fetch('/admin/consult', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ user_id: select })
+            });
+            data = await respuesta.json();
+
+            console.log(data.info);*/
+        }
+
+         class modal {
             constructor(modal, btn) {
                 this.modal = document.querySelector(modal);
                 this.btn = document.getElementById(btn);
@@ -212,11 +276,24 @@
                 this.btn_close = this.modal.querySelectorAll(".close_btn");
                 this.cancel_btn = this.modal.querySelectorAll(".cancel");
 
-                    this.btn.addEventListener("click", () => {
-                    
-                    if (run){
-                    this.modal.classList.toggle("active");
-                    console.log(modal, "toggle click");
+                // esperar la respuesta de obt_sel antes de abrir el modal
+                this.btn.addEventListener("click", async (e) => {
+                    // prevenir comportamiento por defecto si es un <button> en un form
+
+                    const selected = await obt_sel();
+                    // si obt_sel devuelve null o false, no abrir el modal
+                    if (selected && modal !== ".modal-add-user") {
+                         e.preventDefault();
+                        this.modal.classList.toggle("active");
+                        console.log(modal, "toggle click");
+                    }
+                    else if (modal === ".modal-add-user") {
+                        e.preventDefault();
+                        this.modal.classList.toggle("active");
+                        console.log(modal, "toggle click");
+                    }
+                    else {
+                        console.log(modal, "no se abrió el modal - no hay selección");
                     }
                 });
         
@@ -240,70 +317,6 @@
         const add_user = new modal(".modal-add-user", "add-user-btn");
         const del_user = new modal(".del-confirm", "del-btn");
         const act_user = new modal(".modal-act-user", "act-btn");
-
-        function obt_sel() {
-            // Selecciona el radio checked
-            const form = {
-                first_name : document.getElementById('firstname'),
-                last_name : document.getElementById('lastname'),
-                email : document.getElementById('email'),
-                telefono : document.getElementById('telefono'),
-                tipo_usuario : document.getElementById('tipo_usuario')    
-            };
-            const checked = document.querySelector('input[name="user"]:checked');
-            if (!checked) {
-
-                alert("Por favor, seleccione un usuario antes de continuar.");
-
-                run = false
-                return null;
-            }
-            const raw = checked.value;
-            let parsed = null;
-            try {
-                parsed = JSON.parse(raw);
-            } catch (err) {
-                console.error('Error parseando el value JSON del radio:', err, 'raw:', raw);
-                // Intentar evaluar como fallback (no recomendado en producción)
-                try { parsed = eval(raw); } catch (err2) { parsed = raw; }
-            }
-
-            // Asegurar que parsed sea una lista/array antes de usar índices
-            const spanName = document.getElementById('name');
-            if (Array.isArray(parsed) || (typeof parsed === 'object' && parsed !== null)) {
-                // Si es objeto, intentar extraer propiedades comunes (nombre, id)
-                if (Array.isArray(parsed)) {
-                    form.first_name.value = parsed[1];
-                    form.last_name.value = parsed[2];
-                    form.email.value = parsed[4];
-                    form.telefono.value = parsed[5];
-                    form.tipo_usuario.value = parsed[10];
-                    spanName.textContent = parsed[1] !== undefined ? parsed[1] : JSON.stringify(parsed);
-                    run = true
-                } else {
-                    // objeto: buscar keys comunes
-                    spanName.textContent = parsed.name || parsed.first_name || parsed[1] || JSON.stringify(parsed);
-                }
-                console.log('Usuario seleccionado (parsed):', parsed);
-                return parsed;
-            } else {
-                // No es array u object; mostrar raw
-                spanName.textContent = String(parsed);
-                console.log('Usuario seleccionado (raw):', parsed);
-                return parsed;
-            }
-
-            /*  const respuesta = await fetch('/admin/consult', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ user_id: select })
-            });
-            data = await respuesta.json();
-
-            console.log(data.info);*/
-        }
     </script>
 
 </html>
