@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}">
     </head>
 
+    <body>
         <div class="principal-content">
             
             {% include 'nav-bar-pri.html' %}
@@ -44,7 +45,8 @@
                     <div class="div-user">
                         <ul>
                             <li>
-                                <input type="radio" name="user" value="{{users | tojson}}">
+                                {# Emitir el objeto/tupla `users` como JSON en el value para parsearlo en JS #}
+                                <input type="radio" name="user" value='{{ users | tojson | safe }}'>
                             </li>
                             <li>
                                 {{users[0]}}
@@ -80,7 +82,7 @@
                 <div class="crud-buttons-content">
                     <button class="crud-button" id="add-user-btn">Agregar usuario</button>
                     <button class="crud-button" id="del-btn" onclick="obt_sel()">Eliminar usuario</button>
-                    <button class="crud-button" id="act-btn">Actualizar usuario</button>
+                    <button class="crud-button" id="act-btn" onclick="obt_sel()" >Actualizar usuario</button>
                 </div>
             </main>
             
@@ -161,7 +163,7 @@
                     </div>
                     <div class="div-campo">
                         <label for="lastname">Apellido:</label>
-                        <input class="campo" type="text" id="lastname" name="lastname" required>
+                        <input class="campo" type="text" id="lastname" value="hello" name="lastname" required>
                     </div>
 
                     <div class="div-campo">
@@ -201,6 +203,7 @@
     </body>
 
     <script>
+        let run = true
         class modal {
             constructor(modal, btn) {
                 this.modal = document.querySelector(modal);
@@ -209,10 +212,14 @@
                 this.btn_close = this.modal.querySelectorAll(".close_btn");
                 this.cancel_btn = this.modal.querySelectorAll(".cancel");
 
-                this.btn.addEventListener("click", () => {
+                    this.btn.addEventListener("click", () => {
+                    
+                    if (run){
                     this.modal.classList.toggle("active");
                     console.log(modal, "toggle click");
+                    }
                 });
+        
 
                 this.btn_close.forEach(close => {
                     close.addEventListener("click", () => {
@@ -225,24 +232,68 @@
                         this.modal.classList.remove("active");
                     });
                 });
+
+                }
+
             }
-        }
 
         const add_user = new modal(".modal-add-user", "add-user-btn");
         const del_user = new modal(".del-confirm", "del-btn");
         const act_user = new modal(".modal-act-user", "act-btn");
 
-        async function obt_sel() {
-            const select = document.querySelector('input[name="user"]:checked').value;
-            const spanName = document.getElementById("name");
-            spanName.textContent = select[1];
-            if (select) {
-                console.log("Usuario seleccionado con ID:", select);
-            } else {
-                console.log("No se ha seleccionado ningún usuario.");
+        function obt_sel() {
+            // Selecciona el radio checked
+            const form = {
+                first_name : document.getElementById('firstname'),
+                last_name : document.getElementById('lastname'),
+                email : document.getElementById('email'),
+                telefono : document.getElementById('telefono'),
+                tipo_usuario : document.getElementById('tipo_usuario')    
+            };
+            const checked = document.querySelector('input[name="user"]:checked');
+            if (!checked) {
+
+                alert("Por favor, seleccione un usuario antes de continuar.");
+
+                run = false
+                return null;
+            }
+            const raw = checked.value;
+            let parsed = null;
+            try {
+                parsed = JSON.parse(raw);
+            } catch (err) {
+                console.error('Error parseando el value JSON del radio:', err, 'raw:', raw);
+                // Intentar evaluar como fallback (no recomendado en producción)
+                try { parsed = eval(raw); } catch (err2) { parsed = raw; }
             }
 
-          /*  const respuesta = await fetch('/admin/consult', {
+            // Asegurar que parsed sea una lista/array antes de usar índices
+            const spanName = document.getElementById('name');
+            if (Array.isArray(parsed) || (typeof parsed === 'object' && parsed !== null)) {
+                // Si es objeto, intentar extraer propiedades comunes (nombre, id)
+                if (Array.isArray(parsed)) {
+                    form.first_name.value = parsed[1];
+                    form.last_name.value = parsed[2];
+                    form.email.value = parsed[4];
+                    form.telefono.value = parsed[5];
+                    form.tipo_usuario.value = parsed[10];
+                    spanName.textContent = parsed[1] !== undefined ? parsed[1] : JSON.stringify(parsed);
+                    run = true
+                } else {
+                    // objeto: buscar keys comunes
+                    spanName.textContent = parsed.name || parsed.first_name || parsed[1] || JSON.stringify(parsed);
+                }
+                console.log('Usuario seleccionado (parsed):', parsed);
+                return parsed;
+            } else {
+                // No es array u object; mostrar raw
+                spanName.textContent = String(parsed);
+                console.log('Usuario seleccionado (raw):', parsed);
+                return parsed;
+            }
+
+            /*  const respuesta = await fetch('/admin/consult', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
