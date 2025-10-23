@@ -39,14 +39,16 @@
                     </div>
 
                     <div class="results-content" id="results">
-                        <div class="result-div">
+
+                        <!-- Template oculto que se clona para cada resultado -->
+                        <button class="result-row-template" hidden onclick="modal_search()">
                             <ul>
-                                <li class="id_search">id</li>
-                                <li class="firstname_search">first_name</li>
-                                <li class="lastname_search">last_name</li>
-                                <li class="email_search">email</li>
+                                <li class="id_search"></li>
+                                <li class="firstname_search"></li>
+                                <li class="lastname_search"></li>
+                                <li class="email_search"></li>
                             </ul>
-                        </div>
+                        </button>
 
                     </div>
                 </div>
@@ -158,7 +160,9 @@
                 <span class="close_btn" id="close-modal-btn">&times;</span>
                 <h3 class="del-title">¿Está seguro de borrar al usuario <span id="name"></span> </h3>
                 <div class="del-actions">
-                    <button class="confirm-btn" id="confirm-delete-btn">Aceptar</button>
+                     <form id="form-del" method="post">
+                        <button class="confirm-btn" id="confirm-delete-btn">Aceptar</button>
+                     </form>
                     <button class="cancel_btn cancel">Cancelar</button>
                 </div>
             </div>
@@ -168,7 +172,7 @@
             <div class="add-user">
                 <span class="close_btn" id="close-modal-btn">&times;</span>
                 <h2>Actualizar usuario</h2>
-                <form class="add-user-form" method="post" action="{{ url_for('crud') }}">
+                <form  class="add-user-form" method="post" id="form-act">
 
                     <div class="div-campo">
                         <label for="firstname">Nombre:</label>
@@ -192,8 +196,8 @@
                     <div class="div-campo">
                         <label for="tipo_usuario">Tipo de usuario:</label>
                         <select class="campo" name="tipo_usuario" required>
-                            <option value="admin">Admin</option>
-                            <option value="user">User</option>
+                            <option value=0>Admin</option>
+                            <option value=1>User</option>
 
                         </select>
                     </div>
@@ -213,6 +217,13 @@
     <script>
         let run = true
 
+        const delform = document.getElementById("form-del");
+        const actform = document.getElementById("form-act");
+
+        function modal_search() {
+            console.log("click search")
+        }
+
         const searchInput = document.getElementById('input-search');
 
         searchInput.addEventListener('focus', function() {
@@ -221,22 +232,6 @@
         });
         searchInput.addEventListener('input', function() {
             let results = search(searchInput.value);
-            const template = document.querySelector(".results-div");
-            const container = document.getElementById("results");
-            console.log('Input de búsqueda:', searchInput.value);
-            results.forEach(result => {
-                const clone = template.content.cloneNode(true);
-                clone.querySelector('.id_search').textContent = result[0];
-                clone.querySelector('.firstname_search').textContent = result[1];
-                clone.querySelector('.lastname_search').textContent = result[2];
-                clone.querySelector('.email_search').textContent = result[3];
-                container.appendChild(clone);
-
-
-            });
-
-
-
         });
 
         searchInput.addEventListener('blur', function() {
@@ -258,21 +253,52 @@
                 body: JSON.stringify({ user_str: str })
             });
             data = await respuesta.json();
-            console.log('Resultados de búsqueda:', data);
 
-            // Aquí puedes actualizar el DOM con los resultados recibidos
-                        /*  const respuesta = await fetch('/admin/consult', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ user_id: select })
+            // seleccionar template y contenedor
+            const template = document.querySelector(".result-row-template");
+            const container = document.getElementById("results");
+
+            // eliminar filas anteriores (solo aquellas generadas), mantener el encabezado
+            container.querySelectorAll(".result-row").forEach(n => n.remove());
+
+            // si no hay template o no hay resultados, salir
+            if (!template) {
+                console.warn("No se encontró el template .result-row-template");
+                return;
+            }
+            if (!data || !Array.isArray(data.results)) return;
+
+            data.results.forEach(res => {
+                // clonar template y activar
+                const clone = template.cloneNode(true);
+                clone.classList.remove("result-row-template");
+                clone.classList.add("result-row");
+                clone.classList.add("result-div")
+                clone.hidden = false;
+
+                // rellenar solo el interior (ajusta índices según tu respuesta)
+                // ejemplo: res[0]=id, res[1]=firstname, res[2]=lastname, res[4]=email
+                const idEl = clone.querySelector(".id_search");
+                const fnEl = clone.querySelector(".firstname_search");
+                const lnEl = clone.querySelector(".lastname_search");
+                const emailEl = clone.querySelector(".email_search");
+
+                if (idEl) idEl.textContent = res[0] ?? "";
+                if (fnEl) fnEl.textContent = res[1] ?? "";
+                if (lnEl) lnEl.textContent = res[2] ?? "";
+                if (emailEl) emailEl.textContent = res[4] ?? "";
+
+                // insertar en el contenedor
+                container.appendChild(clone);
             });
-            data = await respuesta.json();
-
-            console.log(data.info);*/
-            
         }
+
+        /*const search_but = document.querySelectorAll(".result-div");
+        search_but.forEach(but => {
+            but.addEventListener("click", () => {
+                console.log("btn _ bus");
+                    });
+                });*/
 
         async function obt_sel() {
             // Selecciona el radio checked
@@ -306,12 +332,14 @@
             if (Array.isArray(parsed) || (typeof parsed === 'object' && parsed !== null)) {
                 // Si es objeto, intentar extraer propiedades comunes (nombre, id)
                 if (Array.isArray(parsed)) {
+                    delform.action = `/admin/crud/delete/${parsed[0]}`;
+                    actform.action = `/admin/crud/act/${parsed[0]}`;
 
                     spanName.textContent = parsed[1] !== undefined ? parsed[1] : JSON.stringify(parsed);
                     form.first_name.value = parsed[1];
                     form.last_name.value = parsed[2];
-                    form.email.value = parsed[4];
-                    form.telefono.value = parsed[5];
+                    form.email.value = parsed[5];
+                    form.telefono.value = parsed[4];
                  
                     
                     run = true

@@ -14,33 +14,20 @@
         <main class="home-content">
                 <div class="service-content">
                     <h2 class="s-title">Hola Jhoan Sanchez</h2>
-                    <div class="user-service-content">
+<div class="user-service-content">
                         <h3 class="title-cash">$23 000COP</h3>
                         <div class="services">
-                            <button class="service-button">
-                                <img src="{{ url_for('static', filename='img/remove-cash.svg') }}" id="cash">                                    
-                                    
+                            <button class="service-button" id="add-gasto-btn">
+                                <img src="{{ url_for('static', filename='img/remove-cash.svg') }}" id="cash">                                  
                                 <h4>Agregar gasto</h4>
-                                    
-                                    
-
                             </button>
-                            <button class="service-button">
+                            <button class="service-button" id="add-ingreso-btn">
                                 <img src="{{ url_for('static', filename='img/add-cash.svg') }}" id="ingresos">  
-                                    
-
-                                    <h4>Agregar ingreso</h4>
-                                    
-
+                                <h4>Agregar ingreso</h4>
                             </button>
-                            <button class="service-button">
-                                <img src="{{ url_for('static', filename='img/more-row.svg') }}" id="mas">  
-
-                                    
-                                    <h4> mas</h4>
-                                    
-                                    
-
+                            <button class="service-button" id="mas"> 
+                                <img src="{{ url_for('static', filename='img/more-row.svg') }}" id="mas-img">  
+                                <h4> mas</h4>
                             </button>
                         </div>
                     </div>
@@ -88,6 +75,8 @@
                     </div>
 
                 </div>
+
+                
 
                 
 

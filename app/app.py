@@ -98,6 +98,23 @@ def delete_user(user_id):
     db.commit()
     return redirect(url_for("crud"))
 
+@app.route("/admin/crud/act/<int:user_id>", methods=["POST"])
+def act(user_id):
+    # obtener campos del formulario de actualización
+    firstname = request.form.get("firstname")
+    lastname = request.form.get("lastname")
+    email = request.form.get("email")
+    telefono = request.form.get("telefono")
+    tipo_usuario = request.form.get("tipo_usuario")
+
+    # ejecutar UPDATE con los valores recibidos
+    cursor.execute(
+        "UPDATE usuarios SET firstname=%s, lastname=%s, email=%s, telefono=%s, tipo_de_usuario=%s WHERE id=%s",
+        (firstname, lastname, email, telefono, tipo_usuario, user_id)
+    )
+    db.commit()
+    return redirect(url_for("crud"))
+
 @app.route ("/admin/search", methods=["POST"])
 async def admin_search():
     str_search = request.get_json().get("user_str")
@@ -156,6 +173,44 @@ def comming_soon_public():
 @app.route('/comming-soon')
 def comming_soon():
     return render_template('comming-soon.html')
+
+
+@app.route("/ingresos/add", methods=["POST"])
+def add_ingreso():
+    if 'email' not in session:
+        return redirect(url_for('login'))
+    try:
+        valor = int(request.form.get("valor", 0))
+    except ValueError:
+        valor = 0
+    categoria = request.form.get("categoria", "")
+    # obtener id de usuario desde el email de sesión
+    cursor.execute("SELECT id FROM usuarios WHERE email = %s", (session['email'],))
+    user = cursor.fetchone()
+    if user:
+        usuario_id = user[0]
+        cursor.execute("INSERT INTO ingresos (valor, categoria, usuario) VALUES (%s, %s, %s)", (valor, categoria, usuario_id))
+        db.commit()
+    return redirect(url_for("home"))
+
+@app.route("/gastos/add", methods=["POST"])
+def add_gasto():
+    if 'email' not in session:
+        return redirect(url_for('login'))
+    try:
+        valor = int(request.form.get("valor", 0))
+    except ValueError:
+        valor = 0
+    # almacenar gastos como valores negativos en la tabla 'ingresos'
+    valor = -abs(valor)
+    categoria = request.form.get("categoria", "")
+    cursor.execute("SELECT id FROM usuarios WHERE email = %s", (session['email'],))
+    user = cursor.fetchone()
+    if user:
+        usuario_id = user[0]
+        cursor.execute("INSERT INTO ingresos (valor, categoria, usuario) VALUES (%s, %s, %s)", (valor, categoria, usuario_id))
+        db.commit()
+    return redirect(url_for("home"))
 
 @app.context_processor
 def user_context():
