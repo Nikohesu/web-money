@@ -41,10 +41,10 @@
                     <div class="results-content" id="results">
                         <div class="result-div">
                             <ul>
-                                <li>id</li>
-                                <li>first_name</li>
-                                <li>last_name</li>
-                                <li>email</li>
+                                <li class="id_search">id</li>
+                                <li class="firstname_search">first_name</li>
+                                <li class="lastname_search">last_name</li>
+                                <li class="email_search">email</li>
                             </ul>
                         </div>
 
@@ -216,14 +216,38 @@
         const searchInput = document.getElementById('input-search');
 
         searchInput.addEventListener('focus', function() {
-            document.getElementById('results').classList.toggle('active');
+            document.getElementById('results').classList.add('active');
             
         });
         searchInput.addEventListener('input', function() {
-            search(searchInput.value);
+            let results = search(searchInput.value);
+            const template = document.querySelector(".results-div");
+            const container = document.getElementById("results");
             console.log('Input de búsqueda:', searchInput.value);
+            results.forEach(result => {
+                const clone = template.content.cloneNode(true);
+                clone.querySelector('.id_search').textContent = result[0];
+                clone.querySelector('.firstname_search').textContent = result[1];
+                clone.querySelector('.lastname_search').textContent = result[2];
+                clone.querySelector('.email_search').textContent = result[3];
+                container.appendChild(clone);
+
+
+            });
+
+
 
         });
+
+        searchInput.addEventListener('blur', function() {
+            // ocultar resultados después de un breve retraso para permitir clics
+            setTimeout(() => {
+                document.getElementById('results').classList.remove('active');
+            }, 200);
+        });
+
+
+
 
         async function search(str) {
             const respuesta = await fetch('/admin/search', {
@@ -234,7 +258,7 @@
                 body: JSON.stringify({ user_str: str })
             });
             data = await respuesta.json();
-            console.log('Resultados de búsqueda:', data.results);
+            console.log('Resultados de búsqueda:', data);
 
             // Aquí puedes actualizar el DOM con los resultados recibidos
                         /*  const respuesta = await fetch('/admin/consult', {
