@@ -98,7 +98,17 @@ def delete_user(user_id):
     db.commit()
     return redirect(url_for("crud"))
 
-"""""
+@app.route ("/admin/search", methods=["POST"])
+async def admin_search():
+    str_search = request.get_json().get("user_str")
+    cursor.execute("SELECT * FROM usuarios WHERE firstname LIKE %s OR lastname LIKE %s OR email LIKE %s OR email LIKE %s ", (f"%{str_search}%", f"%{str_search}%", f"%{str_search}%",f"%{str_search}%"))
+    results = cursor.fetchall()
+    print(results)
+
+    return jsonify({"results": results})
+
+
+"""
 @app.route("/admin/consult", methods=["POST"])
 async def admin_consult():
     valor=request.get_json().get("user_id")
@@ -109,7 +119,6 @@ async def admin_consult():
     return jsonify({"mensaje": "Valor recibido correctamente", "info": info_user})
     
 """
-
 
 #app.route("admin/crud/delete/<int:user_id>")
 

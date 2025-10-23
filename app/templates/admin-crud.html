@@ -23,7 +23,7 @@
             <main class="crud-content">
                 <div class="content-search-bar">
                     <div class="search-bar">
-                        <input class="input-search" type="text" placeholder="Buscar">
+                        <input id="input-search" class="input-search" type="text" placeholder="Buscar">
                         <button class="button-search">
                             <img class="svg-search" src="{{ url_for('static', filename='img/search.svg') }}" alt="search">
                         </button>
@@ -36,6 +36,18 @@
                         <button class="button-search">
                             <img class="svg-search" src="{{ url_for('static', filename='img/filter.SVG') }}">
                         </button>
+                    </div>
+
+                    <div class="results-content" id="results">
+                        <div class="result-div">
+                            <ul>
+                                <li>id</li>
+                                <li>first_name</li>
+                                <li>last_name</li>
+                                <li>email</li>
+                            </ul>
+                        </div>
+
                     </div>
                 </div>
 
@@ -201,6 +213,43 @@
     <script>
         let run = true
 
+        const searchInput = document.getElementById('input-search');
+
+        searchInput.addEventListener('focus', function() {
+            document.getElementById('results').classList.toggle('active');
+            
+        });
+        searchInput.addEventListener('input', function() {
+            search(searchInput.value);
+            console.log('Input de búsqueda:', searchInput.value);
+
+        });
+
+        async function search(str) {
+            const respuesta = await fetch('/admin/search', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ user_str: str })
+            });
+            data = await respuesta.json();
+            console.log('Resultados de búsqueda:', data.results);
+
+            // Aquí puedes actualizar el DOM con los resultados recibidos
+                        /*  const respuesta = await fetch('/admin/consult', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ user_id: select })
+            });
+            data = await respuesta.json();
+
+            console.log(data.info);*/
+            
+        }
+
         async function obt_sel() {
             // Selecciona el radio checked
             const form = {
@@ -256,16 +305,7 @@
                 return true;
             }
 
-            /*  const respuesta = await fetch('/admin/consult', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ user_id: select })
-            });
-            data = await respuesta.json();
 
-            console.log(data.info);*/
         }
 
          class modal {
