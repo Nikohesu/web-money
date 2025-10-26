@@ -118,7 +118,7 @@ def act(user_id):
 @app.route ("/admin/search", methods=["POST"])
 async def admin_search():
     str_search = request.get_json().get("user_str")
-    cursor.execute("SELECT * FROM usuarios WHERE firstname LIKE %s OR lastname LIKE %s OR email LIKE %s OR email LIKE %s ", (f"%{str_search}%", f"%{str_search}%", f"%{str_search}%",f"%{str_search}%"))
+    cursor.execute("SELECT * FROM usuarios WHERE firstname LIKE %s OR lastname LIKE %s OR id LIKE %s OR email LIKE %s ", (f"%{str_search}%", f"%{str_search}%", f"%{str_search}%",f"%{str_search}%"))
     results = cursor.fetchall()
     print(results)
 
