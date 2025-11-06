@@ -17,15 +17,15 @@
 <div class="user-service-content">
                         <h3 class="title-cash">$23 000COP</h3>
                         <div class="services">
-                            <button class="service-button" id="add-gasto-btn">
+                            <button class="service-button" id="btn-ig">
                                 <img src="{{ url_for('static', filename='img/remove-cash.svg') }}" id="cash">                                  
                                 <h4>Agregar gasto</h4>
                             </button>
-                            <button class="service-button" id="add-ingreso-btn">
+                            <button class="service-button" id="btn-eg">
                                 <img src="{{ url_for('static', filename='img/add-cash.svg') }}" id="ingresos">  
                                 <h4>Agregar ingreso</h4>
                             </button>
-                            <button class="service-button" id="mas"> 
+                            <button class="service-button" id="btn-more"> 
                                 <img src="{{ url_for('static', filename='img/more-row.svg') }}" id="mas-img">  
                                 <h4> mas</h4>
                             </button>
@@ -88,94 +88,135 @@
 
           
         </div>
-        
-        <div class="modal-pb modal-pb-off" id="modal">
-            <div class="ventana">
-                <button onclick= "modaltogle()" ></button>
+
+        <div class="modal-ig">
+            <div class="ventana ventana-ig">
+                <span class="close_btn" id="close-modal-btn">&times;</span>
+                <h2>Agregar Gasto</h2>
+                <form>
+                    <div class="div-campo">
+                        <label for="categoria">Categoría</label>
+                        <select class="campo" id="categoria" name="categoria">
+                            <option value="arriendo">Arriendo</option>
+                            <option value="comida">Comida</option>
+                            <option value="transporte">Transporte</option>
+                            <option value="servicios">Servicios</option>
+                            <option value="otros">Otros</option>
+                        </select>
+                    </div>
+                    <div class="div-campo">
+                        <label for="monto">Monto</label>
+                        <input class="campo monto" type="text" id="monto" name="monto" placeholder="Ingrese el monto" required>
+                    </div>
+                    <div class="div-campo">
+                        <label for="fecha ">Fecha</label>
+                        <input class="campo fecha" type="date" id="fecha" name="fecha">
+                    </div>
+
+                    <button class="form_button"  type="submit">Agregar</button> 
+                    
+                </form>
             </div>
         </div>
-        <script>
-            const movemnt = document.getElementById("movements");
-            const modal = document.getElementById("modal");
-            movemnt.addEventListener("click", () => modaltogle())
+        <div class="modal-eg">
+            <div class="ventana ventana-ig">
+                <span class="close_btn" id="close-modal-btn">&times;</span>
+                <h2>Agregar ingreso</h2>
+                <form>
+                    <div class="div-campo">
+                        <label for="categoria">Categoría</label>
+                        <select class="campo" id="categoria" name="categoria">
+                            <option value="arriendo">Arriendo</option>
+                            <option value="comida">Comida</option>
+                            <option value="transporte">Transporte</option>
+                            <option value="servicios">Servicios</option>
+                            <option value="otros">Otros</option>
+                        </select>
+                    </div>
+                    <div class="div-campo">
+                        <label for="monto">Monto</label>
+                        <input class="campo monto" type="text" id="monto" name="monto" placeholder="Ingrese el monto" required>
+                    </div>
+                    <div class="div-campo">
+                        <label for="fecha ">Fecha</label>
+                        <input class="campo fecha" type="date" id="fecha" name="fecha">
+                    </div>
+
+                    <button class="form_button"  type="submit">Agregar</button> 
+                    
+                </form>
+            </div>
 
 
-            function modaltogle() {
-                modal.classList.toggle("modal-pb-on");
+        </div>
+        </div>
+        <div class="modal-more">
+            <div class="ventana">
+                <span class="close_btn" id="close-modal-btn">&times;</span>
+            </div>
+        </div>
+        
+
+    <script>
+        const inputMonto = document.querySelectorAll(".monto");
+        inputMonto.forEach(im => {
+        im.addEventListener('input', () => {
+        let valor = im.value.replace(/\D/g, ''); // Elimina todo excepto dígitos
+        if (valor) {
+            const formato = new Intl.NumberFormat('es-CO', {
+            style: 'currency',
+            currency: 'COP',
+            minimumFractionDigits: 0
+            }).format(valor);
+        im.value = formato;
+      } else {
+        im.value = '';
+      }
+    });
+        });
+
+
+    const hoy = new Date();
+    const yyyy = hoy.getFullYear();
+    const mm = String(hoy.getMonth() + 1).padStart(2, '0');
+    const dd = String(hoy.getDate()).padStart(2, '0');
+    const fechaActual = `${yyyy}-${mm}-${dd}`;
+    document.querySelectorAll('.fecha').forEach(date=>{date.value = fechaActual});
+
+        class modal {
+            constructor(modal, btn) {
+                this.modal = document.querySelector(modal);
+                this.btn = document.getElementById(btn);
+                // seleccionar los botones de cierre dentro del modal
+                this.btn_close = this.modal.querySelectorAll(".close_btn");
+                this.cancel_btn = this.modal.querySelectorAll(".cancel");
+
+                // esperar la respuesta de obt_sel antes de abrir el modal
+                this.btn.addEventListener("click", () => {
+
+                        this.modal.classList.toggle("active");
+                });
+        
+
+                this.btn_close.forEach(close => {
+                    close.addEventListener("click", () => {
+                        this.modal.classList.remove("active");
+                        console.log(modal, "close click");
+                    });
+                });
+                this.cancel_btn.forEach(close => {
+                    close.addEventListener("click", () => {
+                        this.modal.classList.remove("active");
+                    });
+                });
+
+                }
+
             }
 
+            const ig = new modal(".modal-ig", "btn-ig");
+            const eg = new modal(".modal-eg", "btn-eg");
+            const more = new modal(".modal-more", "btn-more");
+
         </script>
-
-<!--AQUI EMPIEZA EL SCRIPT PARA QUE SALGAN LAS VENTAJAS DE INGRESOS GASTOS Y MAS (los gatos son placeholders)-->
-<div id="ollie" class="imagen">
-    <div class="contenido">
-        <span class="cerrar">&times;</span>
-    </div>
-</div>
-<script>
-    var imagen = document.getElementById("ollie");
-    var raul = document.getElementById("botonsito");
-    var x = document.getElementsByClassName("cerrar")[0]
-
-    raul.onclick = function() {
-        imagen.style.display = "block";
-    }
-    x.onclick = function() {
-        imagen.style.display = "none";
-    }
-    window.onclick = function(event) {
-        if (event.target == imagen) {
-            imagen.style.display = "none";
-        }
-    }
-</script>
-
-
-<div id="ollie2" class="imagen2">
-    <div class="contenido2">
-        <span class="cerrar2">&times;</span>
-    </div>
-</div>
-<script>
-    var imagen2 = document.getElementById("ollie2");
-    var raul2 = document.getElementById("ingresos");
-    var x2 = document.getElementsByClassName("cerrar2")[0]
-
-    raul2.onclick = function() {
-        imagen2.style.display = "block";
-    }
-    x2.onclick = function() {
-        imagen2.style.display = "none";
-    }
-    window.onclick = function(event) {
-        if (event.target == imagen2) {
-            imagen2.style.display = "none";
-        }
-    }
-</script>
-
-
-
-<div id="ollie3" class="imagen3">
-    <div class="contenido3">
-        <span class="cerrar3">&times;</span>
-    </div>
-</div>
-<script>
-    var imagen3 = document.getElementById("ollie3");
-    var raul3 = document.getElementById("mas");
-    var x3 = document.getElementsByClassName("cerrar3")[0]
-
-    raul3.onclick = function() {
-        imagen3.style.display = "block";
-    }
-    x3.onclick = function() {
-        imagen3.style.display = "none";
-    }
-    window.onclick = function(event) {
-        if (event.target == imagen3) {
-            imagen3.style.display = "none";
-        }
-    }
-</script>
     </body>

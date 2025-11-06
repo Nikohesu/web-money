@@ -152,6 +152,98 @@
   font-size: 1.2rem;
 }
 
+.modal-ig{
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.35);
+    display: none;
+    z-index: 2100;
+}
+
+.modal-ig.active{
+  display: block;
+
+}
+
+.modal-eg{
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.35);
+    display: none;
+    z-index: 2100;
+}
+
+.modal-eg.active{
+  display: block;
+}
+.modal-more{
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.35);
+    display: none;
+    z-index: 2100;
+}
+
+.modal-more.active{
+  display: block;
+}
+.close_btn {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 2rem;
+    color: #888;
+    cursor: pointer;
+    font-weight: bold;
+}
+.close_btn:hover {
+    color: #e74c3c;
+}
+.ventana {
+    background-color: var(--secondary-color);
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+}
+
+.ventana-ig{
+    aspect-ratio: 1/1;
+    width: clamp(300px, 80%, 600px);
+    height: auto;
+
+}
+
+.ventana > h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-family: Baloo2-SemiBold;
+}
+
+.ventana > form{
+    width: 80%;
+    height: 80%;
+    background-color: var(--tetraty-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius: 25px;
+}
+
+.ventana > .div-campo{
+    width: 80% !important; 
+}
+
 
 
 @media (width < 900px){
@@ -205,167 +297,17 @@
         font-size: 3rem;
 
     }
+
+    .ventana{
+        aspect-ratio: none;
+        width: 90%;
+        height: 80%;
+    }
     
 }
 
 
-/*ventanas modal*/
 
-.modal-pb{
-  background-color: #00000070;
-  z-index: 1000;
-  position: absolute;
-  left: 0;
-  top: 0;
-  transition: all;
-  display: none;
-}
-.ventana {
-  aspect-ratio: 1/1;
-  width: 50%;
-  background-color: var(--secondary-color);
-  position: relative;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-.modal-pb-off{
-  width: 0;
-  height: 0;
-}
 
-.modal-pb-on{
-  display: block;
-  min-height: 100vh;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-  
-.contenido {
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  aspect-ratio: 1/1;
-  width: 40%;
-  position: relative;
-  background-image: url(../images/37b93004c6d2a3dd0dc31e848c8a7fc9.png);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
- }
- 
- .imagen {
-   display: none;
-   position: fixed; 
-   z-index: 1; 
-   left: 0;
-   top: 0;
-   width: 100%;
-   height: 100%;
-   overflow: auto; 
-   background-color: rgba(65, 57, 57, 0.4);
- }
- 
- .cerrar {
-   color: #aaa;
-   float: right;
-   font-size: 28px;
-   font-weight: bold;
- }
- 
- .cerrar:hover,
- .cerrar:focus {
-   color: black;
-   text-decoration: none;
-   cursor: pointer;
- }
- 
- 
- 
- .contenido2 {
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  aspect-ratio: 1/1;
-  width: 40%;
-  position: relative;
-  background-image: url(../images/gatowasap.png);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
- }
- 
- .imagen2 {
-   display: none;
-   position: fixed; 
-   z-index: 1; 
-   left: 0;
-   top: 0;
-   width: 100%;
-   height: 100%;
-   overflow: auto; 
-   background-color: rgba(105, 202, 86, 0.4);
- }
- 
- .cerrar2 {
-   color: #aaa;
-   float: right;
-   font-size: 28px;
-   font-weight: bold;
- }
- 
- .cerrar2:hover,
- .cerrar2:focus {
-   color: black;
-   text-decoration: none;
-   cursor: pointer;
- }
- 
- 
- 
- .contenido3 {
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  aspect-ratio: 1/1;
-  width: 40%;
-  position: relative;
-  background-image: url(../images/gatoyoutub.png);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
- }
- 
- .imagen3 {
-   display: none;
-   position: fixed; 
-   z-index: 1; 
-   left: 0;
-   top: 0;
-   width: 100%;
-   height: 100%;
-   overflow: auto; 
-   background-color: rgba(202, 86, 86, 0.4);
- }
- 
- .cerrar3 {
-   color: #aaa;
-   float: right;
-   font-size: 28px;
-   font-weight: bold;
- }
- 
- .cerrar3:hover,
- .cerrar3:focus {
-   color: black;
-   text-decoration: none;
-   cursor: pointer;
- }
-  
-  
 
   

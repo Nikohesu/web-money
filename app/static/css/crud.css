@@ -188,18 +188,7 @@
     box-sizing: border-box;
     border-radius: 10px;
 }
-.form_button{
-    width: clamp(65px, 38%, 135px);
-    height:fit-content;
-    background-color: var(--secondary-color);
-    padding: 4px;
-    margin: 4px 0;
-    border: none;
-    font-family: Baloo2-SemiBold;
-    font-size: 120%;
-    border-radius: 10px;
-    margin: 10px auto ;
-}
+
 .modal-add-user.active{
     display: block;
 }
