@@ -20,7 +20,8 @@ CREATE TABLE IF NOT EXISTS usuarios (
     fecha_de_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     tipo_de_usuario INT DEFAULT 1,
     duracion_tipo_de_usuario INT,
-    theme INT DEFAULT 0;
+    theme INT DEFAULT 0,
+    cash INT DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS sugerencias (
@@ -32,41 +33,31 @@ CREATE TABLE IF NOT EXISTS sugerencias (
     FOREIGN KEY (usuario) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS categorias_gr (
+
+
+CREATE TABLE IF NOT EXISTS categorias (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    tipo ENUM("ingreso","gasto"),
     categoria_name VARCHAR(100) NOT NULL
 );
 
-INSERT INTO categorias_gr (categoria_name) VALUES
-('Ropa'),
-('Transporte'),
-('Alimentación');
+INSERT INTO categorias (tipo, categoria_name) VALUES 
+('gasto','Ropa'),
+('gasto','Transporte'),
+('gasto','Alimentación'),
+('ingreso','Salario'),
+('ingreso','Inversiones'),
+('ingreso','Emprendimiento');
 
-CREATE TABLE IF NOT EXISTS categorias_ig (
+CREATE TABLE IF NOT EXISTS movimientos (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    categoria_name VARCHAR(100) NOT NULL
-);
-
-INSERT INTO categorias_ig (categoria_name) VALUES
-('Salario'),
-('Inversiones'),
-('Emprendimiento');
-
-CREATE TABLE IF NOT EXISTS ingresos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    valor INT NOT NULL,
+    tipo ENUM("ingreso","gasto"),
+    monto INT NOT NULL,
     categoria INT NOT NULL,
     usuario INT NOT NULL,
-    FOREIGN KEY (categoria) REFERENCES categorias_ig(id) ON DELETE CASCADE,
+    fecha DATE NOT NULL,
+    FOREIGN KEY (categoria) REFERENCES categorias(id) ON DELETE CASCADE,
     FOREIGN KEY (usuario) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS egresos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    valor INT NOT NULL,
-    categoria INT NOT NULL,
-    usuario INT NOT NULL,
-    FOREIGN KEY (categoria) REFERENCES categorias_gr(id) ON DELETE CASCADE,
-    FOREIGN KEY (usuario) REFERENCES usuarios(id) ON DELETE CASCADE
-);
 

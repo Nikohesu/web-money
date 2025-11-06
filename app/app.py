@@ -11,8 +11,9 @@ Session(app)
 
 db = mysql.connector.connect(
     host="localhost",
-    user="Jhoan",
-    password="1217",
+    user="root",
+    port=5012,
+    password="",
     database="money_control"
 )
 
@@ -54,6 +55,9 @@ def login ():
         if user and check_password_hash(str(user[3]), password):
             session['email'] = email
             session["tipo_usuario"] = user[10]
+            session["id"] = user[0]
+            session["theme"] = user[12]
+            session["cash"]= user[13]
 
             if session["tipo_usuario"] == 0:
                 return redirect(url_for("crud"))
@@ -175,42 +179,29 @@ def comming_soon():
     return render_template('comming-soon.html')
 
 
-@app.route("/ingresos/add", methods=["POST"])
-def add_ingreso():
-    if 'email' not in session:
-        return redirect(url_for('login'))
-    try:
-        valor = int(request.form.get("valor", 0))
-    except ValueError:
-        valor = 0
-    categoria = request.form.get("categoria", "")
-    # obtener id de usuario desde el email de sesión
-    cursor.execute("SELECT id FROM usuarios WHERE email = %s", (session['email'],))
-    user = cursor.fetchone()
-    if user:
-        usuario_id = user[0]
-        cursor.execute("INSERT INTO ingresos (valor, categoria, usuario) VALUES (%s, %s, %s)", (valor, categoria, usuario_id))
-        db.commit()
-    return redirect(url_for("home"))
+@app.route("/home/add-gasto", methods=["POST"])
+def add_ig():
+    tipo = "gasto"
+    categoria = request.form["categoria"]
+    monto = request.form["monto"]
+    fecha = request.form["fecha"]
+    usuario = session.get("id")
+    cursor.execute("INSERT INTO movimientos (tipo, monto, categoria, usuario, fecha) VALUES (%s,%s,%s,%s,%s)", (tipo,monto,1,usuario,fecha))
+    db.commit()
 
-@app.route("/gastos/add", methods=["POST"])
-def add_gasto():
-    if 'email' not in session:
-        return redirect(url_for('login'))
-    try:
-        valor = int(request.form.get("valor", 0))
-    except ValueError:
-        valor = 0
-    # almacenar gastos como valores negativos en la tabla 'ingresos'
-    valor = -abs(valor)
-    categoria = request.form.get("categoria", "")
-    cursor.execute("SELECT id FROM usuarios WHERE email = %s", (session['email'],))
-    user = cursor.fetchone()
-    if user:
-        usuario_id = user[0]
-        cursor.execute("INSERT INTO ingresos (valor, categoria, usuario) VALUES (%s, %s, %s)", (valor, categoria, usuario_id))
-        db.commit()
-    return redirect(url_for("home"))
+
+@app.route("/home/add-ingreso", methods=["POST"])
+def add_eg():
+    tipo = "ingresos"
+    categoria = request.form["categoria"]
+    monto = request.form["monto"]
+    fecha = request.form["fecha"]
+
+
+@app.route("/home/movimientos", methods=["GET"])
+def movimientos():
+    pass
+
 
 @app.context_processor
 def user_context():
